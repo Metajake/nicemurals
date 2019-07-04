@@ -1,3 +1,5 @@
 manage.py
 db.sqlite3
 nicemurals/settings.py
+*.pyc
+*.config

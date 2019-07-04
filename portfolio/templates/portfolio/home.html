@@ -1,0 +1,9 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nice Murals</title>
+  </head>
+  <body>
+    <h3>Nice Murals</h3>{% for work in works %}<img src="{{work.image.url}}">{% endfor %}
+  </body>
+</html>

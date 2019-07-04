@@ -1,0 +1,10 @@
+| {% load static %}
+doctype html
+html
+  head
+    title Nice Murals
+  body
+    h3 Nice Murals
+    | {% for work in works %}
+    img(src="{{work.image.url}}") 
+    | {% endfor %}
