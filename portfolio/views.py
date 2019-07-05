@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Work
 
 def home(request):
-    works = Work.objects.all()
+    works = Work.objects.filter(is_enabled=True)
     context = {
         'works': works,
     }
