@@ -2,12 +2,27 @@
 <html>
   <head>
     <title>First Studio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/86fbf216f8.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
   </head>
   <body>
-    <h2>Blog Home</h2>{% for entry in entries %}
-    <article>
-      <h3>{{entry.title}} </h3>
-      <div class="content">{{entry.body|safe}} </div>
-    </article>{% endfor %}
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-1">Blog Home</h1>
+          <h2 class="subtitle"><i class="fab fa-accessible-icon"></i></h2>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">{% for entry in entries %}
+        <article>
+          <h3>{{entry.title}} </h3>
+          <div class="content">{{entry.body|safe}} </div>
+        </article>{% endfor %}
+      </div>
+    </section>
   </body>
 </html>

@@ -1,13 +1,19 @@
 | {% load static %}
 doctype html
 html
-  head
-    title First Studio
+  include includes/head.pug
   body
-    h2 Blog Home
-    | {% for entry in entries %}
-    article
-      h3 {{entry.title}} 
-      .content.
-        {{entry.body|safe}} 
-    | {% endfor %}
+    section.hero.is-primary
+      .hero-body
+        .container
+          h1.title.is-1 Blog Home
+          h2.subtitle: i.fab.fa-accessible-icon
+    
+    section
+      .container
+        | {% for entry in entries %}
+        article
+          h3 {{entry.title}} 
+          .content.
+            {{entry.body|safe}} 
+        | {% endfor %}
