@@ -3,3 +3,4 @@ nicemurals/settings.py
 *.pyc
 *.config
 portfolio/migrations/
+blog/migrations/

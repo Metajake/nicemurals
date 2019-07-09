@@ -1,0 +1,13 @@
+{% load static %}<!DOCTYPE html>
+<html>
+  <head>
+    <title>First Studio</title>
+  </head>
+  <body>
+    <h2>Blog Home</h2>{% for entry in entries %}
+    <article>
+      <h3>{{entry.title}} </h3>
+      <div class="content">{{entry.body|safe}} </div>
+    </article>{% endfor %}
+  </body>
+</html>

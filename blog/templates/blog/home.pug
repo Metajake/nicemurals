@@ -1,0 +1,13 @@
+| {% load static %}
+doctype html
+html
+  head
+    title First Studio
+  body
+    h2 Blog Home
+    | {% for entry in entries %}
+    article
+      h3 {{entry.title}} 
+      .content.
+        {{entry.body|safe}} 
+    | {% endfor %}
