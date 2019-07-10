@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 from .models import Entry, Tag
 
@@ -27,3 +28,8 @@ def entry(request, entry_slug):
         'entry' : entry,
     }
     return render(request, 'blog/entry.html', context)
+
+def tweetEntry(request):
+    print("TWEETING ")
+    print(request.POST['content'])
+    return HttpResponse('Success!')

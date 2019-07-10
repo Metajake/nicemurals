@@ -7,5 +7,4 @@ $('#home-link').click(function(e){
   setTimeout(function(){
     window.location.href = destination;
   }, 1000);
-
 })

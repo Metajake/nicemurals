@@ -9,6 +9,25 @@ h2.subtitle &nbsp;
 .columns
   .column.is-three-quarters.
     {{entry.body|safe}}
+    <a id="tweet" class="button is-link is-small">Tweet this</a>
   .column
     include includes/taglist.pug
+| {% endblock %}
+
+| {% block extrascript %}
+script.
+  $('#tweet').click(function(e){
+    $.ajax({
+      type: "POST",
+      url: '/ajax/tweet-entry/',
+      data: {
+        'content' : 'The content',
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+      },
+      //- datatype: 'json',
+      success: function(data){
+        console.log('success!')
+      },
+    })
+  })
 | {% endblock %}
