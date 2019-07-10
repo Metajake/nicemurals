@@ -7,14 +7,17 @@ html
     section.hero.is-primary
       .hero-body
         .container
-          | {% block masthead %}
-          | {% endblock %}
-          h1.subtitle: a#home-link(href="/"): i.fab.fa-accessible-icon
+          .columns
+            .column.is-four-fifths
+              | {% block masthead %}
+              | {% endblock %}
+              h1.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i.fab.fa-accessible-icon
+              h1.subtitle.is-inline: a(href="/admin"): i.fas.fa-key
+            .column
           
     section
       .container
-        | {% block content %}
+        | {% block main-content %}
         | {% endblock %}
         
-    script(src="{% static 'js/jquery.js' %}")
-    script(src="{% static 'js/base.js' %}")
+    include includes/footer.pug

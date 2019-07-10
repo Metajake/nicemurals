@@ -6,6 +6,6 @@ $('#home-link').click(function(e){
 
   setTimeout(function(){
     window.location.href = destination;
-  }, 4000);
+  }, 1000);
 
 })

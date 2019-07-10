@@ -2,9 +2,10 @@
 
 | {% block masthead %}
 h1.title.is-1 {{tag}}
+h2.subtitle &nbsp;
 | {% endblock %}  
   
-| {% block content %}
+| {% block main-content %}
 .columns
   .column.is-four-fifths
     | {% for entry in entries %}

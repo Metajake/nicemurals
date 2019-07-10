@@ -1,8 +1,9 @@
 
 {% extends 'blog/base.html' %}
 {% block masthead %}
-<h1 class="title is-1">{{tag}}</h1>{% endblock %}  
-{% block content %}
+<h1 class="title is-1">{{tag}}</h1>
+<h2 class="subtitle">&nbsp;</h2>{% endblock %}  
+{% block main-content %}
 <div class="columns">
   <div class="column is-four-fifths">{% for entry in entries %}
     <article>

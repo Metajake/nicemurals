@@ -3,12 +3,11 @@
 {% block masthead %}
 <h1 class="title is-1">First Studio.Co</h1>
 <h2 class="subtitle">The Interactive Work of Jacob North</h2>{% endblock %}  
-{% block content %}
+{% block main-content %}
 <div class="columns">
   <div class="column is-four-fifths">{% for entry in entries %}
     <article>
-      <h3>{{entry.title}} </h3>
-      <div class="content">{{entry.body|safe}} </div>
+      <h3><a href="entry/{{entry.slug}}">{{entry.title}} </a></h3>
     </article>{% endfor %}
   </div>
   <div class="column">
