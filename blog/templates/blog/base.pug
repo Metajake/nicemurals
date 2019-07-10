@@ -9,9 +9,12 @@ html
         .container
           | {% block masthead %}
           | {% endblock %}
-          h1.subtitle: a(href="/"): i.fab.fa-accessible-icon
+          h1.subtitle: a#home-link(href="/"): i.fab.fa-accessible-icon
           
     section
       .container
         | {% block content %}
         | {% endblock %}
+        
+    script(src="{% static 'js/jquery.js' %}")
+    script(src="{% static 'js/base.js' %}")

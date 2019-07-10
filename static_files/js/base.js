@@ -1,0 +1,11 @@
+$('#home-link').click(function(e){
+  e.preventDefault();
+  destination = $(this).attr('href')
+
+  $(this).addClass("move")
+
+  setTimeout(function(){
+    window.location.href = destination;
+  }, 4000);
+
+})

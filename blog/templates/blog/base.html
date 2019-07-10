@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/86fbf216f8.js"></script>
     <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
   <body>
     <section class="hero is-primary">
@@ -13,7 +14,7 @@
         <div class="container">
           {% block masthead %}
           {% endblock %}
-          <h1 class="subtitle"><a href="/"><i class="fab fa-accessible-icon"></i></a></h1>
+          <h1 class="subtitle"><a id="home-link" href="/"><i class="fab fa-accessible-icon"></i></a></h1>
         </div>
       </div>
     </section>
@@ -23,5 +24,7 @@
         {% endblock %}
       </div>
     </section>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
   </body>
 </html>
