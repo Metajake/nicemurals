@@ -1,0 +1,17 @@
+| {% load static %}
+doctype html
+
+html
+  include includes/head.pug
+  body
+    section.hero.is-primary
+      .hero-body
+        .container
+          | {% block masthead %}
+          | {% endblock %}
+          h1.subtitle: a(href="/"): i.fab.fa-accessible-icon
+          
+    section
+      .container
+        | {% block content %}
+        | {% endblock %}

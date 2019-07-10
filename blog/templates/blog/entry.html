@@ -1,0 +1,12 @@
+
+{% extends 'blog/base.html' %}
+{% block masthead %}
+<h1 class="title is-1">{{entry.title}}</h1>{% endblock %}
+{% block content %}
+<div class="columns">
+  <div class="column is-three-quarters">{{entry.body|safe}}</div>
+  <div class="column">
+    <ul></ul>{% for tag in tags %}
+    <li><a href="tags/{{tag}}">{{tag}}</a></li>{% endfor %}
+  </div>
+</div>{% endblock %}

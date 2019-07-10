@@ -1,0 +1,13 @@
+| {% extends 'blog/base.html' %}
+
+| {% block masthead %}
+h1.title.is-1 {{entry.title}}
+| {% endblock %}
+
+| {% block content %}
+.columns
+  .column.is-three-quarters.
+    {{entry.body|safe}}
+  .column
+    include includes/taglist.pug
+| {% endblock %}
