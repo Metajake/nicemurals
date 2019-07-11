@@ -2,13 +2,14 @@
 {% extends 'blog/base.html' %}
 {% block extrahead %}
 <title>First Studio | {{entry.title}}</title>
-<meta name="description" content=""/>
+<meta name="description" content="{{entry.body|safe|slice:':155'}}"/>
 <meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="{{entry.body|safe|slice:':155'}}"/>
 <meta name="twitter:site" content="@jaynoco"/>
 <meta name="twitter:creator" content="@jaynoco"/>
-<meta property="og:url" content=""/>
+<meta property="og:url" content="http:firststudio.co/entry/{{entry.slug}}"/>
 <meta property="og:title" content="{{entry.title}}"/>
-<meta property="og:description" content=""/>
+<meta property="og:description" content="{{entry.body|safe|slice:':155'}}"/>
 <meta property="og:image" content="https://i.imgur.com/HaSkdQA.jpg"/>{% endblock %}
 {% block masthead %}
 <h1 class="title is-2">{{entry.title}}</h1>
@@ -16,7 +17,7 @@
 {% block main-content %}
 <div class="columns">
   <div class="column is-three-quarters">
-    {{entry.body|safe}}
+    {{entry.body}}
     <a id="tweet-entry" class="button is-link is-small">Tweet this</a>
   </div>
   <div class="column">
@@ -26,9 +27,6 @@
 </div>{% endblock %}
 {% block extrascript %}
 <script>
-  $('meta[property="og:url"]').attr('content', window.location.href)
-  $('meta[property="og:description"], meta[name="description"]').attr('content', $("{{entry.body|safe}}").text().slice(0,155) )
-  
   $('#tweet-entry').click(function(e){
     $.ajax({
       type: "POST",

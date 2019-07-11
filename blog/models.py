@@ -1,5 +1,4 @@
 from django.db import models
-from tinymce.models import HTMLField
 
 class Tag(models.Model):
     tagslug = models.SlugField(max_length=200, unique=True)
@@ -9,7 +8,7 @@ class Tag(models.Model):
 
 class Entry(models.Model):
     title = models.CharField(max_length=200)
-    body = HTMLField()
+    body = models.TextField()
     slug = models.SlugField(max_length=200, unique=True)
     published = models.BooleanField(default = True)
     created = models.DateTimeField(auto_now_add=True)

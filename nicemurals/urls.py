@@ -22,5 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls') ),
     path('nice', include('portfolio.urls') ),
-    re_path(r'^tinymce/', include('tinymce.urls') ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

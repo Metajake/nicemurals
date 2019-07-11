@@ -2,13 +2,14 @@
 
 | {% block extrahead %}
 title First Studio | {{entry.title}}
-meta(name="description" content="")
+meta(name="description" content="{{entry.body|safe|slice:':155'}}")
 meta(name="twitter:card" content="summary")
+meta(name="twitter:description" content="{{entry.body|safe|slice:':155'}}")
 meta(name="twitter:site" content="@jaynoco")
 meta(name="twitter:creator" content="@jaynoco")
-meta(property="og:url" content="")
+meta(property="og:url" content="http:firststudio.co/entry/{{entry.slug}}")
 meta(property="og:title" content="{{entry.title}}")
-meta(property="og:description" content="")
+meta(property="og:description" content="{{entry.body|safe|slice:':155'}}")
 meta(property="og:image" content="https://i.imgur.com/HaSkdQA.jpg")
 | {% endblock %}
 
@@ -20,7 +21,7 @@ h2.subtitle.is-5 &nbsp;
 | {% block main-content %}
 .columns
   .column.is-three-quarters.
-    {{entry.body|safe}}
+    {{entry.body}}
     <a id="tweet-entry" class="button is-link is-small">Tweet this</a>
   .column
     include includes/taglist.pug
@@ -28,9 +29,6 @@ h2.subtitle.is-5 &nbsp;
 
 | {% block extrascript %}
 script.
-  $('meta[property="og:url"]').attr('content', window.location.href)
-  $('meta[property="og:description"], meta[name="description"]').attr('content', $("{{entry.body|safe}}").text().slice(0,155) )
-  
   $('#tweet-entry').click(function(e){
     $.ajax({
       type: "POST",
