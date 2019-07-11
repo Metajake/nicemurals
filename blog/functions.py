@@ -11,6 +11,8 @@ def tweetEntryLink(sender, instance, **kwargs):
     auth = tweepy.OAuthHandler('wqZDVmeQ0LRjIPblT5N8ZxAQ6', 'SPrk2ifNUZ5SGK6EV04MW41hmKp5yxjDw58In3oAJ4zHEZydoV')
     auth.set_access_token('995766360-5x2RE1NhbEfmzM2hbAuV4vyet4fAqQ1m0FVpQCgY', '8xLHNA40eDYK7vP6SZXqleAPCwNUNcQLN8Jdpxcdrul8L')
     api = tweepy.API(auth)
-    # print(instance)
-    myStatusText = instance['title'] + ' http://firststudio.co/entry/'+instance['slug']
+    if instance['ajax']:
+        myStatusText = instance['title'] + ' http://firststudio.co/entry/'+instance['slug']
+    else:
+        myStatusText = instance.title + ' http://firststudio.co/entry/'+instance.slug
     api.update_status(status=myStatusText)
