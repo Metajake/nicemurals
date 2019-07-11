@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from blog.functions import tweetEntryLink
 from .models import Entry, Tag
 
 def home(request):
@@ -30,6 +31,5 @@ def entry(request, entry_slug):
     return render(request, 'blog/entry.html', context)
 
 def tweetEntry(request):
-    print("TWEETING ")
-    print(request.POST['content'])
+    tweetEntryLink(None, request.POST)
     return HttpResponse('Success!')
