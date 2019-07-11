@@ -13,6 +13,7 @@ class Entry(models.Model):
     published = models.BooleanField(default = True)
     created = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True)
+    tweet_version = models.IntegerField(editable=False, default=1)
 
     def __str__(self):
         return self.title

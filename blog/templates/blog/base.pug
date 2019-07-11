@@ -12,13 +12,14 @@ html
         .container
           .columns
             .column.is-four-fifths
-              | {% block masthead %}
+              | {% block masthead-headline %}
               | {% endblock %}
+              hr
               h1.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i.fab.fa-accessible-icon
               h1.subtitle.is-inline: a(href="/admin"): i.fas.fa-key
             .column
           
-    section
+    .section
       .container
         | {% block main-content %}
         | {% endblock %}

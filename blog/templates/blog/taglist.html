@@ -2,7 +2,7 @@
 {% extends 'blog/base.html' %}
 {% block extrahead %}
 <title>First Studio | Blog | {{tag}}</title>{% endblock %}
-{% block masthead %}
+{% block masthead-headline %}
 <h1 class="title is-2">{{tag}}</h1>
 <h2 class="subtitle is-5">&nbsp;</h2>{% endblock %}  
 {% block main-content %}
@@ -13,7 +13,11 @@
     </article>{% endfor %}
   </div>
   <div class="column">
-    <ul></ul>{% for tag in tags %}
-    <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
+    <div class="content">
+      <h3>Categories</h3>
+      <ul>{% for tag in tags %}
+        <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
+      </ul>
+    </div>
   </div>
 </div>{% endblock %}

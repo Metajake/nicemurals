@@ -14,8 +14,9 @@
         <div class="container">
           <div class="columns">
             <div class="column is-four-fifths">
-              {% block masthead %}
+              {% block masthead-headline %}
               {% endblock %}
+              <hr>
               <h1 class="subtitle is-inline"><a id="home-link" href="{% url 'blog-home' %}"><i class="fab fa-accessible-icon"></i></a></h1>
               <h1 class="subtitle is-inline"><a href="/admin"><i class="fas fa-key"></i></a></h1>
             </div>
@@ -24,12 +25,12 @@
         </div>
       </div>
     </section>
-    <section>
+    <div class="section">
       <div class="container">
         {% block main-content %}
         {% endblock %}
       </div>
-    </section>
+    </div>
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'blog/js/blog-base.js' %}"></script>{% block extrascript %}
     {% endblock %}

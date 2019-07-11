@@ -32,4 +32,5 @@ def entry(request, entry_slug):
 
 def tweetEntry(request):
     tweetEntryLink(None, request.POST)
-    return HttpResponse('Success!')
+    e = Entry.objects.get(title=request.POST['title'])
+    return HttpResponse(e.tweet_version)

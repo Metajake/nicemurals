@@ -2,9 +2,9 @@
 {% extends 'blog/base.html' %}
 {% block extrahead %}
 <title>First Studio | Blog</title>{% endblock %}
-{% block masthead %}
-<h1 class="title is-2">First Studio.Co</h1>
-<h2 class="subtitle is-6">The Interactive Work of Jacob North</h2>{% endblock %}  
+{% block masthead-headline %}<a href="/">
+  <h1 class="title is-2">First Studio.Co</h1></a><a href="/">
+  <h2 class="subtitle is-6">The Interactive Work of Jacob North</h2></a>{% endblock %}  
 {% block main-content %}
 <div class="columns">
   <div class="column is-four-fifths">{% for entry in entries %}
@@ -12,8 +12,12 @@
       <h3><a href="entry/{{entry.slug}}">{{entry.title}} </a></h3>
     </article>{% endfor %}
   </div>
-  <div class="column">
-    <ul></ul>{% for tag in tags %}
-    <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
+  <div class="column is-one-fifth">
+    <div class="content">
+      <h3>Categories</h3>
+      <ul>{% for tag in tags %}
+        <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
+      </ul>
+    </div>
   </div>
 </div>{% endblock %}

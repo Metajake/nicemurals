@@ -1,4 +1,6 @@
-ul
-| {% for tag in tags %}
-li: a(href='/tags/{{tag}}') {{tag}}
-| {% endfor %}
+.content
+  h3 Categories
+  ul
+    | {% for tag in tags %}
+    li: a(href='/tags/{{tag}}') {{tag}}
+    | {% endfor %}

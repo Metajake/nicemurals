@@ -13,7 +13,7 @@ meta(property="og:description" content="{{entry.body|safe|slice:':155'}}")
 meta(property="og:image" content="https://i.imgur.com/HaSkdQA.jpg")
 | {% endblock %}
 
-| {% block masthead %}
+| {% block masthead-headline %}
 h1.title.is-2 {{entry.title}}
 h2.subtitle.is-5 &nbsp;
 | {% endblock %}
@@ -22,7 +22,9 @@ h2.subtitle.is-5 &nbsp;
 .columns
   .column.is-three-quarters.
     {{entry.body}}
-    <a id="tweet-entry" class="button is-link is-small">Tweet this</a>
+    {% if user.is_authenticated %}
+    <a id="tweet-entry" class="button is-link is-small">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>
+    {% endif %}
   .column
     include includes/taglist.pug
 | {% endblock %}
@@ -37,12 +39,13 @@ script.
         'ajax' : 'True',
         'title' : '{{entry.title}}',
         'slug' : '{{entry.slug}}',
+        'tweet_version' : '{{entry.tweet_version}}',
         csrfmiddlewaretoken: '{{ csrf_token }}',
       },
-      /* datatype: 'json',
       success: function(data){
-        console.log('success!')
-      }, */
+        $('#tweet-version-increment').html()
+        $('#tweet-version-increment').html(parseInt(data)+1)
+      },
     })
   })
 | {% endblock %}
