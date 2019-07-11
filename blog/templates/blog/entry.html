@@ -33,6 +33,7 @@
       type: "POST",
       url: '/ajax/tweet-entry/',
       data: {
+        'ajax' : 'True',
         'title' : '{{entry.title}}',
         'slug' : '{{entry.slug}}',
         csrfmiddlewaretoken: '{{ csrf_token }}',
