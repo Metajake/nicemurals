@@ -2,9 +2,10 @@
 doctype html
 
 html
-  include includes/base_head.pug
-  |{% block extrahead %}
-  |{% endblock %}
+  head
+    include includes/base_head.pug
+    |{% block extrahead %}
+    |{% endblock %}
   body
     section.hero.is-primary
       .hero-body

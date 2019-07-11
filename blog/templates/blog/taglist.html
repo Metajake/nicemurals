@@ -1,5 +1,7 @@
 
 {% extends 'blog/base.html' %}
+{% block extrahead %}
+<title>First Studio | Blog | {{tag}}</title>{% endblock %}
 {% block masthead %}
 <h1 class="title is-2">{{tag}}</h1>
 <h2 class="subtitle is-5">&nbsp;</h2>{% endblock %}  
