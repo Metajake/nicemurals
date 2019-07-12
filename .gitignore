@@ -5,3 +5,4 @@ nicemurals/settings.py
 portfolio/migrations/
 blog/migrations/
 static/
+media/
