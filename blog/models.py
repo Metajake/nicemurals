@@ -12,7 +12,7 @@ class Entry(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     published = models.BooleanField(default = True)
     richbody = RichTextField()
-    body = models.TextField()
+    description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True)
     tweet_version = models.IntegerField(editable=False, default=0)
