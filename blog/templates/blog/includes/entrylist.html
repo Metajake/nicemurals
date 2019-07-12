@@ -1,0 +1,17 @@
+
+<div class="columns">{% for entry in entries %}
+  <div class="column">
+    <div class="card">
+      <div class="card-content">
+        <div class="content"><a href="entry/{{entry.slug}}">
+            <h3 class="title is-4">{{entry.title}} </h3>
+            <h4 class="subtitle is-6" href="entry/{{entry.slug}}">{{entry.richbody | safe | truncatewords:7}}</h4></a></div>
+      </div>
+      <footer class="card-footer">
+        <div class="card-footer-item justify-left">
+          <p>{{entry.created}}</p>
+        </div>
+      </footer>
+    </div>
+  </div>{% endfor %}
+</div>

@@ -6,16 +6,14 @@ title First Studio | Blog | {{tag}}
 
 | {% block masthead-headline %}
 h1.title.is-2 {{tag}}
-h2.subtitle.is-5 &nbsp;
+h2.subtitle.is-6 &nbsp;
 | {% endblock %}  
   
 | {% block main-content %}
 .columns
   .column.is-four-fifths
-    | {% for entry in entries %}
-    article
-      h3: a(href="/entry/{{entry.slug}}") {{entry.title}} 
-    | {% endfor %}
+    include includes/entrylist.pug
+      
   .column
     include includes/taglist.pug
 | {% endblock %}

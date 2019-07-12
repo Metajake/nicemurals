@@ -1,21 +1,19 @@
 | {% extends 'blog/base.html' %}
+| {% url 'blog-home' as home %}
 
 | {% block extrahead %}
 title First Studio | Blog
 | {% endblock %}
 
 | {% block masthead-headline %}
-a(href="/"): h1.title.is-2 First Studio.Co
-a(href="/"): h2.subtitle.is-6 The Interactive Work of Jacob North
+a(href="{{home}}"): h1.title.is-2 First Studio.Co
+a(href="{{home}}"): h2.subtitle.is-6 The Interactive Work of Jacob North
 | {% endblock %}  
   
 | {% block main-content %}
 .columns
   .column.is-four-fifths
-    | {% for entry in entries %}
-    article
-      h3: a(href="entry/{{entry.slug}}") {{entry.title}} 
-    | {% endfor %}
-  .column.is-one-fifth
+    include includes/entrylist.pug
+  .column
     include includes/taglist.pug
 | {% endblock %}

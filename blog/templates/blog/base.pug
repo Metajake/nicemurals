@@ -7,7 +7,7 @@ html
     |{% block extrahead %}
     |{% endblock %}
   body
-    section.hero.is-primary
+    header.hero.is-primary.is-small
       .hero-body
         .container
           .columns
@@ -15,11 +15,14 @@ html
               | {% block masthead-headline %}
               | {% endblock %}
               hr
-              h1.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i.fab.fa-accessible-icon
-              h1.subtitle.is-inline: a(href="/admin"): i.fas.fa-key
+              h1.icon.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i.fab.fa-accessible-icon
+              h1.icon.subtitle.is-inline: a(href="/admin"): i.fas.fa-key
+              | {% if user.is_authenticated %}
+              h1.icon.subtitle.is-inline: a(href="/admin/logout"): i.fas.fa-skull
+              | {% endif %}
             .column
           
-    .section
+    section.section
       .container
         | {% block main-content %}
         | {% endblock %}

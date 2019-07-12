@@ -1,0 +1,20 @@
+| {% for entry in entries reversed %}
+
+| {% if forloop.first %}<div class="columns">{% endif %}
+
+.column
+  .card
+    .card-content
+      .content
+        a(href="entry/{{entry.slug}}")
+          h3.title.is-4 {{entry.title}} 
+          h4.subtitle.is-6(href="entry/{{entry.slug}}") {{entry.richbody | safe | truncatewords:7}}
+    footer.card-footer
+      .card-footer-item.justify-left
+        p {{entry.created}}
+        
+| {% if forloop.counter|divisibleby:"5" %}</div><div class="columns">{% endif %}
+
+| {% if forloop.last %}</div>{% endif %}
+
+| {% endfor %}

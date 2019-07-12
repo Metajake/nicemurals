@@ -1,18 +1,34 @@
 
 {% extends 'blog/base.html' %}
+{% url 'blog-home' as home %}
 {% block extrahead %}
 <title>First Studio | Blog</title>{% endblock %}
-{% block masthead-headline %}<a href="/">
-  <h1 class="title is-2">First Studio.Co</h1></a><a href="/">
+{% block masthead-headline %}<a href="{{home}}">
+  <h1 class="title is-2">First Studio.Co</h1></a><a href="{{home}}">
   <h2 class="subtitle is-6">The Interactive Work of Jacob North</h2></a>{% endblock %}  
 {% block main-content %}
 <div class="columns">
-  <div class="column is-four-fifths">{% for entry in entries %}
-    <article>
-      <h3><a href="entry/{{entry.slug}}">{{entry.title}} </a></h3>
-    </article>{% endfor %}
+  <div class="column is-four-fifths">
+    {% for entry in entries reversed %}
+    {% if forloop.first %}<div class="columns">{% endif %}
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <div class="content"><a href="entry/{{entry.slug}}">
+              <h3 class="title is-4">{{entry.title}} </h3>
+              <h4 class="subtitle is-6" href="entry/{{entry.slug}}">{{entry.richbody | safe | truncatewords:7}}</h4></a></div>
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-item justify-left">
+            <p>{{entry.created}}</p>
+          </div>
+        </footer>
+      </div>
+    </div>{% if forloop.counter|divisibleby:"5" %}</div><div class="columns">{% endif %}
+    {% if forloop.last %}</div>{% endif %}
+    {% endfor %}
   </div>
-  <div class="column is-one-fifth">
+  <div class="column">
     <div class="content">
       <h3>Categories</h3>
       <ul>{% for tag in tags %}
