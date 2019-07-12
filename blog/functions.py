@@ -1,5 +1,6 @@
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
+from django.conf import settings
 
 import tweepy, requests, inspect
 
@@ -25,7 +26,8 @@ def tweetEntryLink(sender, instance, **kwargs):
         myStatusText = instance['title'] + " v" + str(instance['tweet_version']) + ' http://firststudio.co/entry/'+instance['slug']
 
     try:
-        api.update_status(status=myStatusText)
+        if settings.DEBUG == False:
+            api.update_status(status=myStatusText)
     except:
         print("ERROR TWEETING")
         pass
