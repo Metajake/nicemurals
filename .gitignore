@@ -4,3 +4,4 @@ nicemurals/settings.py
 *.config
 portfolio/migrations/
 blog/migrations/
+static/

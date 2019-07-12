@@ -17,7 +17,7 @@
 {% block main-content %}
 <div class="columns">
   <div class="column is-three-quarters">
-    {{entry.body}}
+    {{entry.richbody|safe}}
     {% if user.is_authenticated %}
     <a id="tweet-entry" class="button is-link is-small">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>
     {% endif %}
