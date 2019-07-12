@@ -2,14 +2,14 @@
 {% extends 'blog/base.html' %}
 {% block extrahead %}
 <title>First Studio | {{entry.title}}</title>
-<meta name="description" content="{{entry.body|safe|slice:':155'}}"/>
+<meta name="description" content="{{entry.description|safe|slice:':155'}}"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:description" content="{{entry.body|safe|slice:':155'}}"/>
+<meta name="twitter:description" content="{{entry.description|safe|slice:':155'}}"/>
 <meta name="twitter:site" content="@jaynoco"/>
 <meta name="twitter:creator" content="@jaynoco"/>
 <meta property="og:url" content="http:firststudio.co/entry/{{entry.slug}}"/>
 <meta property="og:title" content="{{entry.title}}"/>
-<meta property="og:description" content="{{entry.body|safe|slice:':155'}}"/>
+<meta property="og:description" content="{{entry.description|safe|slice:':155'}}"/>
 <meta property="og:image" content="https://i.imgur.com/HaSkdQA.jpg"/>{% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{{entry.title}}</h1>
@@ -17,10 +17,12 @@
 {% block main-content %}
 <div class="columns">
   <div class="column is-three-quarters">
-    {{entry.richbody|safe}}
-    {% if user.is_authenticated %}
-    <a id="tweet-entry" class="button is-link is-small">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>
-    {% endif %}
+    <div class="content">
+      {{entry.richbody|safe}}
+      {% if user.is_authenticated %}
+      <a id="tweet-entry" class="button is-link is-small">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>
+      {% endif %}
+    </div>
   </div>
   <div class="column">
     <div class="content">

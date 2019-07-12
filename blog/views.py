@@ -25,8 +25,10 @@ def taglist(request, blog_tagslug):
 
 def entry(request, entry_slug):
     entry = Entry.objects.get(slug=entry_slug)
+    tags = Tag.objects.all()
     context = {
         'entry' : entry,
+        'tags' : tags,
     }
     return render(request, 'blog/entry.html', context)
 

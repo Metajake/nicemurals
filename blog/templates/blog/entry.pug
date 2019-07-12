@@ -2,14 +2,14 @@
 
 | {% block extrahead %}
 title First Studio | {{entry.title}}
-meta(name="description" content="{{entry.body|safe|slice:':155'}}")
+meta(name="description" content="{{entry.description|safe|slice:':155'}}")
 meta(name="twitter:card" content="summary")
-meta(name="twitter:description" content="{{entry.body|safe|slice:':155'}}")
+meta(name="twitter:description" content="{{entry.description|safe|slice:':155'}}")
 meta(name="twitter:site" content="@jaynoco")
 meta(name="twitter:creator" content="@jaynoco")
 meta(property="og:url" content="http:firststudio.co/entry/{{entry.slug}}")
 meta(property="og:title" content="{{entry.title}}")
-meta(property="og:description" content="{{entry.body|safe|slice:':155'}}")
+meta(property="og:description" content="{{entry.description|safe|slice:':155'}}")
 meta(property="og:image" content="https://i.imgur.com/HaSkdQA.jpg")
 | {% endblock %}
 
@@ -20,11 +20,12 @@ h2.subtitle.is-5 &nbsp;
 
 | {% block main-content %}
 .columns
-  .column.is-three-quarters.
-    {{entry.richbody|safe}}
-    {% if user.is_authenticated %}
-    <a id="tweet-entry" class="button is-link is-small">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>
-    {% endif %}
+  .column.is-three-quarters
+    .content.
+      {{entry.richbody|safe}}
+      {% if user.is_authenticated %}
+      <a id="tweet-entry" class="button is-link is-small">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>
+      {% endif %}
   .column
     include includes/taglist.pug
 | {% endblock %}
