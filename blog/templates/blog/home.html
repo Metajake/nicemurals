@@ -28,7 +28,7 @@
         </footer>
       </div>
     </div>{% if forloop.counter|divisibleby:"5" %}</div><div class="columns">{% endif %}
-    {% if forloop.last %}{% for i in i|rjust:emptycards %}<div class="column"></div>{% endfor %}</div>{% endif %}
+    {% if forloop.last %}{% for i in emptycards|rjust:emptycards %}<div class="column"></div>{% endfor %}</div>{% endif %}
     {% endfor %}
   </div>
   <div class="column">

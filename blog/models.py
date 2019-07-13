@@ -14,7 +14,7 @@ class Entry(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     published = models.BooleanField(default = True)
-    richbody = RichTextField()
+    richbody = RichTextField(blank=True)
     description = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True)

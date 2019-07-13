@@ -6,9 +6,13 @@ from .models import Entry, Tag
 from rpg.views import *
 
 def home(request):
-    entries = Entry.objects.all()
+    entries = Entry.objects.filter(published=True)
     tags = Tag.objects.all()
-    emptyCards = 5 - (entries.count() % 5) #to fill in template row
+    if entries.count() < 5:
+        emptyCards = 5 - entries.count() #to fill in template row
+    else:
+        emptyCards = 5 - (entries.count() % 5) #to fill in template row
+    print(emptyCards)
     rpgUpdate = getRpgUpdate()
     context = {
         'entries' : entries,
