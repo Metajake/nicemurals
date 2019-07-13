@@ -12,7 +12,10 @@
     {% for entry in entries reversed %}
     {% if forloop.first %}<div class="columns">{% endif %}
     <div class="column">
-      <div class="card">
+      <div class="card">{% for work in entry.images.all %}{% if forloop.first %}
+        <div class="card-image">
+          <div class="figure image is-4by3"><img src="{{ work.image.url }}"/></div>
+        </div>{% endif %}{% endfor %}
         <div class="card-content">
           <div class="content"><a href="/entry/{{entry.slug}}">
               <h3 class="title is-4">{{entry.title}} </h3>
@@ -25,7 +28,7 @@
         </footer>
       </div>
     </div>{% if forloop.counter|divisibleby:"5" %}</div><div class="columns">{% endif %}
-    {% if forloop.last %}</div>{% endif %}
+    {% if forloop.last %}{% for i in i|rjust:emptycards %}<div class="column"></div>{% endfor %}</div>{% endif %}
     {% endfor %}
   </div>
   <div class="column">

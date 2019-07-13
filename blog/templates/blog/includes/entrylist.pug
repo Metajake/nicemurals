@@ -4,6 +4,11 @@
 
 .column
   .card
+    |{% for work in entry.images.all %}{% if forloop.first %}
+    .card-image
+      .figure.image.is-4by3
+        img(src="{{ work.image.url }}")
+    |{% endif %}{% endfor %}
     .card-content
       .content
         a(href="/entry/{{entry.slug}}")
@@ -15,6 +20,6 @@
         
 | {% if forloop.counter|divisibleby:"5" %}</div><div class="columns">{% endif %}
 
-| {% if forloop.last %}</div>{% endif %}
+| {% if forloop.last %}{% for i in i|rjust:emptycards %}<div class="column"></div>{% endfor %}</div>{% endif %}
 
 | {% endfor %}

@@ -7,19 +7,23 @@ from .models import Entry, Tag
 def home(request):
     entries = Entry.objects.all()
     tags = Tag.objects.all()
+    emptyCards = 5 - (entries.count() % 5) #to fill in template row
     context = {
         'entries' : entries,
         'tags' : tags,
+        'emptycards' : emptyCards,
     }
     return render(request, 'blog/home.html', context)
 
 def taglist(request, blog_tagslug):
     entries = Entry.objects.all().filter(tags__tagslug=blog_tagslug)
     tags = Tag.objects.all()
+    emptyCards = 5 - (entries.count() % 5) #to fill in template row
     context = {
         'tag' : blog_tagslug,
         'entries' : entries,
         'tags' : tags,
+        'emptycards' : emptyCards,
     }
     return render(request, 'blog/taglist.html', context)
 
