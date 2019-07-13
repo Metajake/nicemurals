@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls') ),
     path('nice', include('portfolio.urls') ),
+    path('rpg', include('rpg.urls') ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = 'First Studio.co'

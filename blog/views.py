@@ -3,15 +3,18 @@ from django.http import HttpResponse
 
 from blog.functions import tweetEntryLink
 from .models import Entry, Tag
+from rpg.views import *
 
 def home(request):
     entries = Entry.objects.all()
     tags = Tag.objects.all()
     emptyCards = 5 - (entries.count() % 5) #to fill in template row
+    rpgUpdate = getRpgUpdate()
     context = {
         'entries' : entries,
         'tags' : tags,
         'emptycards' : emptyCards,
+        'game' : rpgUpdate,
     }
     return render(request, 'blog/home.html', context)
 

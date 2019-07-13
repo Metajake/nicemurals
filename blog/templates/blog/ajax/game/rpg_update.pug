@@ -1,0 +1,52 @@
+.section
+  .columns
+    .column.is-centered.is-11
+      |{% for entity in game.entities %}
+      .card
+        .card-content
+          .content
+            div(id="entity-{{entity.pk}}")
+              p {{entity.name}}
+              small Exp: <span class="exp">{{entity.experience}}</span>
+      |{% endfor %}
+
+|{% url 'gain-experience' as gainexperience %}
+script.
+  var enableExpHandler;
+  
+  document.addEventListener("DOMContentLoaded", function(){
+    $(document).mousemove(function(e){
+      if (enableExpHandler) {
+        gainExp(1);
+        enableExpHandler = false;
+      }
+    });
+    $(document).scroll(function(e){
+      if (enableExpHandler) {
+        gainExp(1);
+        enableExpHandler = false;
+      }
+    });
+  })
+  
+  timer = window.setInterval(function(){
+    enableExpHandler = true;
+  }, 500);
+  
+  function gainExp(difference){
+    $.ajax({
+      type: "POST",
+      url: "{{gainexperience}}",
+      data: {
+        entityId :1,
+        experienceAmount: difference,
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+      },
+      success: function(data){
+        firstEntity = JSON.parse(data)[0]
+        $( '#entity-' + firstEntity['pk'].toString() ).html()
+        $( '#entity-' + firstEntity['pk'].toString() + ' .exp').html(firstEntity['fields']['experience'])
+        document.removeEventListener('mousemove', function(){})
+      }
+    })
+  }
