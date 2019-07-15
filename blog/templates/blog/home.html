@@ -45,10 +45,10 @@
           <div class="content">
             <div class="stat">
               <p>Level: <span id="game-life">0</span></p>
-            </div>{% for entity in game.entities %}
-            <div class="entity" id="entity-{{entity.pk}}">
-              <p>{{entity.name}}</p><small>Exp: <span class="exp">{{entity.experience}}</span></small>
-            </div>{% endfor %}
+            </div>{% if game.entities %}
+            {% for entity in game.entities %}
+            <div class="entity" id="entity-{{entity.pk}}"><span>{{entity.name}}<small> Exp: <span class="exp">{{entity.experience}}</span></small></span></div>{% endfor %}
+            {% endif %}
           </div>
         </div>
       </div>{% block prescript %}

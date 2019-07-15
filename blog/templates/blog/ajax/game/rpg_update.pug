@@ -6,11 +6,12 @@
     .content
       .stat
         p Level: <span id="game-life">0</span>
+      |{% if game.entities %}
       |{% for entity in game.entities %}
       .entity(id="entity-{{entity.pk}}")
-        p {{entity.name}}
-        small Exp: <span class="exp">{{entity.experience}}</span>
+        span {{entity.name}}<small> Exp: <span class="exp">{{entity.experience}}</span></small>
       |{% endfor %}
+      |{% endif %}
 
 |{% block prescript %}
 | {{gainexperience|json_script:'gainexpurl'}}

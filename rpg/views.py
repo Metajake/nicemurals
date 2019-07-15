@@ -10,7 +10,7 @@ def rpgHome(request):
 
 def getRpgUpdate():
     toReturn = {}
-    toReturn['entities'] = Entity.objects.all()
+    toReturn['entities'] = Entity.objects.filter(is_active=True)
     return toReturn
 
 def gainExperience(request):
