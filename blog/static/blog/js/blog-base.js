@@ -8,3 +8,7 @@ $('#home-link').click(function(e){
     window.location.href = destination;
   }, 1000);
 })
+
+$(document).ready(function(){
+  $('.world').height( $(document).height() )
+})
