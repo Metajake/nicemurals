@@ -4,7 +4,7 @@ function takeTurnIfReady(functionToExecute){
   if (enableExpHandler) { functionToExecute() }
 }
 
-function checkGameStatus(){
+function checkGameLifeStatus(){
   existingAncestors = $('.can-exist > section, .can-exist > header')
   existingParents = $('.can-exist > section > *, .can-exist > header > *')
   toggleParentThreshold = 2
@@ -36,7 +36,7 @@ movementTimer = window.setInterval(function(){
 }, 500);
 
 statusTimer = window.setInterval(function(){
-  checkGameStatus()
+  checkGameLifeStatus()
 }, 300)
 
 document.addEventListener("DOMContentLoaded", function(){

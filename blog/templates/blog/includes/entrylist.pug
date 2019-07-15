@@ -1,6 +1,6 @@
 .columns.is-multiline
   | {% for entry in entries reversed %}
-  .column.is-one-quarter.break-tablet
+  .column.is-one-third
     .card
       |{% for work in entry.images.all %}{% if forloop.first %}
       .card-image
