@@ -37,12 +37,14 @@
       <h3>Categories</h3>
       <ul>{% for tag in tags %}
         <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
-      </ul>{% url 'gain-experience' as gainexperience %}
+      </ul>
+      {% load static %}
+      {% url 'gain-experience' as gainexperience %}
       <div class="card">
         <div class="card-content">
           <div class="content">
             <div class="stat">
-              <p>Game Life: <span id="game-life">0</span></p>
+              <p>Level: <span id="game-life">0</span></p>
             </div>{% for entity in game.entities %}
             <div class="entity" id="entity-{{entity.pk}}">
               <p>{{entity.name}}</p><small>Exp: <span class="exp">{{entity.experience}}</span></small>
@@ -55,7 +57,9 @@
         var gainExpUrl = JSON.parse(document.querySelector('#gainexpurl').textContent);
         var csrfToken = '{{csrf_token}}'
       </script>{% endblock %}
-      {% block postscript%}
+      {% block postscript %}
+      <script src="{% static 'rpg/js/rpg_ui.js' %}"></script>
+      <script src="{% static 'rpg/js/rpg.js' %}"></script>
       <script>
         function mouseMoveInteraction(){
           if (enableExpHandler) {

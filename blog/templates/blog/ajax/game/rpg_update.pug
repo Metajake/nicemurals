@@ -1,10 +1,11 @@
+|{% load static %}
 |{% url 'gain-experience' as gainexperience %}
 
 .card
   .card-content
     .content
       .stat
-        p Game Life: <span id="game-life">0</span>
+        p Level: <span id="game-life">0</span>
       |{% for entity in game.entities %}
       .entity(id="entity-{{entity.pk}}")
         p {{entity.name}}
@@ -18,7 +19,9 @@ script.
   var csrfToken = '{{csrf_token}}'
 |{% endblock %}
 
-|{% block postscript%}
+|{% block postscript %}
+script(src="{% static 'rpg/js/rpg_ui.js' %}")
+script(src="{% static 'rpg/js/rpg.js' %}")
 script.
   function mouseMoveInteraction(){
     if (enableExpHandler) {
