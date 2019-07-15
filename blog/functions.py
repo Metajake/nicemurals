@@ -26,9 +26,9 @@ def tweetEntryLink(sender, instance, **kwargs):
         myStatusText = instance['title'] + " v" + str(instance['tweet_version']) + ' http://firststudio.co/entry/'+instance['slug']
 
     try:
-        # if settings.DEBUG == False:
-        if instance.fire_laser:
-            api.update_status(status=myStatusText)
+        if settings.DEBUG == False:
+            if instance.fire_laser:
+                api.update_status(status=myStatusText)
     except:
         print("ERROR TWEETING")
         pass
