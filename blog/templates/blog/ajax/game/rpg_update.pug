@@ -28,6 +28,7 @@ script.
 |{% endblock %}
 
 |{% block postscript%}
+slider = document.querySelector("#formality-range")
 script.
   slider.oninput = function(){
     if(this.value == 100){

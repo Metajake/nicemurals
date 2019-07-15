@@ -69,6 +69,7 @@
         
       </script>{% endblock %}
       {% block postscript%}
+      <slider>= document.querySelector("#formality-range")</slider>
       <script>
         slider.oninput = function(){
           if(this.value == 100){
