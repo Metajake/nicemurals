@@ -13,7 +13,7 @@ meta(property="og:title" content="{{entry.title}}")
 meta(property="og:description" content="{{entry.description|safe|slice:':155'}}")
 |{% if entry.weapon_type == 'summary_large_image'%}
 |{% for work in entry.images.all %}{% if forloop.first %}
-meta(property="twitter:image" content="http:firststudio.co{{ work.image.url }}")
+meta(property="og:image" content="http:firststudio.co{{ work.image.url }}")
 |{% endif %}{% endfor %}
 |{% else %}
 meta(property="og:image" content="https://i.imgur.com/HaSkdQA.jpg")
