@@ -1,14 +1,14 @@
 
 {% extends 'blog/base.html' %}
-{% url 'blog-home' as home %}
 {% block extrahead %}
 <title>First Studio | Blog</title>{% endblock %}
-{% block masthead-headline %}<a href="{{home}}">
-  <h1 class="title is-2">First Studio.Co</h1></a><a href="{{home}}">
-  <h2 class="subtitle is-6">The Interactive Work of Jacob North</h2></a>
-<hr/>{% endblock %}  
+{% block masthead-headline %}
+<h1 class="title is-2">First Studio.Co</h1>
+<h2 class="subtitle is-6">The Interactive Work of Jacob North</h2>{% endblock %}  
 {% block masthead-sidebar %}
-{% endblock %}
+<div class="content">
+  <h3 class="status-update is-3 notification will-pulse-in">It Happened</h3>
+</div>{% endblock %}
 {% block main-content %}
 <div class="columns">
   <div class="column is-four-fifths">
@@ -16,7 +16,7 @@
       <div class="column is-one-third">
         <div class="card">{% for work in entry.images.all %}{% if forloop.first %}
           <div class="card-image">
-            <div class="figure image is-4by3"><img src="{{ work.image.url }}"/></div>
+            <div class="figure image is-4by3"><a href="/entry/{{entry.slug}}"><img src="{{ work.image.url }}"/></a></div>
           </div>{% endif %}{% endfor %}
           <div class="card-content">
             <div class="content"><a href="/entry/{{entry.slug}}">
@@ -37,38 +37,34 @@
       <h3>Categories</h3>
       <ul>{% for tag in tags %}
         <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
-      </ul>
-      {% url 'gain-experience' as gainexperience %}
-      {% for entity in game.entities %}
+      </ul>{% url 'gain-experience' as gainexperience %}
       <div class="card">
         <div class="card-content">
           <div class="content">
             <div class="stat">
               <p>Game Life: <span id="game-life">0</span></p>
-            </div>
+            </div>{% for entity in game.entities %}
             <div class="entity" id="entity-{{entity.pk}}">
               <p>{{entity.name}}</p><small>Exp: <span class="exp">{{entity.experience}}</span></small>
-            </div>
+            </div>{% endfor %}
           </div>
         </div>
-      </div>{% endfor %}
-      {% block prescript %}
+      </div>{% block prescript %}
       {{gainexperience|json_script:'gainexpurl'}}
       <script>
         var gainExpUrl = JSON.parse(document.querySelector('#gainexpurl').textContent);
         var csrfToken = '{{csrf_token}}'
-        
+      </script>{% endblock %}
+      {% block postscript%}
+      <script>
         function mouseMoveInteraction(){
           if (enableExpHandler) {
             gainExp(gainExpUrl, 1, 1, csrfToken);
-            gameLife += 1
+            game['life'] += 1
             enableExpHandler = false;
           }
         }
         
-      </script>{% endblock %}
-      {% block postscript%}
-      <script>
         /* slider = document.querySelector("#formality-range")
         slider.oninput = function(){
           if(this.value == 100){

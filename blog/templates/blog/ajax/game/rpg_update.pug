@@ -1,34 +1,33 @@
 |{% url 'gain-experience' as gainexperience %}
 
-|{% for entity in game.entities %}
 .card
   .card-content
     .content
       .stat
         p Game Life: <span id="game-life">0</span>
+      |{% for entity in game.entities %}
       .entity(id="entity-{{entity.pk}}")
         p {{entity.name}}
         small Exp: <span class="exp">{{entity.experience}}</span>
-|{% endfor %}
+      |{% endfor %}
 
 |{% block prescript %}
 | {{gainexperience|json_script:'gainexpurl'}}
 script.
   var gainExpUrl = JSON.parse(document.querySelector('#gainexpurl').textContent);
   var csrfToken = '{{csrf_token}}'
-  
-  function mouseMoveInteraction(){
-    if (enableExpHandler) {
-      gainExp(gainExpUrl, 1, 1, csrfToken);
-      gameLife += 1
-      enableExpHandler = false;
-    }
-  }
-  
 |{% endblock %}
 
 |{% block postscript%}
 script.
+  function mouseMoveInteraction(){
+    if (enableExpHandler) {
+      gainExp(gainExpUrl, 1, 1, csrfToken);
+      game['life'] += 1
+      enableExpHandler = false;
+    }
+  }
+
   /* slider = document.querySelector("#formality-range")
   slider.oninput = function(){
     if(this.value == 100){

@@ -1,0 +1,4 @@
+
+<h1 class="icon subtitle is-inline"><a id="home-link" href="{% url 'blog-home' %}"><i class="fab fa-accessible-icon"></i></a></h1>
+<h1 class="icon subtitle is-inline"><a href="/admin"><i class="fas fa-key"></i></a></h1>{% if user.is_authenticated %}
+<h1 class="icon subtitle is-inline"><a href="/admin/logout"><i class="fas fa-skull"></i></a></h1>{% endif %}

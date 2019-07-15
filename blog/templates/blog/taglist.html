@@ -12,7 +12,7 @@
       <div class="column is-one-third">
         <div class="card">{% for work in entry.images.all %}{% if forloop.first %}
           <div class="card-image">
-            <div class="figure image is-4by3"><img src="{{ work.image.url }}"/></div>
+            <div class="figure image is-4by3"><a href="/entry/{{entry.slug}}"><img src="{{ work.image.url }}"/></a></div>
           </div>{% endif %}{% endfor %}
           <div class="card-content">
             <div class="content"><a href="/entry/{{entry.slug}}">

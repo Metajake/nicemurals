@@ -15,6 +15,7 @@ def home(request):
         'tags' : tags,
         'config' : config,
         'game' : rpgUpdate,
+        'existance' : 'can-exist' if config.rpg_active else False,
     }
     return render(request, 'blog/home.html', context)
 
@@ -25,6 +26,7 @@ def taglist(request, blog_tagslug):
         'tag' : blog_tagslug,
         'entries' : entries,
         'tags' : tags,
+        'existance' : False,
     }
     return render(request, 'blog/taglist.html', context)
 
@@ -34,6 +36,7 @@ def entry(request, entry_slug):
     context = {
         'entry' : entry,
         'tags' : tags,
+        'existance' : False,
     }
     return render(request, 'blog/entry.html', context)
 

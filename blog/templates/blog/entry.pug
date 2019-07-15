@@ -23,7 +23,6 @@ meta(property="og:image" content="https://i.imgur.com/HaSkdQA.jpg")
 | {% block masthead-headline %}
 h1.title.is-2 {{entry.title}}
 h2.subtitle.is-6 &nbsp;
-hr
 | {% endblock %}
 
 | {% block main-content %}
@@ -40,13 +39,6 @@ hr
 
 | {% block postscript %}
 script.
-
-  function mouseMoveInteraction(){
-    if (enableExpHandler) {
-      gameLife += 1
-      enableExpHandler = false;
-    }
-  }
   
   $('#tweet-entry').click(function(e){
     $.ajax({

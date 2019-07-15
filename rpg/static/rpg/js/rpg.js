@@ -1,23 +1,35 @@
-var lastValue, enableExpHandler, gameLife = 0
+var lastValue, enableExpHandler
+
+game = {
+  'life': 0,
+  'lvl' : 0,
+}
 
 function takeTurnIfReady(functionToExecute){
   if (enableExpHandler) { functionToExecute() }
 }
 
-function checkGameLifeStatus(){
+function mouseMoveInteraction(){
+  if (enableExpHandler) {
+    game['life'] += 1
+    enableExpHandler = false;
+  }
+}
+
+function toggleGameElementFades(){
   existingAncestors = $('.can-exist > section, .can-exist > header')
   existingParents = $('.can-exist > section > *, .can-exist > header > *')
   toggleParentThreshold = 2
   switch (true){
-    case gameLife > toggleParentThreshold:
+    case game['life'] > toggleParentThreshold:
       existingParents.each(function(i,e){ $(e).addClass('fade-in') })
       break;
-    case gameLife > 0 && gameLife <= toggleParentThreshold:
+    case game['life'] > 0 && game['life'] <= toggleParentThreshold:
       existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
       existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
       $('.world').addClass('fade-out')
       break;
-    case gameLife <= 0:
+    case game['life'] <= 0:
       existingAncestors.each(function(i,e){ $(e).removeClass('fade-in') })
       $('.world').removeClass('fade-out')
       break;
@@ -26,9 +38,13 @@ function checkGameLifeStatus(){
   }
 }
 
+function updateGameStatus(){
+  game['life'] > 0 ? game['life'] -= 1 : ''
+  $('#game-life').html(game['life'])
+}
+
 roundTimer = window.setInterval(function(){
-  gameLife > 0 ? gameLife -= 1 : ''
-  $('#game-life').html(gameLife)
+  updateGameStatus()
 }, 1500);
 
 movementTimer = window.setInterval(function(){
@@ -36,7 +52,7 @@ movementTimer = window.setInterval(function(){
 }, 500);
 
 statusTimer = window.setInterval(function(){
-  checkGameLifeStatus()
+  toggleGameElementFades()
 }, 300)
 
 document.addEventListener("DOMContentLoaded", function(){

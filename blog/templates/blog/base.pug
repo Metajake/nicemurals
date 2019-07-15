@@ -6,8 +6,10 @@ html
     include includes/base_head.pug
     |{% block extrahead %}
     |{% endblock %}
-  body.can-exist
+  body(class="{{existance}}")
+    |{% if existance %}
     .world.sunset
+    |{% endif %}
     header.hero.is-primary.is-small
       .hero-body
         .container
@@ -15,11 +17,7 @@ html
             .column.is-four-fifths
               | {% block masthead-headline %}
               | {% endblock %}
-              h1.icon.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i.fab.fa-accessible-icon
-              h1.icon.subtitle.is-inline: a(href="/admin"): i.fas.fa-key
-              | {% if user.is_authenticated %}
-              h1.icon.subtitle.is-inline: a(href="/admin/logout"): i.fas.fa-skull
-              | {% endif %}
+              include includes/base_nav.pug
             .column
               |{% block masthead-sidebar %}
               |{% endblock %}

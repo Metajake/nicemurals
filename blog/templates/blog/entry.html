@@ -18,8 +18,7 @@
 {% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{{entry.title}}</h1>
-<h2 class="subtitle is-6">&nbsp;</h2>
-<hr/>{% endblock %}
+<h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}
 {% block main-content %}
 <div class="columns">
   <div class="column is-three-quarters">
@@ -39,13 +38,6 @@
 </div>{% endblock %}
 {% block postscript %}
 <script>
-  function mouseMoveInteraction(){
-    if (enableExpHandler) {
-      gameLife += 1
-      enableExpHandler = false;
-    }
-  }
-  
   $('#tweet-entry').click(function(e){
     $.ajax({
       type: "POST",
