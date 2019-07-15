@@ -7,7 +7,7 @@ function takeTurnIfReady(functionToExecute){
 function checkGameStatus(){
   existingAncestors = $('.can-exist > section, .can-exist > header')
   existingParents = $('.can-exist > section > *, .can-exist > header > *')
-  toggleParentThreshold = 4
+  toggleParentThreshold = 2
   switch (true){
     case gameLife > toggleParentThreshold:
       existingParents.each(function(i,e){ $(e).addClass('fade-in') })
