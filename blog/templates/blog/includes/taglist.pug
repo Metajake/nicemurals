@@ -1,5 +1,6 @@
 h3 Categories
 ul
   | {% for tag in tags %}
-  li: a(href='/tags/{{tag}}') {{tag}}
-    | {% endfor %}
+  li
+    a(href='/tags/{{tag}}') {{tag}}
+  | {% endfor %}
