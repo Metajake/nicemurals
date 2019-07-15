@@ -17,7 +17,7 @@ def tweetEntryLink(sender, instance, **kwargs):
     auth.set_access_token('995766360-5x2RE1NhbEfmzM2hbAuV4vyet4fAqQ1m0FVpQCgY', '8xLHNA40eDYK7vP6SZXqleAPCwNUNcQLN8Jdpxcdrul8L')
     api = tweepy.API(auth)
 
-    # Check if Instance has title property (in other words, check if it's a Real Django Class instance from the Django Database (not an ajax object))
+    #Hack: Check if Instance has title property (in other words, check if it's a Real Django Database Class instance (not an ajax object))
     try:
         myStatusText = instance.title + " v" + str(instance.tweet_version) + ' http://firststudio.co/entry/'+instance.slug
     except AttributeError:
@@ -26,8 +26,9 @@ def tweetEntryLink(sender, instance, **kwargs):
         myStatusText = instance['title'] + " v" + str(instance['tweet_version']) + ' http://firststudio.co/entry/'+instance['slug']
 
     try:
-        #if settings.DEBUG == False:
-        api.update_status(status=myStatusText)
+        # if settings.DEBUG == False:
+        if instance.fire_laser:
+            api.update_status(status=myStatusText)
     except:
         print("ERROR TWEETING")
         pass

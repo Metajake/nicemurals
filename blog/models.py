@@ -13,6 +13,7 @@ class Tag(models.Model):
 class Entry(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
+    weapon_type = models.CharField(max_length=10, choices=[('summary', 'summary'),('photo','photo')], default='summary')
     published = models.BooleanField(default = True)
     richbody = RichTextField(blank=True)
     description = models.CharField(max_length=300)
@@ -20,6 +21,7 @@ class Entry(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
     tweet_version = models.IntegerField(editable=False, default=0)
     images = models.ManyToManyField(Work, blank=True)
+    fire_laser = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

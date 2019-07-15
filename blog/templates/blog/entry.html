@@ -3,14 +3,18 @@
 {% block extrahead %}
 <title>First Studio | {{entry.title}}</title>
 <meta name="description" content="{{entry.description|safe|slice:':155'}}"/>
-<meta name="twitter:card" content="summary"/>
+<meta name="twitter:card" content="{{entry.weapon_type}}"/>
 <meta name="twitter:description" content="{{entry.description|safe|slice:':155'}}"/>
 <meta name="twitter:site" content="@jaynoco"/>
 <meta name="twitter:creator" content="@jaynoco"/>
 <meta property="og:url" content="http:firststudio.co/entry/{{entry.slug}}"/>
 <meta property="og:title" content="{{entry.title}}"/>
-<meta property="og:description" content="{{entry.description|safe|slice:':155'}}"/>
-<meta property="og:image" content="https://i.imgur.com/HaSkdQA.jpg"/>{% endblock %}
+<meta property="og:description" content="{{entry.description|safe|slice:':155'}}"/>{% if {{entry.weapon_type }} == 'photo'%}
+{% for work in entry.images.all %}{% if forloop.first %}
+<meta property="og:image" content="{{ work.images.url }}"/>{% endif %}{% endfor %}
+{% else %}
+<meta property="og:image" content="https://i.imgur.com/HaSkdQA.jpg"/>{% endif %}
+{% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{{entry.title}}</h1>
 <h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}
@@ -32,8 +36,15 @@
     </ul>
   </div>
 </div>{% endblock %}
-{% block extrascript %}
+{% block postscript %}
 <script>
+  function mouseMoveInteraction(){
+    if (enableExpHandler) {
+      gameLife += 1
+      enableExpHandler = false;
+    }
+  }
+  
   $('#tweet-entry').click(function(e){
     $.ajax({
       type: "POST",

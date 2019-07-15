@@ -11,7 +11,7 @@
         small Exp: <span class="exp">{{entity.experience}}</span>
 |{% endfor %}
 
-|{% block extraScript %}
+|{% block prescript %}
 | {{gainexperience|json_script:'gainexpurl'}}
 script.
   var gainExpUrl = JSON.parse(document.querySelector('#gainexpurl').textContent);
@@ -25,11 +25,19 @@ script.
     }
   }
   
-  document.addEventListener("DOMContentLoaded", function(){
-    $(document).mousemove(function(e){ takeTurnIfReady(mouseMoveInteraction) });
-    $(document).scroll(function(e){ takeTurnIfReady(mouseMoveInteraction) });
-    document.addEventListener("touchstart", function(e){ takeTurnIfReady(mouseMoveInteraction) })
-  })
+|{% endblock %}
+
+|{% block postscript%}
+script.
+  slider.oninput = function(){
+    if(this.value == 100){
+      $('.will-pulse-in').addClass('activate');
+      $('.will-pulse-in').one("animationend", function(event) {
+          console.log("Done")
+          $(this).removeClass('activate')
+      });
+    }
+  }
 |{% endblock %}
 
   

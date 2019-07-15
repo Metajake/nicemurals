@@ -29,6 +29,8 @@ html
         | {% block main-content %}
         | {% endblock %}
         
+    |{% block prescript %}
+    |{% endblock %}
     include includes/footer.pug
-    |{% block extraScript %}
+    |{% block postscript %}
     |{% endblock %}

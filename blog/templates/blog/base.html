@@ -34,11 +34,12 @@
         {% block main-content %}
         {% endblock %}
       </div>
-    </section>
+    </section>{% block prescript %}
+    {% endblock %}
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/jqueryUI.js' %}"></script>
     <script src="{% static 'blog/js/blog-base.js' %}"></script>
-    <script src="{% static 'rpg/js/rpg.js' %}"></script>{% block extraScript %}
+    <script src="{% static 'rpg/js/rpg.js' %}"></script>{% block postscript %}
     {% endblock %}
   </body>
 </html>
