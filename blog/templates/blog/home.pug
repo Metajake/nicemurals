@@ -8,13 +8,24 @@ title First Studio | Blog
 | {% block masthead-headline %}
 a(href="{{home}}"): h1.title.is-2 First Studio.Co
 a(href="{{home}}"): h2.subtitle.is-6 The Interactive Work of Jacob North
+hr
+//- .columns
+//-   .column
+//-     .slide-container
+//-       input(type="range" min="1" max="100" value="1" class="slider" id="formality-range")
 | {% endblock %}  
+
+|{% block masthead-sidebar %}
+//- .content
+//-   h3.is-3.notification.will-pulse-in It Happened
+|{% endblock %}
   
 | {% block main-content %}
 .columns
   .column.is-four-fifths
     include includes/entrylist.pug
   .column
-    include includes/taglist.pug
-    include ajax/game/rpg_update.pug
+    .content
+      include includes/taglist.pug
+      include ajax/game/rpg_update.pug
 | {% endblock %}

@@ -1,26 +1,19 @@
-| {% for entry in entries reversed %}
-
-| {% if forloop.first %}<div class="columns">{% endif %}
-
-.column
-  .card
-    |{% for work in entry.images.all %}{% if forloop.first %}
-    .card-image
-      .figure.image.is-4by3
-        img(src="{{ work.image.url }}")
-    |{% endif %}{% endfor %}
-    .card-content
-      .content
-        a(href="/entry/{{entry.slug}}")
-          h3.title.is-4 {{entry.title}} 
-          h4.subtitle.is-6 {{entry.richbody | safe | truncatewords:7}}
-    footer.card-footer
-      .card-footer-item.justify-left
-        p {{entry.created}}
-        
-
-| {% if forloop.counter|divisibleby:"5" %}</div><div class="columns">{% endif %}
-
-| {% if forloop.last %}{% for i in emptycards|rjust:emptycards %}<div class="column"></div>{% endfor %}</div>{% endif %}
-
-| {% endfor %}
+.columns.is-multiline
+  | {% for entry in entries reversed %}
+  .column.is-one-quarter.break-tablet
+    .card
+      |{% for work in entry.images.all %}{% if forloop.first %}
+      .card-image
+        .figure.image.is-4by3
+          img(src="{{ work.image.url }}")
+      |{% endif %}{% endfor %}
+      .card-content
+        .content
+          a(href="/entry/{{entry.slug}}")
+            h3.title.is-4 {{entry.title}} 
+            h4.subtitle.is-6 {{entry.richbody | safe | truncatewords:7}}
+      footer.card-footer
+        .card-footer-item.justify-left
+          p {{entry.created}}
+          
+  | {% endfor %}

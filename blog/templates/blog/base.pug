@@ -6,7 +6,8 @@ html
     include includes/base_head.pug
     |{% block extrahead %}
     |{% endblock %}
-  body
+  body.can-exist
+    .world.sunset
     header.hero.is-primary.is-small
       .hero-body
         .container
@@ -14,19 +15,20 @@ html
             .column.is-four-fifths
               | {% block masthead-headline %}
               | {% endblock %}
-              hr
               h1.icon.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i.fab.fa-accessible-icon
               h1.icon.subtitle.is-inline: a(href="/admin"): i.fas.fa-key
               | {% if user.is_authenticated %}
               h1.icon.subtitle.is-inline: a(href="/admin/logout"): i.fas.fa-skull
               | {% endif %}
             .column
-          
+              |{% block masthead-sidebar %}
+              |{% endblock %}
+                  
     section.section
       .container
         | {% block main-content %}
         | {% endblock %}
         
     include includes/footer.pug
-    |{% block extrascript %}
+    |{% block extraScript %}
     |{% endblock %}

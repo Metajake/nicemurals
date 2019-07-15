@@ -26,8 +26,15 @@ def tweetEntryLink(sender, instance, **kwargs):
         myStatusText = instance['title'] + " v" + str(instance['tweet_version']) + ' http://firststudio.co/entry/'+instance['slug']
 
     try:
-        if settings.DEBUG == False:
-            api.update_status(status=myStatusText)
+        #if settings.DEBUG == False:
+        api.update_status(status=myStatusText)
     except:
         print("ERROR TWEETING")
         pass
+
+def getEmptyRowCount(totalEntries, rowTotalCount):
+    if totalEntries < rowTotalCount:
+        emptyCards = rowTotalCount - totalEntries #to fill in template row
+    else:
+        emptyCards = rowTotalCount - (totalEntries % rowTotalCount) #to fill in template row
+    return emptyCards

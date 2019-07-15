@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="{% static 'blog/css/blog-base.css' %}">{% block extrahead %}
     {% endblock %}
   </head>
-  <body>
+  <body class="can-exist">
+    <div class="world sunset"></div>
     <header class="hero is-primary is-small">
       <div class="hero-body">
         <div class="container">
@@ -16,12 +17,14 @@
             <div class="column is-four-fifths">
               {% block masthead-headline %}
               {% endblock %}
-              <hr>
               <h1 class="icon subtitle is-inline"><a id="home-link" href="{% url 'blog-home' %}"><i class="fab fa-accessible-icon"></i></a></h1>
               <h1 class="icon subtitle is-inline"><a href="/admin"><i class="fas fa-key"></i></a></h1>{% if user.is_authenticated %}
               <h1 class="icon subtitle is-inline"><a href="/admin/logout"><i class="fas fa-skull"></i></a></h1>{% endif %}
             </div>
-            <div class="column"></div>
+            <div class="column">
+              {% block masthead-sidebar %}
+              {% endblock %}
+            </div>
           </div>
         </div>
       </div>
@@ -33,7 +36,9 @@
       </div>
     </section>
     <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'blog/js/blog-base.js' %}"></script>{% block extrascript %}
+    <script src="{% static 'js/jqueryUI.js' %}"></script>
+    <script src="{% static 'blog/js/blog-base.js' %}"></script>
+    <script src="{% static 'rpg/js/rpg.js' %}"></script>{% block extraScript %}
     {% endblock %}
   </body>
 </html>

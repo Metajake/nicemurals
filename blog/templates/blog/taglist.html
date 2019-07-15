@@ -8,36 +8,31 @@
 {% block main-content %}
 <div class="columns">
   <div class="column is-four-fifths">
-    {% for entry in entries reversed %}
-    {% if forloop.first %}<div class="columns">{% endif %}
-    <div class="column">
-      <div class="card">{% for work in entry.images.all %}{% if forloop.first %}
-        <div class="card-image">
-          <div class="figure image is-4by3"><img src="{{ work.image.url }}"/></div>
-        </div>{% endif %}{% endfor %}
-        <div class="card-content">
-          <div class="content"><a href="/entry/{{entry.slug}}">
-              <h3 class="title is-4">{{entry.title}} </h3>
-              <h4 class="subtitle is-6">{{entry.richbody | safe | truncatewords:7}}</h4></a></div>
-        </div>
-        <footer class="card-footer">
-          <div class="card-footer-item justify-left">
-            <p>{{entry.created}}</p>
+    <div class="columns is-multiline">{% for entry in entries reversed %}
+      <div class="column is-one-quarter break-tablet">
+        <div class="card">{% for work in entry.images.all %}{% if forloop.first %}
+          <div class="card-image">
+            <div class="figure image is-4by3"><img src="{{ work.image.url }}"/></div>
+          </div>{% endif %}{% endfor %}
+          <div class="card-content">
+            <div class="content"><a href="/entry/{{entry.slug}}">
+                <h3 class="title is-4">{{entry.title}} </h3>
+                <h4 class="subtitle is-6">{{entry.richbody | safe | truncatewords:7}}</h4></a></div>
           </div>
-        </footer>
-      </div>
-    </div>{% if forloop.counter|divisibleby:"5" %}</div><div class="columns">{% endif %}
-    {% if forloop.last %}{% for i in emptycards|rjust:emptycards %}<div class="column"></div>{% endfor %}</div>{% endif %}
-    {% endfor %}
+          <footer class="card-footer">
+            <div class="card-footer-item justify-left">
+              <p>{{entry.created}}</p>
+            </div>
+          </footer>
+        </div>
+      </div>{% endfor %}
+    </div>
   </div>
   <div class="column">
-    <div class="section">
-      <div class="content">
-        <h3>Categories</h3>
-        <ul>{% for tag in tags %}
-          <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
-        </ul>
-      </div>
-    </div>
+    <h3>Categories</h3>
+    <ul>{% for tag in tags %}
+      <li><a href="/tags/{{tag}}">
+          {{tag}}{% endfor %}</a></li>
+    </ul>
   </div>
 </div>{% endblock %}

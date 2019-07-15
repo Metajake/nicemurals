@@ -1,23 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from blog.functions import tweetEntryLink
+from blog.functions import tweetEntryLink, getEmptyRowCount
 from .models import Entry, Tag
 from rpg.views import *
 
 def home(request):
     entries = Entry.objects.filter(published=True)
     tags = Tag.objects.all()
-    if entries.count() < 5:
-        emptyCards = 5 - entries.count() #to fill in template row
-    else:
-        emptyCards = 5 - (entries.count() % 5) #to fill in template row
-    print(emptyCards)
     rpgUpdate = getRpgUpdate()
     context = {
         'entries' : entries,
         'tags' : tags,
-        'emptycards' : emptyCards,
+        'emptycards' : getEmptyRowCount(entries.count(), 4),
         'game' : rpgUpdate,
     }
     return render(request, 'blog/home.html', context)
@@ -25,12 +20,10 @@ def home(request):
 def taglist(request, blog_tagslug):
     entries = Entry.objects.all().filter(tags__tagslug=blog_tagslug)
     tags = Tag.objects.all()
-    emptyCards = 5 - (entries.count() % 5) #to fill in template row
     context = {
         'tag' : blog_tagslug,
         'entries' : entries,
         'tags' : tags,
-        'emptycards' : emptyCards,
     }
     return render(request, 'blog/taglist.html', context)
 

@@ -1,5 +1,49 @@
+.sunset
+  background: #b92b27;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.meteor
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 .justify-left
   justify-content:left
+
+.is-one-quarter.break-tablet
+  @media(max-width:1024px) and (min-width: 769px)
+    width:33.333%
+
+.will-pulse-in
+  opacity: 0.0
+  &.activate
+    animation: pulseIn 6s forwards
+
+$gameOverTransition = 3s
+
+.can-exist > header, .can-exist > section
+  opacity:0.0
+  transition: opacity $gameOverTransition
+  &.fade-in
+    opacity: 1.0
+    transition: opacity $gameOverTransition
+  & > *
+    opacity: 0.0
+    transition: opacity $gameOverTransition
+    &.fade-in
+      opacity: 1.0
+      transition: opacity $gameOverTransition
+
+.world
+  position: absolute
+  width:100%
+  height:100%
+  background-size: 400% 400%
+  opacity:1.0
+  animation: breath 40s infinite
+  transition:opacity $gameOverTransition
+  &.fade-out
+    opacity: 0.0
 
 header
   .icon
@@ -12,6 +56,36 @@ header
   &.move
     animation: move 4s
 
+$slideSize = 10px
+$primaryColor = hsl(204, 86%,  80%)
+
+.slide-container
+  width:100%
+  .slider
+    -webkit-appearance: none
+    appearance: none
+    width: 100%
+    height: 3px
+    background: #b3b3b3
+    outline: none
+    opacity: 0.6
+    -webkit-transition: .2s
+    transition: opacity .2s
+    &:hover
+      opacity: 1
+    &::-webkit-slider-thumb
+      -webkit-apperance: none
+      appearance: none
+      width: $slideSize
+      height: $slideSize
+      background: $primaryColor
+      cursor: pointer
+    &::-moz-range-thumb
+      width: $slideSize
+      height: $slideSize
+      background: $primaryColor
+      cursor: pointer
+
 @keyframes arrive
   0%
     left:-200px
@@ -23,3 +97,16 @@ header
     left:0px
   100%
     left:1000px
+
+@keyframes pulseIn
+  0%
+    opacity:0.0
+  25%
+    opacity:0.85
+  100%
+    opacity:0.0
+
+@keyframes breath
+  0%{background-position:49% 0%}
+  50%{background-position:52% 100%}
+  100%{background-position:49% 0%}
