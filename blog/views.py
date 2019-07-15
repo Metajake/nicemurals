@@ -2,17 +2,18 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from blog.functions import tweetEntryLink, getEmptyRowCount
-from .models import Entry, Tag
+from .models import Entry, Tag, Config
 from rpg.views import *
 
 def home(request):
     entries = Entry.objects.filter(published=True)
     tags = Tag.objects.all()
     rpgUpdate = getRpgUpdate()
+    config = Config.objects.get(pk=1)
     context = {
         'entries' : entries,
         'tags' : tags,
-        'emptycards' : getEmptyRowCount(entries.count(), 4),
+        'config' : config,
         'game' : rpgUpdate,
     }
     return render(request, 'blog/home.html', context)
