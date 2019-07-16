@@ -8,9 +8,10 @@ from .models import Entity
 def rpgHome(request):
     return HttpResponse("RPG Home")
 
-def getRpgUpdate():
+def getRpgUpdate(thisSession):
     toReturn = {}
     toReturn['entities'] = Entity.objects.filter(is_active=True)
+    toReturn['lvl'] = thisSession['lvl']
     return toReturn
 
 def gainExperience(request):

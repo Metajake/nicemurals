@@ -1,12 +1,12 @@
 | {% extends 'blog/base.html' %}
 
 | {% block extrahead %}
-title First Studio | Blog | Journal
+title First Studio | Journal
 | {% endblock %}
 
 | {% block masthead-headline %}
 h1.title.is-2 Journal Entries
-h2.subtitle.is-6 Entry.objects.get(tags__tagslug__exact="journal")
+h2.subtitle.is-6 Thoughts, musings, and ramblings...
 | {% endblock %}  
   
 | {% block main-content %}
@@ -14,4 +14,6 @@ h2.subtitle.is-6 Entry.objects.get(tags__tagslug__exact="journal")
   .column.is-four-fifths
     include includes/entrylist.pug
   .column
+    .content
+      include includes/taglist.pug
 | {% endblock %}

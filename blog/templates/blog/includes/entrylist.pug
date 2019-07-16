@@ -1,20 +1,19 @@
 .columns.is-multiline
   | {% for entry in entries reversed %}
   .column.is-one-third
-    .card
-      |{% for work in entry.images.all %}{% if forloop.first %}
-      .card-image
-        .figure.image.is-4by3
-          a(href="/entry/{{entry.slug}}")
+    a(href="/entry/{{entry.slug}}")
+      .card
+        |{% for work in entry.images.all %}{% if forloop.first %}
+        .card-image
+          .figure.image.is-4by3
             img(src="{{ work.image.url }}")
-      |{% endif %}{% endfor %}
-      .card-content
-        .content
-          a(href="/entry/{{entry.slug}}")
+        |{% endif %}{% endfor %}
+        .card-content
+          .content
             h3.title.is-4 {{entry.title}} 
             h4.subtitle.is-6 {{entry.richbody | safe | truncatewords:7}}
-      footer.card-footer
-        .card-footer-item.justify-left
-          p {{entry.created}}
+        footer.card-footer
+          .card-footer-item.justify-left
+            p {{entry.created}}
           
   | {% endfor %}

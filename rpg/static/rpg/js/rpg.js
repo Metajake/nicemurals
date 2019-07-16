@@ -2,7 +2,6 @@ var lastValue, enableExpHandler
 
 game = {
   'life': 0,
-  'lvl' : 0,
 }
 
 function takeTurnIfReady(functionToExecute){
@@ -19,7 +18,7 @@ function mouseMoveInteraction(){
 function toggleGameElementFades(){
   existingAncestors = $('.can-exist > section, .can-exist > header')
   existingParents = $('.can-exist > section > *, .can-exist > header > *')
-  toggleParentThreshold = 2
+  toggleParentThreshold = 1
   switch (true){
     case game['life'] > toggleParentThreshold:
       existingParents.each(function(i,e){ $(e).addClass('fade-in') })
@@ -59,6 +58,8 @@ document.addEventListener("DOMContentLoaded", function(){
   $(document).mousemove(function(e){ takeTurnIfReady(mouseMoveInteraction) });
   $(document).scroll(function(e){ takeTurnIfReady(mouseMoveInteraction) });
   document.addEventListener("touchstart", function(e){ takeTurnIfReady(mouseMoveInteraction) })
+
+  $('.game-lvl').html('{{game.lvl}}')
 })
 
 function gainExp(url, entityId, difference, csrfToken){

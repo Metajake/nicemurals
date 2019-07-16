@@ -7,20 +7,22 @@ from .models import Entry, Tag, Config
 from rpg.views import *
 
 def home(request):
+    if 'lvl' not in request.session:
+        request.session['lvl'] = 0
     entries = Entry.objects.filter( Q(published=True), ~Q(tags__tagslug__exact='journal'))
     tags = Tag.objects.all()
-    rpgUpdate = getRpgUpdate()
+    rpgUpdate = getRpgUpdate(request.session)
     config = Config.objects.get(pk=1)
     context = {
         'entries' : entries,
         'tags' : tags,
-        'config' : config,
         'game' : rpgUpdate,
-        'existance' : 'can-exist' if config.rpg_active else False,
+        'existance' : 'can-exist' if (config.rpg_active and request.session['lvl'] == 0) else False,
     }
     return render(request, 'blog/home.html', context)
 
 def taglist(request, blog_tagslug):
+    request.session['lvl'] += 1
     entries = Entry.objects.all().filter(tags__tagslug=blog_tagslug)
     tags = Tag.objects.all()
     context = {
@@ -32,6 +34,7 @@ def taglist(request, blog_tagslug):
     return render(request, 'blog/taglist.html', context)
 
 def entry(request, entry_slug):
+    request.session['lvl'] += 1
     entry = Entry.objects.get(slug=entry_slug)
     tags = Tag.objects.all()
     context = {
@@ -42,11 +45,13 @@ def entry(request, entry_slug):
     return render(request, 'blog/entry.html', context)
 
 def journal(request):
+    request.session['lvl'] += 1
     entries = Entry.objects.filter(tags__tagslug__exact="journal")
     print(entries)
     context = {
         'entries' : entries,
         'existance' : False,
+        'tags' : Tag.objects.all()
     }
     return render(request, 'blog/journal.html', context)
 

@@ -5,7 +5,8 @@
   .card-content
     .content
       .stat
-        p Level: <span id="game-life">0</span>
+        p Life: <span id="game-life">0</span>
+        p Level: <span id="game-lvl">{{game.lvl}}</span>
       |{% if game.entities %}
       |{% for entity in game.entities %}
       .entity(id="entity-{{entity.pk}}")
