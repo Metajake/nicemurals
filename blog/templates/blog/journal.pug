@@ -1,0 +1,17 @@
+| {% extends 'blog/base.html' %}
+
+| {% block extrahead %}
+title First Studio | Blog | Journal
+| {% endblock %}
+
+| {% block masthead-headline %}
+h1.title.is-2 Journal Entries
+h2.subtitle.is-6 Entry.objects.get(tags__tagslug__exact="journal")
+| {% endblock %}  
+  
+| {% block main-content %}
+.columns
+  .column.is-four-fifths
+    include includes/entrylist.pug
+  .column
+| {% endblock %}

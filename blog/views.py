@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.db.models import Q
 
 from blog.functions import tweetEntryLink, getEmptyRowCount
 from .models import Entry, Tag, Config
 from rpg.views import *
 
 def home(request):
-    entries = Entry.objects.filter(published=True)
+    entries = Entry.objects.filter( Q(published=True), ~Q(tags__tagslug__exact='journal'))
     tags = Tag.objects.all()
     rpgUpdate = getRpgUpdate()
     config = Config.objects.get(pk=1)
@@ -39,6 +40,15 @@ def entry(request, entry_slug):
         'existance' : False,
     }
     return render(request, 'blog/entry.html', context)
+
+def journal(request):
+    entries = Entry.objects.filter(tags__tagslug__exact="journal")
+    print(entries)
+    context = {
+        'entries' : entries,
+        'existance' : False,
+    }
+    return render(request, 'blog/journal.html', context)
 
 def tweetEntry(request):
     tweetEntryLink(None, request.POST)
