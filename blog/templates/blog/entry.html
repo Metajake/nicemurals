@@ -12,9 +12,9 @@
 <meta property="og:title" content="{{entry.title}}"/>
 <meta property="og:description" content="{{entry.description|safe|slice:':155'}}"/>{% if entry.weapon_type == 'summary_large_image'%}
 {% for work in entry.images.all %}{% if forloop.first %}
-<meta property="og:image" content="http:firststudio.co{{ work.image.url }}"/>{% endif %}{% endfor %}
+<meta property="twitter:image" content="http:firststudio.co{{ work.image.url }}"/>{% endif %}{% endfor %}
 {% else %}
-<meta property="og:image" content="https://i.imgur.com/HaSkdQA.jpg"/>{% endif %}
+<meta property="twitter:image" content="https://i.imgur.com/HaSkdQA.jpg"/>{% endif %}
 {% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{{entry.title}}</h1>
@@ -27,6 +27,10 @@
       {% if user.is_authenticated %}
       <a id="tweet-entry" class="button is-link is-small">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>
       {% endif %}
+      |
+      {% for tag in entry.tags.all %}
+      <a class="is-inline" href="tag/{{tag.tagslug}}">{{tag.tagslug}}</a>
+      {% endfor %}
     </div>
   </div>
   <div class="column">

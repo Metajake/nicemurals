@@ -1,12 +1,12 @@
 | {% extends 'blog/base.html' %}
 
 | {% block extrahead %}
-title First Studio | Blog | {{tag}}
+title First Studio | {{tag.tagslug}}
 | {% endblock %}
 
 | {% block masthead-headline %}
-h1.title.is-2 {{tag}}
-h2.subtitle.is-6 &nbsp;
+h1.title.is-2 {{tag.tagslug|capfirst}}
+h2.subtitle.is-6 {{tag.summary}}
 | {% endblock %}  
   
 | {% block main-content %}

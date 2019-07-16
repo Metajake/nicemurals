@@ -1,10 +1,10 @@
 
 {% extends 'blog/base.html' %}
 {% block extrahead %}
-<title>First Studio | Blog | {{tag}}</title>{% endblock %}
+<title>First Studio | {{tag.tagslug}}</title>{% endblock %}
 {% block masthead-headline %}
-<h1 class="title is-2">{{tag}}</h1>
-<h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}  
+<h1 class="title is-2">{{tag.tagslug|capfirst}}</h1>
+<h2 class="subtitle is-6">{{tag.summary}}</h2>{% endblock %}  
 {% block main-content %}
 <div class="columns">
   <div class="column is-four-fifths">

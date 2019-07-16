@@ -1,7 +1,9 @@
 hr
 h1.icon.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i.fab.fa-accessible-icon
-h1.icon.subtitle.is-inline: a(href="/admin"): i.fas.fa-key
-h1.icon.subtitle.is-inline: a(href="/journal"): i.fas.fa-book
+h1.icon.subtitle.is-inline: a(href="/tags/journal"): i.fas.fa-book
+h1.icon.subtitle.is-inline: a(href="/tags/devlog"): i.fas.fa-code
+  
+h1.icon.subtitle.is-inline.is-pulled-right: a(href="/admin"): i.fas.fa-key
 | {% if user.is_authenticated %}
-h1.icon.subtitle.is-inline: a(href="/admin/logout"): i.fas.fa-skull
+h1.icon.subtitle.is-inline.is-pulled-right: a(href="/admin/logout"): i.fas.fa-skull
 | {% endif %}
