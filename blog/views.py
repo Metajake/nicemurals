@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models import Q
+import random
 
 from blog.functions import tweetEntryLink, getEmptyRowCount
 from .models import Entry, Tag, Config
@@ -15,13 +16,14 @@ def home(request):
         ~Q(tags__tagslug__exact='devlog'),
     )
     tags = Tag.objects.all()
-    rpgUpdate = getRpgUpdate(request.session)
+    rpg = getRpg(request.session)
     config = Config.objects.get(pk=1)
     context = {
         'entries' : entries,
         'tags' : tags,
-        'game' : rpgUpdate,
-        'existance' : 'can-exist' if (config.rpg_active and request.session['lvl'] == 0) else False,
+        'game' : rpg,
+        'existance' : 'can-exist' if config.rpg_active else '',
+        'worldBg': random.choice(rpg['worldColors'])
     }
     return render(request, 'blog/home.html', context)
 

@@ -1,12 +1,3 @@
-.sunset
-  background: #b92b27;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-.meteor
-  background: #0F2027;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 .justify-left
   justify-content:left
 
@@ -19,33 +10,7 @@
   &.activate
     animation: pulseIn 6s forwards
 
-$gameOverTransition = 3s
-
-.can-exist > header, .can-exist > section
-  opacity:0.0
-  transition: opacity $gameOverTransition
-  &.fade-in
-    opacity: 1.0
-    transition: opacity $gameOverTransition
-  & > *
-    opacity: 0.0
-    transition: opacity $gameOverTransition
-    &.fade-in
-      opacity: 1.0
-      transition: opacity $gameOverTransition
-
-.world
-  position: absolute
-  width:100%
-  // height:100%
-  background-size: 400% 400%
-  opacity:1.0
-  animation: breath 35s infinite
-  transition:opacity $gameOverTransition
-  &.fade-out
-    opacity: 0.0
-
-header
+.inline-icon-container
   .icon
     margin-right:1rem
 
@@ -105,8 +70,3 @@ $primaryColor = hsl(204, 86%,  80%)
     opacity:0.85
   100%
     opacity:0.0
-
-@keyframes breath
-  0%{background-position:49% 0%}
-  50%{background-position:52% 100%}
-  100%{background-position:49% 0%}

@@ -5,7 +5,7 @@
   .card-content
     .content
       .stat
-        p Life: <span id="game-life">0</span>
+        p Power: <span id="game-life">0</span>
         p Level: <span id="game-lvl">{{game.lvl}}</span>
       |{% if game.entities %}
       |{% for entity in game.entities %}
@@ -28,7 +28,7 @@ script.
   function mouseMoveInteraction(){
     if (enableExpHandler) {
       gainExp(gainExpUrl, 1, 1, csrfToken);
-      game['life'] += 1
+      game['power'] += 1
       enableExpHandler = false;
     }
   }

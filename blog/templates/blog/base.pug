@@ -9,13 +9,13 @@ html
     
   body(class="{{existance}}")
     |{% if existance %}
-    .world.sunset
+    .world(class="{{worldBg}}")
     |{% endif %}
     header.hero.is-primary.is-small
       .hero-body
         .container
           .columns
-            .column.is-four-fifths
+            .column.is-four-fifths.inline-icon-container
               | {% block masthead-headline %}
               | {% endblock %}
               include includes/base_nav.pug

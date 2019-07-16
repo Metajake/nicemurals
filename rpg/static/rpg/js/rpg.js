@@ -1,7 +1,8 @@
 var lastValue, enableExpHandler
 
 game = {
-  'life': 0,
+  'power': 0,
+  'on': false,
 }
 
 function takeTurnIfReady(functionToExecute){
@@ -10,7 +11,7 @@ function takeTurnIfReady(functionToExecute){
 
 function mouseMoveInteraction(){
   if (enableExpHandler) {
-    game['life'] += 1
+    game['power'] += 1
     enableExpHandler = false;
   }
 }
@@ -20,15 +21,16 @@ function toggleGameElementFades(){
   existingParents = $('.can-exist > section > *, .can-exist > header > *')
   toggleParentThreshold = 1
   switch (true){
-    case game['life'] > toggleParentThreshold:
+    case game['power'] > toggleParentThreshold:
       existingParents.each(function(i,e){ $(e).addClass('fade-in') })
+      game['on'] = true;
       break;
-    case game['life'] > 0 && game['life'] <= toggleParentThreshold:
+    case game['power'] > 0 && game['power'] <= toggleParentThreshold:
       existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
       existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
       $('.world').addClass('fade-out')
       break;
-    case game['life'] <= 0:
+    case game['power'] <= 0:
       existingAncestors.each(function(i,e){ $(e).removeClass('fade-in') })
       $('.world').removeClass('fade-out')
       break;
@@ -38,8 +40,8 @@ function toggleGameElementFades(){
 }
 
 function updateGameStatus(){
-  game['life'] > 0 ? game['life'] -= 1 : ''
-  $('#game-life').html(game['life'])
+  (game['power'] > 0 && game['on'] == false) ? game['life'] -= 1 : ''
+  $('#game-life').html(game['power'])
 }
 
 roundTimer = window.setInterval(function(){

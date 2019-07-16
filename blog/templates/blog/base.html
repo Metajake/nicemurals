@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/blog-base.css' %}">{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'blog/css/blog-base.css' %}">
+    <link rel="stylesheet" href="{% static 'rpg/css/rpg_base.css' %}">{% block extrahead %}
     {% endblock %}
   </head>
   <body class="{{existance}}">{% if existance %}
-    <div class="world sunset"></div>{% endif %}
+    <div class="world {{worldBg}}"></div>{% endif %}
     <header class="hero is-primary is-small">
       <div class="hero-body">
         <div class="container">
           <div class="columns">
-            <div class="column is-four-fifths">
+            <div class="column is-four-fifths inline-icon-container">
               {% block masthead-headline %}
               {% endblock %}
               <hr>

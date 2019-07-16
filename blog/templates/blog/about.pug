@@ -5,16 +5,21 @@ title First Studio | About
 | {% endblock %}
 
 | {% block masthead-headline %}
-h1.title.is-2 About The Creator
+h1.title.is-2 About The Creative
 h2.subtitle.is-6 &nbsp;
 | {% endblock %}  
   
 | {% block main-content %}
 .columns
   .column.is-four-fifths
-    p about
-  .column
-    .content
-      p soc
-      p soc
+    .columns.is-multiline
+      .column.is-two-thirds
+        .content
+          h2 Jayno Baby!..
+          p I'm 38. I'm an artist. I have a natural talent for illustration. I got my undergrads in Graphic Design. I studied Computer Software development starting with websites before getting into Python, C# and Unity3D. I am at my best in environments that welcome open, expressive honesty, but I'm also deadly serious about everyone going home with a paycheck, deadlines, and expectations.
+      .column.is-full.inline-icon-container
+        h1.icon.subtitle.is-inline: a.has-text-dark(href="https://twitter.com/Jaynoco"): i.fab.fa-twitter
+        h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.linkedin.com/in/jacobnorth/"): i.fab.fa-linkedin
+        h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.instagram.com/metajake/"): i.fab.fa-instagram
+  #sidebar.column
 | {% endblock %}
