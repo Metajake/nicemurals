@@ -26,7 +26,7 @@
       <div class="column is-full">
         <div class="content">{{entry.richbody|safe}}</div>
       </div>
-      <div class="column is-full">{% for tag in entry.tags.all %}<a class="is-inline tag is-info" href="tag/{{tag.tagslug}}">{{tag.tagslug}}</a>{% endfor %}</div>
+      <div class="column is-full">{% for tag in entry.tags.all %}<a href="tag/{{tag.tagslug}}"><span class="tag is-info">{{tag.tagslug}}</span></a>{% endfor %}</div>
       <div class="column is-full">{% if user.is_authenticated %}<a class="button is-link is-small" id="tweet-entry">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>{% endif %}</div>
     </div>
   </div>

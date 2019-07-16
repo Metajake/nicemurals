@@ -34,7 +34,8 @@ h2.subtitle.is-6 &nbsp;
           {{entry.richbody|safe}}
       .column.is-full
         | {% for tag in entry.tags.all %}
-        a.is-inline.tag.is-info(href="tag/{{tag.tagslug}}") {{tag.tagslug}}
+        a(href="tag/{{tag.tagslug}}")
+          span.tag.is-info {{tag.tagslug}}
         | {% endfor %}
       .column.is-full
         | {% if user.is_authenticated %}
