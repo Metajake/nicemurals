@@ -21,10 +21,8 @@
               <h1 class="icon subtitle is-inline"><a id="home-link" href="{% url 'blog-home' %}"><i class="fab fa-accessible-icon"></i></a></h1>
               <h1 class="icon subtitle is-inline"><a href="/tags/journal"><i class="fas fa-pencil-alt"></i></a></h1>
               <h1 class="icon subtitle is-inline"><a href="/tags/devlog"><i class="fas fa-bug"></i></a></h1>
-              <h1 class="icon subtitle is-inline is-pulled-right"><a href="https://twitter.com/Jaynoco"><i class="fab fa-twitter"></i></a></h1>
-              <h1 class="icon subtitle is-inline is-pulled-right"><a href="https://www.linkedin.com/in/jacobnorth/"><i class="fab fa-linkedin"></i></a></h1>
-              <h1 class="icon subtitle is-inline is-pulled-right"><a href="/admin"><i class="fas fa-key"></i></a></h1>{% if user.is_authenticated %}
-              <h1 class="icon subtitle is-inline is-pulled-right"><a href="/admin/logout"><i class="fas fa-skull"></i></a></h1>{% endif %}
+              <h1 class="icon subtitle is-inline"><a href="/admin"><i class="fas fa-key"></i></a></h1>{% if user.is_authenticated %}
+              <h1 class="icon subtitle is-inline"><a href="/admin/logout"><i class="fas fa-skull"></i></a></h1>{% endif %}
             </div>
             <div class="column">
               {% block masthead-sidebar %}
