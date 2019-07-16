@@ -50,6 +50,10 @@ def entry(request, entry_slug):
     }
     return render(request, 'blog/entry.html', context)
 
+def about(request):
+    context = {}
+    return render(request, 'blog/about.html', context)
+
 def tweetEntry(request):
     tweetEntryLink(None, request.POST)
     e = Entry.objects.get(title=request.POST['title'])

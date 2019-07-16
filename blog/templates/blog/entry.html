@@ -22,15 +22,12 @@
 {% block main-content %}
 <div class="columns">
   <div class="column is-three-quarters">
-    <div class="content">
-      {{entry.richbody|safe}}
-      {% if user.is_authenticated %}
-      <a id="tweet-entry" class="button is-link is-small">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>
-      {% endif %}
-      |
-      {% for tag in entry.tags.all %}
-      <a class="is-inline" href="tag/{{tag.tagslug}}">{{tag.tagslug}}</a>
-      {% endfor %}
+    <div class="columns is-multiline">
+      <div class="column is-full">
+        <div class="content">{{entry.richbody|safe}}</div>
+      </div>
+      <div class="column is-full">{% for tag in entry.tags.all %}<a class="is-inline tag is-info" href="tag/{{tag.tagslug}}">{{tag.tagslug}}</a>{% endfor %}</div>
+      <div class="column is-full">{% if user.is_authenticated %}<a class="button is-link is-small" id="tweet-entry">Tweet v<span id="tweet-version-increment">{{entry.tweet_version|add:"1"}}</span></a>{% endif %}</div>
     </div>
   </div>
   <div class="column">
