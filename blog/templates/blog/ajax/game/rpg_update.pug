@@ -5,9 +5,10 @@
   .card-content
     .content
       .stat
-        p Power: <span id="game-life">0</span>
+        p Power: <span id="game-power">0</span>
         p Level: <span id="game-lvl">{{game.lvl}}</span>
       |{% if game.entities %}
+      hr.has-background-grey
       |{% for entity in game.entities %}
       .entity(id="entity-{{entity.pk}}")
         span {{entity.name}}<small> Exp: <span class="exp">{{entity.experience}}</span></small>

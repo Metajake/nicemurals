@@ -40,10 +40,10 @@
         <div class="card-content">
           <div class="content">
             <div class="stat">
-              <p>Power: <span id="game-life">0</span></p>
+              <p>Power: <span id="game-power">0</span></p>
               <p>Level: <span id="game-lvl">{{game.lvl}}</span></p>
             </div>{% if game.entities %}
-            {% for entity in game.entities %}
+            <hr class="has-background-grey"/>{% for entity in game.entities %}
             <div class="entity" id="entity-{{entity.pk}}"><span>{{entity.name}}<small> Exp: <span class="exp">{{entity.experience}}</span></small></span></div>{% endfor %}
             {% endif %}
           </div>

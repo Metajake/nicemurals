@@ -27,12 +27,12 @@ function toggleGameElementFades(){
       break;
     case game['power'] > 0 && game['power'] <= toggleParentThreshold:
       existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
-      existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
+      // existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
       $('.world').addClass('fade-out')
       break;
     case game['power'] <= 0:
-      existingAncestors.each(function(i,e){ $(e).removeClass('fade-in') })
-      $('.world').removeClass('fade-out')
+      // existingAncestors.each(function(i,e){ $(e).removeClass('fade-in') })
+      // $('.world').removeClass('fade-out')
       break;
     default:
       break;
@@ -40,19 +40,24 @@ function toggleGameElementFades(){
 }
 
 function updateGameStatus(){
-  (game['power'] > 0 && game['on'] == false) ? game['life'] -= 1 : ''
-  $('#game-life').html(game['power'])
+  if(game['power'] > 0){
+    game['power'] -= 1
+  }
+  $('#game-power').html(game['power'])
 }
 
 roundTimer = window.setInterval(function(){
+  window.clearInterval(roundTimer)
   updateGameStatus()
 }, 1500);
 
 movementTimer = window.setInterval(function(){
+  window.clearInterval(movementTimer)
   enableExpHandler = true;
 }, 500);
 
-statusTimer = window.setInterval(function(){
+uiTimer = window.setInterval(function(){
+  window.clearInterval(uiTimer)
   toggleGameElementFades()
 }, 300)
 
