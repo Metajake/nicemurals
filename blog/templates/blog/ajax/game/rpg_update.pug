@@ -23,8 +23,6 @@ script.
 |{% endblock %}
 
 |{% block postscript %}
-script(src="{% static 'rpg/js/rpg_ui.js' %}")
-script(src="{% static 'rpg/js/rpg.js' %}")
 script.
   function mouseMoveInteraction(){
     if (enableExpHandler) {
@@ -33,17 +31,6 @@ script.
       enableExpHandler = false;
     }
   }
-
-  /* slider = document.querySelector("#formality-range")
-  slider.oninput = function(){
-    if(this.value == 100){
-      $('.will-pulse-in').addClass('activate');
-      $('.will-pulse-in').one("animationend", function(event) {
-          console.log("Done")
-          $(this).removeClass('activate')
-      });
-    }
-  } */
 |{% endblock %}
 
   

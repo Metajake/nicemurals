@@ -1,10 +1,30 @@
 from django.db.models.signals import pre_save, post_save
 from django.dispatch import receiver
 from django.conf import settings
+import random
 
 import tweepy, requests, inspect
 
 from blog.models import Entry
+
+blogOptions = {
+    'homeAnchorIcons' : [
+        ('fas', 'fa-car-side'),
+        ('fas', 'fa-blind'),
+        ('fas', 'fa-car-crash'),
+        ('fas', 'fa-baby-carriage'),
+        ('fas', 'fa-people-carry'),
+        ('fas', 'fa-truck-pickup'),
+        ('fas', 'fa-dolly'),
+        ('fab', 'fa-accessible-icon'),
+    ],
+    'favIcons' : ['cone', 'cube', 'elipse'],
+}
+
+blogBaseProperties = {
+    'home_icon': random.choice(blogOptions['homeAnchorIcons']),
+    'favicon': random.choice(blogOptions['favIcons']),
+}
 
 #THIS GETS FIRED WHETHER YOU SAVE AN ENTRY FROM THE ADMIN OR FROM THIS FILE LINE 28 (HITTING THE TEMPLATE TWEET BUTTON)
 @receiver(pre_save, sender=Entry)

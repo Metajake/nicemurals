@@ -4,6 +4,8 @@ game = {
   'power': 0,
   'on': false,
 }
+existingAncestors = $('.can-exist > section, .can-exist > header')
+existingParents = $('.can-exist > section > *, .can-exist > header > *')
 
 function takeTurnIfReady(functionToExecute){
   if (enableExpHandler) { functionToExecute() }
@@ -16,30 +18,36 @@ function mouseMoveInteraction(){
   }
 }
 
+function initLevelOne(){
+  existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
+  // existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
+  $('.world').addClass('fade-out')
+}
+
+function initLevelTwo(){
+  existingParents.each(function(i,e){ $(e).addClass('fade-in') })
+  game['on'] = true;
+}
+
 function toggleGameElementFades(){
-  existingAncestors = $('.can-exist > section, .can-exist > header')
-  existingParents = $('.can-exist > section > *, .can-exist > header > *')
   toggleParentThreshold = 1
   switch (true){
     case game['power'] > toggleParentThreshold:
-      existingParents.each(function(i,e){ $(e).addClass('fade-in') })
-      game['on'] = true;
+      initLevelTwo()
       break;
     case game['power'] > 0 && game['power'] <= toggleParentThreshold:
-      existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
-      // existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
-      $('.world').addClass('fade-out')
+      initLevelOne()
       break;
     case game['power'] <= 0:
-      // existingAncestors.each(function(i,e){ $(e).removeClass('fade-in') })
-      // $('.world').removeClass('fade-out')
+      existingAncestors.each(function(i,e){ $(e).removeClass('fade-in') })
+      $('.world').removeClass('fade-out')
       break;
     default:
       break;
   }
 }
 
-function updateGameStatus(){
+function updateGameStatsUI(){
   if(game['power'] > 0){
     game['power'] -= 1
   }
@@ -48,7 +56,7 @@ function updateGameStatus(){
 
 roundTimer = window.setInterval(function(){
   window.clearInterval(roundTimer)
-  updateGameStatus()
+  updateGameStatsUI()
 }, 1500);
 
 movementTimer = window.setInterval(function(){
@@ -56,16 +64,21 @@ movementTimer = window.setInterval(function(){
   enableExpHandler = true;
 }, 500);
 
-uiTimer = window.setInterval(function(){
-  window.clearInterval(uiTimer)
-  toggleGameElementFades()
-}, 300)
+// uiTimer = window.setInterval(function(){
+//   window.clearInterval(uiTimer)
+//   toggleGameElementFades()
+// }, 300)
+
+function setBasicInteraction(){
+  initLevelOne()
+  initLevelTwo()
+  takeTurnIfReady(mouseMoveInteraction)
+}
 
 document.addEventListener("DOMContentLoaded", function(){
-  $(document).mousemove(function(e){ takeTurnIfReady(mouseMoveInteraction) });
-  $(document).scroll(function(e){ takeTurnIfReady(mouseMoveInteraction) });
-  document.addEventListener("touchstart", function(e){ takeTurnIfReady(mouseMoveInteraction) })
-
+  $(document).mousemove(function(e){ setBasicInteraction() });
+  $(document).scroll(function(e){ setBasicInteraction() });
+  document.addEventListener("touchstart", function(e){ setBasicInteraction() })
   $('.game-lvl').html('{{game.lvl}}')
 })
 

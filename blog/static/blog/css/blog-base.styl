@@ -10,6 +10,11 @@
   &.activate
     animation: pulseIn 6s forwards
 
+.fa-skull
+  transform: rotate(0deg)
+  &.spook
+    animation: spooky 1.5s forwards
+    
 .inline-icon-container
   .icon
     margin-right:1rem
@@ -23,33 +28,6 @@
 
 $slideSize = 10px
 $primaryColor = hsl(204, 86%,  80%)
-
-.slide-container
-  width:100%
-  .slider
-    -webkit-appearance: none
-    appearance: none
-    width: 100%
-    height: 3px
-    background: #b3b3b3
-    outline: none
-    opacity: 0.6
-    -webkit-transition: .2s
-    transition: opacity .2s
-    &:hover
-      opacity: 1
-    &::-webkit-slider-thumb
-      -webkit-apperance: none
-      appearance: none
-      width: $slideSize
-      height: $slideSize
-      background: $primaryColor
-      cursor: pointer
-    &::-moz-range-thumb
-      width: $slideSize
-      height: $slideSize
-      background: $primaryColor
-      cursor: pointer
 
 @keyframes arrive
   0%
@@ -70,3 +48,21 @@ $primaryColor = hsl(204, 86%,  80%)
     opacity:0.85
   100%
     opacity:0.0
+
+@keyframes spooky
+  0%
+    transform: rotate(0deg)
+  20%
+    transform: rotate(40deg)
+  35%
+    transform: rotate(-35deg)
+  45%
+    transform: rotate(40deg)
+  50%
+    transform: rotate(-25deg)
+  60%
+    transform: rotate(30deg)
+  80%
+    transform: rotate(-15deg)
+  100%
+    transorm: rotate(0deg)

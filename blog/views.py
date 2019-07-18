@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.db.models import Q
 import random
 
-from blog.functions import tweetEntryLink, getEmptyRowCount
+from blog.functions import tweetEntryLink, getEmptyRowCount, blogBaseProperties
 from .models import Entry, Tag, Config
 from rpg.views import *
 
@@ -25,6 +25,7 @@ def home(request):
         'existance' : 'can-exist' if config.rpg_active else '',
         'worldBg': random.choice(rpg['worldColors'])
     }
+    context = {**context, **blogBaseProperties}
     return render(request, 'blog/home.html', context)
 
 def taglist(request, blog_tagslug):

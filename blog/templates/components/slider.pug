@@ -1,0 +1,47 @@
+|{% block markup %}
+//-     .slide-container
+//-       input(type="range" min="1" max="100" value="1" class="slider" id="formality-range")
+|{% endblock %}
+|{% block style %}
+style.
+  .slide-container
+    width:100%
+    .slider
+      -webkit-appearance: none
+      appearance: none
+      width: 100%
+      height: 3px
+      background: #b3b3b3
+      outline: none
+      opacity: 0.6
+      -webkit-transition: .2s
+      transition: opacity .2s
+      &:hover
+        opacity: 1
+      &::-webkit-slider-thumb
+        -webkit-apperance: none
+        appearance: none
+        width: $slideSize
+        height: $slideSize
+        background: $primaryColor
+        cursor: pointer
+      &::-moz-range-thumb
+        width: $slideSize
+        height: $slideSize
+        background: $primaryColor
+        cursor: pointer
+
+|{% endblock %}
+|{% block behavior %}
+script.
+  /* slider = document.querySelector("#formality-range")
+  slider.oninput = function(){
+    if(this.value == 100){
+      $('.will-pulse-in').addClass('activate');
+      $('.will-pulse-in').one("animationend", function(event) {
+          console.log("Done")
+          $(this).removeClass('activate')
+      });
+    }
+  } */
+|{% endblock %}

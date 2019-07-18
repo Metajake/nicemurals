@@ -55,8 +55,6 @@
         var csrfToken = '{{csrf_token}}'
       </script>{% endblock %}
       {% block postscript %}
-      <script src="{% static 'rpg/js/rpg_ui.js' %}"></script>
-      <script src="{% static 'rpg/js/rpg.js' %}"></script>
       <script>
         function mouseMoveInteraction(){
           if (enableExpHandler) {
@@ -65,17 +63,6 @@
             enableExpHandler = false;
           }
         }
-        
-        /* slider = document.querySelector("#formality-range")
-        slider.oninput = function(){
-          if(this.value == 100){
-            $('.will-pulse-in').addClass('activate');
-            $('.will-pulse-in').one("animationend", function(event) {
-                console.log("Done")
-                $(this).removeClass('activate')
-            });
-          }
-        } */
       </script>{% endblock %}
     </div>
   </div>
