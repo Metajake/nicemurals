@@ -39,7 +39,8 @@ def taglist(request, blog_tagslug):
         'tags' : tags,
         'existance' : False,
     }
-    return render(request, 'blog/taglist.html', context)
+    context = {**context, **blogBaseProperties}
+    return render(request, 'blog/tag_page.html', context)
 
 def entry(request, entry_slug):
     if 'lvl' in request.session:
@@ -51,6 +52,7 @@ def entry(request, entry_slug):
         'tags' : tags,
         'existance' : False,
     }
+    context = {**context, **blogBaseProperties}
     return render(request, 'blog/entry.html', context)
 
 def about(request):

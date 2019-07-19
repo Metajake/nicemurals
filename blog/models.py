@@ -7,7 +7,7 @@ from portfolio.models import Work
 class Tag(models.Model):
     tagslug = models.SlugField(max_length=200, unique=True)
     summary = models.CharField(max_length = 200)
-    
+
     def __str__(self):
         return self.tagslug
 
