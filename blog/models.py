@@ -28,5 +28,5 @@ class Entry(models.Model):
         return self.title
 
 class Config(models.Model):
-    card_sorting = models.CharField(max_length=100, choices=[('tiles','tiles'),('columns','columns')], default="columns")
+    entry_sorting = models.CharField(max_length=100, choices=[('tiles','tiles'),('columns','columns')], default="columns")
     rpg_active = models.BooleanField(default=False)

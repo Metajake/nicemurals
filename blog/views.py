@@ -23,7 +23,8 @@ def home(request):
         'tags' : tags,
         'game' : rpg,
         'existance' : 'can-exist' if config.rpg_active else '',
-        'worldBg': random.choice(rpg['worldColors'])
+        'worldBg': random.choice(rpg['worldColors']),
+        'config': config,
     }
     context = {**context, **blogBaseProperties}
     return render(request, 'blog/home.html', context)
