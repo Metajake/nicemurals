@@ -1,3 +1,4 @@
+|{% if config.entry_sorting == 'columns'%}
 .columns.is-multiline
   | {% for entry in entries reversed %}
   .column.is-one-third
@@ -17,3 +18,10 @@
             p {{entry.created}}
           
   | {% endfor %}
+|{% elif config.entry_sorting == 'tiles' %}
+.tile.is-ancestor
+  |{% for entry in entries %}
+  div(class="{{entry_sort_type}} box is-child")
+    h2 {{entry.title}}
+  |{% endfor %}
+|{% endif %}

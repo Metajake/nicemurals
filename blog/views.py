@@ -10,6 +10,7 @@ from rpg.views import *
 def home(request):
     if 'lvl' not in request.session:
         request.session['lvl'] = 0
+
     entries = Entry.objects.filter(
         Q(published=True),
         ~Q(tags__tagslug__exact='journal'),
@@ -18,13 +19,13 @@ def home(request):
     tags = Tag.objects.all()
     rpg = getRpg(request.session)
     config = Config.objects.get(pk=1)
+    print(config.entry_sorting)
     context = {
         'entries' : entries,
         'tags' : tags,
         'game' : rpg,
         'existance' : 'can-exist' if config.rpg_active else '',
         'worldBg': random.choice(rpg['worldColors']),
-        'config': config,
     }
     context = {**context, **blogBaseProperties}
     return render(request, 'blog/home.html', context)

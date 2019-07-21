@@ -5,7 +5,9 @@ import random
 
 import tweepy, requests, inspect
 
-from blog.models import Entry
+from blog.models import Entry, Config
+
+config = Config.objects.get(pk=1)
 
 blogOptions = {
     'homeAnchorIcons' : [
@@ -22,6 +24,8 @@ blogOptions = {
 }
 
 blogBaseProperties = {
+    'config' : config,
+    'entry_sort_type' : 'columns' if config.entry_sorting == 'columns' else 'tile',
     'home_icon': random.choice(blogOptions['homeAnchorIcons']),
     'favicon': random.choice(blogOptions['favIcons']),
 }

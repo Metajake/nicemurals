@@ -7,7 +7,7 @@
 <h2 class="subtitle is-6">{{tag.summary}}</h2>{% endblock %}  
 {% block main-content %}
 <div class="columns">
-  <div class="column is-four-fifths">
+  <div class="column is-four-fifths">{% if config.entry_sorting == 'columns'%}
     <div class="columns is-multiline">{% for entry in entries reversed %}
       <div class="column is-one-third"><a href="/entry/{{entry.slug}}">
           <div class="card">{% for work in entry.images.all %}{% if forloop.first %}
@@ -26,7 +26,12 @@
               </div>
             </footer>
           </div></a></div>{% endfor %}
-    </div>
+    </div>{% elif config.entry_sorting == 'tiles' %}
+    <div class="tile is-ancestor">{% for entry in entries %}
+      <div class="{{entry_sort_type}} box is-child">
+        <h2>{{entry.title}}</h2>
+      </div>{% endfor %}
+    </div>{% endif %}
   </div>
   <div class="column">
     <h3>Categories</h3>
