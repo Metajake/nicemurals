@@ -2,20 +2,26 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models import Q
 import random
+from itertools import chain
 
 from blog.functions import tweetEntryLink, getEmptyRowCount, blogBaseProperties
 from .models import Entry, Tag, Config
 from rpg.views import *
+from portfolio.models import Project
 
 def home(request):
     if 'lvl' not in request.session:
         request.session['lvl'] = 0
 
-    entries = Entry.objects.filter(
+    blogEntries = Entry.objects.filter(
         Q(published=True),
         ~Q(tags__tagslug__exact='journal'),
         ~Q(tags__tagslug__exact='devlog'),
     )
+    projects = Project.objects.all()
+
+    entries = list(chain(projects, blogEntries))
+
     tags = Tag.objects.all()
     rpg = getRpg(request.session)
     config = Config.objects.get(pk=1)

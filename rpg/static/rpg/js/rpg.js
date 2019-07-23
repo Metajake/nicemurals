@@ -69,16 +69,13 @@ movementTimer = window.setInterval(function(){
 //   toggleGameElementFades()
 // }, 300)
 
-function setBasicInteraction(){
+document.addEventListener("DOMContentLoaded", function(){
   initLevelOne()
   initLevelTwo()
-  takeTurnIfReady(mouseMoveInteraction)
-}
 
-document.addEventListener("DOMContentLoaded", function(){
-  $(document).mousemove(function(e){ setBasicInteraction() });
-  $(document).scroll(function(e){ setBasicInteraction() });
-  document.addEventListener("touchstart", function(e){ setBasicInteraction() })
+  $(document).mousemove(function(e){ takeTurnIfReady(mouseMoveInteraction) });
+  $(document).scroll(function(e){ takeTurnIfReady(mouseMoveInteraction) });
+  document.addEventListener("touchstart", function(e){ takeTurnIfReady(mouseMoveInteraction) })
   $('.game-lvl').html('{{game.lvl}}')
 })
 

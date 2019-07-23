@@ -13,11 +13,11 @@ class Work(models.Model):
         return self.title
 
 class Project(models.Model):
-    project_name = models.CharField(max_length = 200)
+    title = models.CharField(max_length = 200)
     slug = models.SlugField(max_length=200, unique=True)
+    is_enabled = models.BooleanField(default=True)
     description = RichTextField(blank=True)
     featured_image = models.ImageField(upload_to="uploads/portfolio/", blank=True)
-    is_enabled = models.BooleanField(default=True)
     images = models.ManyToManyField(Work, blank=True)
 
     def __str__(self):

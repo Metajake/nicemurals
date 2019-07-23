@@ -27,10 +27,16 @@
             </footer>
           </div></a></div>{% endfor %}
     </div>{% elif config.entry_sorting == 'tiles' %}
-    <div class="tile is-ancestor">{% for entry in entries %}
-      <div class="{{entry_sort_type}} box is-child">
-        <h2>{{entry.title}}</h2>
-      </div>{% endfor %}
+    <div class="tile is-ancestor is-vertical">
+      {% for entry in entries %}
+      {% if forloop.first %}<div class="tile">{% endif %}
+      <div class="tile is-parent">
+        <artice class="tile is-child box">
+          <p>{{entry.title}}</p>{% if entry.featured_image %}<img src="{{entry.featured_image.image.url}}"/>{% endif %}
+        </artice>
+      </div>{% if forloop.counter|divisibleby:"3" %}</div><div class="tile">{% endif %}
+      {% if forloop.last %}</div>{% endif %}
+      {% endfor %}
     </div>{% endif %}
   </div>
   <div class="column">
