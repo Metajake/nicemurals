@@ -1,0 +1,31 @@
+
+{% load static %}
+{% url 'gain-experience' as gainexperience %}
+<div class="card">
+  <div class="card-content">
+    <div class="content">
+      <div class="stat">
+        <p>Power: <span id="game-power">0</span></p>
+        <p>Level: <span id="game-lvl">{{game.lvl}}</span></p>
+      </div>{% if game.entities %}
+      <hr class="has-background-grey"/>{% for entity in game.entities %}
+      <div class="entity" id="entity-{{entity.pk}}"><span>{{entity.name}}<small> Exp: <span class="exp">{{entity.experience}}</span></small></span></div>{% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>{% block prescript %}
+{{gainexperience|json_script:'gainexpurl'}}
+<script>
+  var gainExpUrl = JSON.parse(document.querySelector('#gainexpurl').textContent);
+  var csrfToken = '{{csrf_token}}'
+</script>{% endblock %}
+{% block postscript %}
+<script>
+  function mouseMoveInteraction(){
+    if (enableExpHandler) {
+      gainExp(gainExpUrl, 1, 1, csrfToken);
+      game['power'] += 1
+      enableExpHandler = false;
+    }
+  }
+</script>{% endblock %}

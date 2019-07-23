@@ -20,7 +20,7 @@ blogOptions = {
         ('fas', 'fa-dolly'),
         ('fab', 'fa-accessible-icon'),
     ],
-    'favIcons' : ['cone', 'cube', 'elipse'],
+    'favIcons' : ['cone', 'cube', 'elipse', 'diamond', 'trapezoid',],
 }
 
 blogBaseProperties = {
