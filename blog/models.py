@@ -28,6 +28,15 @@ class Entry(models.Model):
     def __str__(self):
         return self.title
 
+class Journal(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    weather = models.CharField(max_length=100)
+    plan = models.CharField(max_length=200)
+    what_you_did = RichTextField(blank=True)
+
+    def __str__(self):
+        return self.created.strftime('%Y-%m-%d')
+
 class Config(models.Model):
     entry_sorting = models.CharField(max_length=100, choices=[('tiles','tiles'),('columns','columns')], default="columns")
     rpg_active = models.BooleanField(default=False)
