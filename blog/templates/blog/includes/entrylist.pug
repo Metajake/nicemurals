@@ -25,18 +25,11 @@
   .tile.is-parent
     artice.tile.is-child.box
       p {{entry.title}}
-      |{% if entry.featured_image %}
+      |{% if entry.featured_image.image %}
       img(src="{{entry.featured_image.image.url}}")
       |{% endif %}
-  |{% if forloop.counter|divisibleby:"3" %}</div><div class="tile">{% endif %}
+  |{% if forloop.counter|divisibleby:"2" %}</div><div class="tile">{% endif %}
   
   |{% if forloop.last %}</div>{% endif %}
   |{% endfor %}
-  //- |{% for entry in entries %}
-  //- div(class="{{entry_sort_type}} box is-child")
-  //-   h2 {{entry.title}}
-  //-   |{% if entry.featured_image %}
-  //-   img(src="{{entry.featured_image.image.url}}")
-  //-   |{% endif %}
-  //- |{% endfor %}
 |{% endif %}

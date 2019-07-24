@@ -7,8 +7,6 @@ import tweepy, requests, inspect
 
 from blog.models import Entry, Config
 
-config = Config.objects.get(pk=1)
-
 blogOptions = {
     'homeAnchorIcons' : [
         ('fas', 'fa-car-side'),
@@ -23,12 +21,15 @@ blogOptions = {
     'favIcons' : ['cone', 'cube', 'elipse'],
 }
 
-blogBaseProperties = {
-    'config' : config,
-    'entry_sort_type' : 'columns' if config.entry_sorting == 'columns' else 'tile',
-    'home_icon': random.choice(blogOptions['homeAnchorIcons']),
-    'favicon': random.choice(blogOptions['favIcons']),
-}
+def getBlogBaseProperties():
+    config = Config.objects.get(pk=1)
+    toReturn = {
+        'config' : config,
+        'entry_sort_type' : 'columns' if config.entry_sorting == 'columns' else 'tile',
+        'home_icon': random.choice(blogOptions['homeAnchorIcons']),
+        'favicon': random.choice(blogOptions['favIcons']),
+    }
+    return toReturn
 
 #THIS GETS FIRED WHETHER YOU SAVE AN ENTRY FROM THE ADMIN OR FROM THIS FILE LINE 28 (HITTING THE TEMPLATE TWEET BUTTON)
 @receiver(pre_save, sender=Entry)

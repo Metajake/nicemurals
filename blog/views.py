@@ -4,7 +4,7 @@ from django.db.models import Q
 import random
 from itertools import chain
 
-from blog.functions import tweetEntryLink, getEmptyRowCount, blogBaseProperties
+from blog.functions import tweetEntryLink, getEmptyRowCount, getBlogBaseProperties
 from .models import Entry, Tag, Config
 from rpg.views import *
 from portfolio.models import Project
@@ -25,7 +25,6 @@ def home(request):
     tags = Tag.objects.all()
     rpg = getRpg(request.session)
     config = Config.objects.get(pk=1)
-    print(config.entry_sorting)
     context = {
         'entries' : entries,
         'tags' : tags,
@@ -33,6 +32,7 @@ def home(request):
         'existance' : 'can-exist' if config.rpg_active else '',
         'worldBg': random.choice(rpg['worldColors']),
     }
+    blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}
     return render(request, 'blog/home.html', context)
 
@@ -47,6 +47,7 @@ def taglist(request, blog_tagslug):
         'tags' : tags,
         'existance' : False,
     }
+    blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}
     return render(request, 'blog/tag_page.html', context)
 
@@ -60,11 +61,14 @@ def entry(request, entry_slug):
         'tags' : tags,
         'existance' : False,
     }
+    blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}
     return render(request, 'blog/entry.html', context)
 
 def about(request):
     context = {}
+    blogBaseProperties = getBlogBaseProperties()
+    context = {**context, **blogBaseProperties}
     return render(request, 'blog/about.html', context)
 
 def tweetEntry(request):
