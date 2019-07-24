@@ -28,6 +28,9 @@ class Entry(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = "Entries"
+
 class Journal(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     weather = models.CharField(max_length=100)

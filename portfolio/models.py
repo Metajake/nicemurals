@@ -2,6 +2,16 @@ from django.db import models
 
 from ckeditor.fields import RichTextField
 
+class Category(models.Model):
+    category_slug = models.SlugField(max_length=200, unique=True)
+    summary = models.CharField(max_length = 200, blank=True)
+
+    def __str__(self):
+        return self.category_slug
+
+    class Meta:
+        verbose_name_plural = "Categories"
+
 class Work(models.Model):
     title = models.CharField(max_length=300, blank=True)
     caption = models.CharField(max_length=50, blank=True)
