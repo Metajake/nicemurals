@@ -10,10 +10,10 @@
   <div class="column is-four-fifths">{% if config.entry_sorting == 'columns'%}
     <div class="columns is-multiline">{% for entry in entries reversed %}
       <div class="column is-one-third"><a href="/entry/{{entry.slug}}">
-          <div class="card">{% for work in entry.images.all %}{% if forloop.first %}
+          <div class="card">{% if entry.featured_image %}
             <div class="card-image">
-              <div class="figure image is-4by3"><img src="{{ work.image.url }}"/></div>
-            </div>{% endif %}{% endfor %}
+              <div class="figure image is-4by3"><img src="{{ entry.featured_image.image.url }}"/></div>
+            </div>{% endif %}
             <div class="card-content">
               <div class="content">
                 <h3 class="title is-4">{{entry.title}} </h3>

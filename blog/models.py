@@ -21,8 +21,8 @@ class Entry(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True)
     tweet_version = models.IntegerField(editable=False, default=0)
-    featured_image = models.OneToOneField(Work, related_name="featured_image", on_delete= models.CASCADE, blank=True, null=True)
-    images = models.ManyToManyField(Work, related_name="images", blank=True)
+    featured_image = models.OneToOneField(Work, related_name="entry_featured_image", on_delete= models.CASCADE, blank=True, null=True)
+    images = models.ManyToManyField(Work, related_name="entry_images", blank=True)
     fire_laser = models.BooleanField(default=False)
 
     def __str__(self):

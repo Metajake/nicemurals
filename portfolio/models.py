@@ -25,10 +25,11 @@ class Work(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length = 200)
     slug = models.SlugField(max_length=200, unique=True)
+    category = models.OneToOneField(Category, on_delete=models.CASCADE, null=True)
     is_enabled = models.BooleanField(default=True)
     description = RichTextField(blank=True)
-    featured_image = models.ImageField(upload_to="uploads/portfolio/", blank=True)
-    images = models.ManyToManyField(Work, blank=True)
+    featured_image = models.OneToOneField(Work, related_name="project_featured_image", on_delete=models.CASCADE, blank=True, null=True)
+    images = models.ManyToManyField(Work, related_name="project_images", blank=True)
 
     def __str__(self):
-        return self.project_name
+        return self.title

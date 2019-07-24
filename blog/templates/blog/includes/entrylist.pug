@@ -4,11 +4,11 @@
   .column.is-one-third
     a(href="/entry/{{entry.slug}}")
       .card
-        |{% for work in entry.images.all %}{% if forloop.first %}
+        |{% if entry.featured_image %}
         .card-image
           .figure.image.is-4by3
-            img(src="{{ work.image.url }}")
-        |{% endif %}{% endfor %}
+            img(src="{{ entry.featured_image.image.url }}")
+        |{% endif %}
         .card-content
           .content
             h3.title.is-4 {{entry.title}} 
