@@ -19,17 +19,13 @@
           
   | {% endfor %}
 |{% elif config.entry_sorting == 'tiles' %}
-.tile.is-ancestor.is-vertical
-  |{% for entry in entries %}
-  |{% if forloop.first %}<div class="tile">{% endif %}
-  .tile.is-parent
-    artice.tile.is-child.box
+.tile.is-ancestor
+  .tile.is-parent.is-12.is-vertical
+    |{% for entry in entries %}
+    artice.tile.is-6.is-child.box
       p {{entry.title}}
       |{% if entry.featured_image.image %}
       img(src="{{entry.featured_image.image.url}}")
       |{% endif %}
-  |{% if forloop.counter|divisibleby:"2" %}</div><div class="tile">{% endif %}
-  
-  |{% if forloop.last %}</div>{% endif %}
-  |{% endfor %}
+    |{% endfor %}
 |{% endif %}
