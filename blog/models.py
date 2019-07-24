@@ -39,6 +39,9 @@ class Journal(models.Model):
 
     def __str__(self):
         return self.created.strftime('%Y-%m-%d')
+        
+    class Meta:
+        verbose_name_plural = "Journal Entries"
 
 class Config(models.Model):
     entry_sorting = models.CharField(max_length=100, choices=[('tiles','tiles'),('columns','columns')], default="columns")
