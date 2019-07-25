@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models import Q
-import random
 from itertools import chain
 
 from blog.functions import tweetEntryLink, getEmptyRowCount, getBlogBaseProperties
@@ -30,7 +29,6 @@ def home(request):
         'tags' : tags,
         'game' : rpg,
         'existance' : 'can-exist' if config.rpg_active else '',
-        'worldBg': random.choice(rpg['worldColors']),
     }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}

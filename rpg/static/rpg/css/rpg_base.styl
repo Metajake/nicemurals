@@ -30,8 +30,16 @@
   background: #c31432;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.old-bubblegum
+  background: rgb(89, 57, 212)
+  background: -webkit-linear-gradient(90deg, rgb(89, 57, 212) 0%, rgb(89, 57, 212) 14%,rgb(111, 66, 211) 14%, rgb(111, 66, 211) 24%,rgb(225, 114, 205) 24%, rgb(225, 114, 205) 37%,rgb(66, 47, 213) 37%, rgb(66, 47, 213) 40%,rgb(157, 85, 208) 40%, rgb(157, 85, 208) 45%,rgb(180, 95, 207) 45%, rgb(180, 95, 207) 60%,rgb(134, 76, 210) 60%, rgb(134, 76, 210) 61%,rgb(202, 104, 206) 61%, rgb(202, 104, 206) 100%)
+  background: linear-gradient(90deg, rgb(89, 57, 212) 0%, rgb(89, 57, 212) 14%,rgb(111, 66, 211) 14%, rgb(111, 66, 211) 24%,rgb(225, 114, 205) 24%, rgb(225, 114, 205) 37%,rgb(66, 47, 213) 37%, rgb(66, 47, 213) 40%,rgb(157, 85, 208) 40%, rgb(157, 85, 208) 45%,rgb(180, 95, 207) 45%, rgb(180, 95, 207) 60%,rgb(134, 76, 210) 60%, rgb(134, 76, 210) 61%,rgb(202, 104, 206) 61%, rgb(202, 104, 206) 100%)
 
 $gameOverTransition = 3s
+$runSpeed = 3s
+$lungCapacity = 30s
+$tension = 12s
+$flexibility = 118%
 
 .can-exist > header, .can-exist > section
   opacity:0.0
@@ -49,14 +57,27 @@ $gameOverTransition = 3s
 .world
   position: absolute
   width:100%
-  background-size: 400% 400%
   opacity:1.0
-  animation: breath 35s infinite
-  transition:opacity $gameOverTransition
-  &.fade-out
-    opacity: 0.0
+  transition:opacity $gameOverTransition, background-size $runSpeed, background-position $runSpeed
+  &.size-400
+    animation:breath $lungCapacity infinite
+    background-size: 400% 400%
+    &.fade-out
+      opacity: 0.0
+  &.size-200
+    animation:flex $tension infinite
+    background-size: 100% 100%
+    background-position:35% 0%
+    &.fade-out
+      opacity: 0.0
+      background-size: 600% 100%
 
 @keyframes breath
   0%{background-position:49% 0%}
   50%{background-position:52% 100%}
   100%{background-position:49% 0%}
+
+@keyframes flex
+  0%{background-size:100% 100%}
+  50%{background-size:$flexibility 100%}
+  100%{background-size:100% 100%}

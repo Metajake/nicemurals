@@ -12,10 +12,13 @@ function takeTurnIfReady(functionToExecute){
 }
 
 function mouseMoveInteraction(){
-  if (enableExpHandler) {
-    game['power'] += 1
-    enableExpHandler = false;
-  }
+  initLevelOne()
+  initLevelTwo()
+  // 
+  // if (enableExpHandler) {
+  //   game['power'] += 1
+  //   enableExpHandler = false;
+  // }
 }
 
 function initLevelOne(){
@@ -54,30 +57,23 @@ function updateGameStatsUI(){
   $('#game-power').html(game['power'])
 }
 
-roundTimer = window.setInterval(function(){
-  window.clearInterval(roundTimer)
-  updateGameStatsUI()
-}, 1500);
+function initTimers(){
+  // roundTimer = window.setInterval(function(){
+  //   window.clearInterval(roundTimer)
+  //   updateGameStatsUI()
+  // }, 1500);
 
-movementTimer = window.setInterval(function(){
-  window.clearInterval(movementTimer)
-  enableExpHandler = true;
-}, 500);
+  movementTimer = window.setInterval(function(){
+    window.clearInterval(movementTimer)
+    enableExpHandler = true;
+  }, 500);
 
-// uiTimer = window.setInterval(function(){
-//   window.clearInterval(uiTimer)
-//   toggleGameElementFades()
-// }, 300)
+  // uiTimer = window.setInterval(function(){
+    //   window.clearInterval(uiTimer)
+    //   toggleGameElementFades()
+    // }, 300)
+}
 
-document.addEventListener("DOMContentLoaded", function(){
-  initLevelOne()
-  initLevelTwo()
-
-  $(document).mousemove(function(e){ takeTurnIfReady(mouseMoveInteraction) });
-  $(document).scroll(function(e){ takeTurnIfReady(mouseMoveInteraction) });
-  document.addEventListener("touchstart", function(e){ takeTurnIfReady(mouseMoveInteraction) })
-  $('.game-lvl').html('{{game.lvl}}')
-})
 
 function gainExp(url, entityId, difference, csrfToken){
   $.ajax({
@@ -95,3 +91,12 @@ function gainExp(url, entityId, difference, csrfToken){
     }
   })
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+  initTimers()
+
+  $(document).mousemove(function(e){ mouseMoveInteraction() });
+  $(document).scroll(function(e){ mouseMoveInteraction() });
+  document.addEventListener("touchstart", function(e){ mouseMoveInteraction() })
+  $('.game-lvl').html('{{game.lvl}}')
+})
