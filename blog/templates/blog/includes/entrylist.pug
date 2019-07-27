@@ -3,10 +3,10 @@
   | {% for entry in entries reversed %}
   .column.is-one-third
     a(href="/entry/{{entry.slug}}")
-      .card
+      .card.entry
         |{% if entry.featured_image %}
         .card-image
-          .figure.image.is-4by3
+          .figure.image.is-square
             img(src="{{ entry.featured_image.image.url }}")
         |{% endif %}
         .card-content

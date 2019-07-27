@@ -1,3 +1,8 @@
+@import 'animations'
+
+$slideSize = 10px
+$primaryColor = hsl(204, 86%,  80%)
+
 .justify-left
   justify-content:left
 
@@ -5,17 +10,17 @@
   @media(max-width:1024px) and (min-width: 769px)
     width:33.333%
 
-.will-pulse-in
+.pulse-in
   opacity: 0.0
   &.activate
     animation: pulseIn 6s forwards
 
-.fa-skull
+.anim-spook
   transform: rotate(0deg)
   &.spook
     animation: spooky 1.5s forwards
 
-.inline-icon-container
+.inline-icon-spacing
   .icon
     margin-right:1rem
 
@@ -26,43 +31,20 @@
   &.move
     animation: move 4s
 
-$slideSize = 10px
-$primaryColor = hsl(204, 86%,  80%)
-
-@keyframes arrive
-  0%
-    left:-200px
-  100%
-    left:0px
-
-@keyframes move
-  0%
-    left:0px
-  100%
-    left:1000px
-
-@keyframes pulseIn
-  0%
-    opacity:0.0
-  25%
-    opacity:0.85
-  100%
-    opacity:0.0
-
-@keyframes spooky
-  0%
-    transform: rotate(0deg)
-  20%
-    transform: rotate(40deg)
-  35%
-    transform: rotate(-35deg)
-  45%
-    transform: rotate(40deg)
-  50%
-    transform: rotate(-25deg)
-  60%
-    transform: rotate(30deg)
-  80%
-    transform: rotate(-15deg)
-  100%
-    transorm: rotate(0deg)
+.entry
+  .card-image
+    .figure.image.is-square
+      overflow:hidden
+      img
+        margin:auto auto
+        min-height:100%
+        height:auto
+        width:auto
+        max-width:none
+      &.is-horiz
+        img
+          max-height: 100%
+          margin-left:-20%
+      &.is-vert
+        img
+          max-width:100%
