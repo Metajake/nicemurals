@@ -12,7 +12,7 @@
     {% if config.entry_sorting == 'columns'%}
     <div class="columns is-multiline">{% for entry in entries reversed %}
       <div class="column is-one-third"><a href="/entry/{{entry.slug}}">
-          <div class="box entry">{% if entry.featured_image %}
+          <div class="box entry"><small class="is-size-7 entry-type">{{entry|to_class_name}}</small>{% if entry.featured_image %}
             <div class="image is-square {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}"/></div>{% endif %}
             <h3 class="title is-4">{{entry.title}} </h3>
           </div></a></div>{% endfor %}

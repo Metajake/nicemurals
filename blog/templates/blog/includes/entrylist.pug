@@ -5,6 +5,7 @@
   .column.is-one-third
     a(href="/entry/{{entry.slug}}")
       .box.entry
+        small.is-size-7.entry-type {{entry|to_class_name}}
         |{% if entry.featured_image %}
         .image.is-square(class="{{ entry.featured_image.image|orientation }}")
           img(src="{{ entry.featured_image.image.url }}")
