@@ -1,5 +1,7 @@
 script(src="{% static 'js/jquery.js' %}")
 script(src="{% static 'js/jqueryUI.js' %}")
 script(src="{% static 'blog/js/blog-base.js' %}")
+|{% if existance %}
 script(src="{% static 'rpg/js/rpg_ui.js' %}")
 script(src="{% static 'rpg/js/rpg.js' %}")
+|{% endif %}

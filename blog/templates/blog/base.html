@@ -7,8 +7,8 @@
     <link rel="apple-touch-icon" href="{% static 'blog/assets/favicon_triangle128.png'%}">
     <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/blog-base.css' %}">
-    <link rel="stylesheet" href="{% static 'rpg/css/rpg_base.css' %}">{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'blog/css/blog-base.css' %}">{% if existance %}
+    <link rel="stylesheet" href="{% static 'rpg/css/rpg_base.css' %}">{% endif %}{% block extrahead %}
     {% endblock %}
   </head>
   <body class="{{existance}}">{% if existance %}
@@ -44,9 +44,9 @@
     {% endblock %}
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/jqueryUI.js' %}"></script>
-    <script src="{% static 'blog/js/blog-base.js' %}"></script>
+    <script src="{% static 'blog/js/blog-base.js' %}"></script>{% if existance %}
     <script src="{% static 'rpg/js/rpg_ui.js' %}"></script>
-    <script src="{% static 'rpg/js/rpg.js' %}"></script>{% block postscript %}
+    <script src="{% static 'rpg/js/rpg.js' %}"></script>{% endif %}{% block postscript %}
     {% endblock %}
   </body>
 </html>
