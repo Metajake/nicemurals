@@ -1,23 +1,17 @@
+|{% load blog_extras %}
 |{% if config.entry_sorting == 'columns'%}
 .columns.is-multiline
   | {% for entry in entries reversed %}
   .column.is-one-third
     a(href="/entry/{{entry.slug}}")
-      .card.entry
+      .box.entry
         |{% if entry.featured_image %}
-        .card-image
-          .figure.image.is-square
-            img(src="{{ entry.featured_image.image.url }}")
+        .image.is-square(class="{{ entry.featured_image.image|orientation }}")
+          img(src="{{ entry.featured_image.image.url }}")
         |{% endif %}
-        .card-content
-          .content
-            h3.title.is-4 {{entry.title}} 
-            h4.subtitle.is-6 {{entry.richbody | safe | truncatewords:7}}
-        footer.card-footer
-          .card-footer-item.justify-left
-            p {{entry.created}}
-          
+        h3.title.is-4 {{entry.title}} 
   | {% endfor %}
+  
 |{% elif config.entry_sorting == 'tiles' %}
 .tile.is-ancestor
   .tile.is-parent.is-12.is-vertical

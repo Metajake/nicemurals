@@ -32,18 +32,28 @@ $primaryColor = hsl(204, 86%,  80%)
     animation: move 4s
 
 .entry
-  .card-image
-    .figure.image.is-square
-      overflow:hidden
+  .image.is-square
+    overflow:hidden
+    img
+      min-width: 100%
+      max-width: none
+      width:auto
+      max-height:none
+    &.portrait
       img
-        margin:auto auto
-        min-height:100%
+        width:100%
         height:auto
-        width:auto
-        max-width:none
-      &.is-horiz
-        img
-          max-height: 100%
-      &.is-vert
-        img
-          max-width:100%
+        margin:auto
+
+
+      // margin:auto auto
+      // min-height:100%
+      // height:auto
+      // width:auto
+      // max-width:none
+    // &.is-horiz
+    //   img
+    //     max-height: 100%
+    // &.is-vert
+    //   img
+    //     max-width:100%

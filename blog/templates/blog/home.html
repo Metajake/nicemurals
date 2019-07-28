@@ -7,24 +7,14 @@
 <h2 class="subtitle is-6">The Interactive Work of Jacob North</h2>{% endblock %}  
 {% block main-content %}
 <div class="columns">
-  <div class="column is-four-fifths">{% if config.entry_sorting == 'columns'%}
+  <div class="column is-four-fifths">
+    {% load blog_extras %}
+    {% if config.entry_sorting == 'columns'%}
     <div class="columns is-multiline">{% for entry in entries reversed %}
       <div class="column is-one-third"><a href="/entry/{{entry.slug}}">
-          <div class="card entry">{% if entry.featured_image %}
-            <div class="card-image">
-              <div class="figure image is-square"><img src="{{ entry.featured_image.image.url }}"/></div>
-            </div>{% endif %}
-            <div class="card-content">
-              <div class="content">
-                <h3 class="title is-4">{{entry.title}} </h3>
-                <h4 class="subtitle is-6">{{entry.richbody | safe | truncatewords:7}}</h4>
-              </div>
-            </div>
-            <footer class="card-footer">
-              <div class="card-footer-item justify-left">
-                <p>{{entry.created}}</p>
-              </div>
-            </footer>
+          <div class="box entry">{% if entry.featured_image %}
+            <div class="image is-square {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}"/></div>{% endif %}
+            <h3 class="title is-4">{{entry.title}} </h3>
           </div></a></div>{% endfor %}
     </div>{% elif config.entry_sorting == 'tiles' %}
     <div class="tile is-ancestor">

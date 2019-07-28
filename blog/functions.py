@@ -18,7 +18,7 @@ blogOptions = {
         ('fas', 'fa-dolly'),
         ('fab', 'fa-accessible-icon'),
     ],
-    'favIcons' : ['cone', 'cube', 'elipse', 'diamond', 'trapezoid',],
+    'favIcons' : ['cone', 'cube', 'elipse', 'diamond', 'trapezoid', 'trapezoid2'],
 }
 
 def getBlogBaseProperties():

@@ -5,7 +5,7 @@ from itertools import chain
 
 from blog.functions import tweetEntryLink, getEmptyRowCount, getBlogBaseProperties
 from .models import Entry, Tag, Config
-from rpg.views import *
+from rpg.functions import *
 from portfolio.models import Project
 
 def home(request):
