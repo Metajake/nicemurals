@@ -19,22 +19,29 @@ $('.fa-skull').click(function(e){
 })
 
 // Homepage Entry List: Apply "featured image" ratio class to container
-// and Margin-Left to horizontal images
+// and Margin-Left to horizontal orientation images
 $('.entry').each(function(index, entry){
-  $(entry).find('.figure.image').addClass( getImageRatioClass(entry) )
-  setMarginLeftToHorizontalImages(entry)
+  orientation = getImageRatioClass(entry)
+  $(entry).find('.figure.image').addClass( orientation )
+  if(orientation == 'is-horiz'){
+    setImageMarginLeft(entry)
+  }
 })
 
 function getImageRatioClass(imgContainer){
-  imageRatio = Math.round( $(imgContainer).find('img').width() ) / Math.round( $(imgContainer).find('img').height() )
+  imgWidth = $(imgContainer).find('img').width()
+  imgHeight = $(imgContainer).find('img').height()
+  imageRatio = Math.round( imgWidth ) / Math.round( imgHeight )
   if(imageRatio > 1){orientation = 'is-horiz'}else{orientation = 'is-vert'}
   return orientation
 }
 
-function setMarginLeftToHorizontalImages(imgContainer){
-  containerWidth = Math.abs( $(imgContainer).find('.figure.image').width() )
-  imageWidth = Math.abs( $(imgContainer).find('.figure.image img').width() )
+function setImageMarginLeft(entryContainer){
+  imgContainer = $(entryContainer).find('.figure.image')
+  image = imgContainer.find('img')
+  containerWidth = Math.abs( imgContainer.width() )
+  imageWidth = Math.abs( image.width() )
   difference = Math.round( imageWidth - containerWidth )
   marginLeft = Math.round( difference / 2 )
-  $(imgContainer).find('.figure.image img').css('margin-left', -marginLeft+'px')
+  image.css('margin-left', -marginLeft+'px')
 }
