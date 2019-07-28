@@ -1,0 +1,6 @@
+|{% if entry.featured_image %}
+.image.is-square.is-clipped(class="{{ entry.featured_image.image|orientation }}")
+  img(src="{{ entry.featured_image.image.url }}")
+|{% endif %}
+h3.title.is-4 {{entry.title}} 
+p.is-marginless {{entry.description|safe|truncatewords:5}}

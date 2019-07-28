@@ -12,11 +12,7 @@ def home(request):
     if 'lvl' not in request.session:
         request.session['lvl'] = 0
 
-    blogEntries = Entry.objects.filter(
-        Q(published=True),
-        ~Q(tags__tagslug__exact='journal'),
-        ~Q(tags__tagslug__exact='devlog'),
-    )
+    blogEntries = Entry.objects.filter(published=True)
     projects = Project.objects.all()
 
     entries = list(chain(projects, blogEntries))

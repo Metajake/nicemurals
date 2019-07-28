@@ -19,7 +19,7 @@ class Entry(models.Model):
     richbody = RichTextField(blank=True)
     description = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    category = models.OneToOneField(Tag, blank=True, on_delete=models.CASCADE, null=True)
     tweet_version = models.IntegerField(editable=False, default=0)
     featured_image = models.OneToOneField(Work, related_name="entry_featured_image", on_delete= models.CASCADE, blank=True, null=True)
     images = models.ManyToManyField(Work, related_name="entry_images", blank=True)
@@ -39,9 +39,9 @@ class Journal(models.Model):
 
     def __str__(self):
         return self.created.strftime('%Y-%m-%d')
-        
+
     class Meta:
-        verbose_name_plural = "Journal Entries"
+        verbose_name_plural = "Journal"
 
 class Config(models.Model):
     entry_sorting = models.CharField(max_length=100, choices=[('tiles','tiles'),('columns','columns')], default="columns")
