@@ -32,9 +32,9 @@ function getImageRatioClass(imgContainer){
 }
 
 function setMarginLeftToHorizontalImages(imgContainer){
-  containerWidth = $(imgContainer).find('.figure.image').width()
-  imageWidth = $(imgContainer).find('.figure.image img').width()
-  difference = Math.round( Math.abs(containerWidth - imageWidth) )
+  containerWidth = Math.abs( $(imgContainer).find('.figure.image').width() )
+  imageWidth = Math.abs( $(imgContainer).find('.figure.image img').width() )
+  difference = Math.round( imageWidth - containerWidth )
   marginLeft = Math.round( difference / 2 )
   $(imgContainer).find('.figure.image img').css('margin-left', -marginLeft+'px')
 }
