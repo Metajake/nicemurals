@@ -1,5 +1,6 @@
 
 {% extends 'blog/base.html' %}
+{% load blog_extras %}
 {% block extrahead %}
 <title>First Studio | {{project.title}}</title>{% endblock %}
 {% block masthead-headline %}
@@ -17,17 +18,35 @@
           <div class="content">{{project.description|safe}}</div>
         </div>
       </div>
-    </div>
-    <div class="column is-full">
+    </div>{%if project.images.count %}
+    <div class="column project-images is-full">
       <div class="columns is-mobile is-multiline">
         <div class="column is-full">
           <hr class="has-background-grey-light"/>
         </div>{% for i in project.images.all %}
-        <div class="column is-one-third"><img src="{{i.image.url}}"/></div>{% endfor %}
+        <div class="column is-half-mobile is-one-third-tablet"><img src="{{i.image.url}}"/></div>{% endfor %}
       </div>
-    </div>
+    </div>{%endif%}
+    {%if project.entry_set.count %}
+    <div class="column is-full">
+      <div class="columns is-mobile is-multiline">
+        <div class="column is-full">
+          <hr class="has-background-grey-light"/>
+          <h3 class="title is-4">Related Posts</h3>
+        </div>{% for e in project.entry_set.all %}
+        <div class="column is-half-mobile is-one-third-tablet"><a href="/entry/{{entry.slug}}">
+            <div class="box entry">
+              <div class="level is-mobile">
+                <div class="level-left"><small class="is-size-7">{%if e.category%}{{e.category|capfirst}}{%else%}Uncategorized{%endif%}</small></div>
+                <div class="level-right"><small class="is-size-7">{{e.created}}</small></div>
+              </div>{% if e.featured_image %}
+              <div class="image is-square is-clipped {{ e.featured_image.image|orientation }}"><img src="{{ e.featured_image.image.url }}"/></div>{% endif %}
+              <h3 class="title is-5">{{e.title}} </h3>
+            </div></a></div>{% endfor %}
+      </div>
+    </div>{%endif%}
   </div>
-  <div class="column is-hidden-touch">
+  <div class="column is-hidden-mobile">
     <p>sidebar</p>
   </div>
 </div>{% endblock %}

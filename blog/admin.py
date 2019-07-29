@@ -7,6 +7,6 @@ class EntryAdmin(admin.ModelAdmin):
         "slug" : ("title",),
     }
 admin.site.register(Entry, EntryAdmin)
-# admin.site.register(Tag)
+admin.site.register(Tag)
 admin.site.register(Config)
 admin.site.register(Journal)

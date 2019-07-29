@@ -2,7 +2,7 @@ from django.db import models
 
 from ckeditor.fields import RichTextField
 
-from portfolio.models import Work
+from portfolio.models import Work, Project
 
 class Tag(models.Model):
     tagslug = models.SlugField(max_length=200, unique=True)
@@ -24,6 +24,7 @@ class Entry(models.Model):
     featured_image = models.OneToOneField(Work, related_name="entry_featured_image", on_delete= models.CASCADE, blank=True, null=True)
     images = models.ManyToManyField(Work, related_name="entry_images", blank=True)
     fire_laser = models.BooleanField(default=False)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.title

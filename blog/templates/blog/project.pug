@@ -1,5 +1,7 @@
 |{% extends 'blog/base.html' %}
 
+|{% load blog_extras %}
+
 | {% block extrahead %}
 title First Studio | {{project.title}}
 |{% endblock %}
@@ -22,14 +24,39 @@ h2.subtitle.is-6 &nbsp;
         .column
           .content.
             {{project.description|safe}}
-    .column.is-full
+    |{%if project.images.count %}
+    .column.project-images.is-full
       .columns.is-mobile.is-multiline
         .column.is-full
           hr.has-background-grey-light
         |{% for i in project.images.all %}
-        .column.is-one-third
+        .column.is-half-mobile.is-one-third-tablet
           img(src="{{i.image.url}}")
         |{% endfor %}
-  .column.is-hidden-touch
+    |{%endif%}
+    |{%if project.entry_set.count %}
+    .column.is-full
+      .columns.is-mobile.is-multiline
+        .column.is-full
+          hr.has-background-grey-light
+          h3.title.is-4 Related Posts
+        |{% for e in project.entry_set.all %}
+        .column.is-half-mobile.is-one-third-tablet
+          a(href="/entry/{{entry.slug}}")
+            .box.entry
+              .level.is-mobile
+                .level-left
+                  small.is-size-7 {%if e.category%}{{e.category|capfirst}}{%else%}Uncategorized{%endif%}
+                .level-right
+                  small.is-size-7 {{e.created}}
+              |{% if e.featured_image %}
+              .image.is-square.is-clipped(class="{{ e.featured_image.image|orientation }}")
+                img(src="{{ e.featured_image.image.url }}")
+              |{% endif %}
+              h3.title.is-5 {{e.title}} 
+              //- p.is-marginless {{e.description|safe|truncatewords:5}}
+        |{% endfor %}
+    |{%endif%}
+  .column.is-hidden-mobile
     p sidebar
 | {% endblock %}

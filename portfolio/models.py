@@ -25,7 +25,7 @@ class Work(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length = 200)
     slug = models.SlugField(max_length=200, unique=True)
-    category = models.OneToOneField(Category, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     is_enabled = models.BooleanField(default=True)
     description = RichTextField(blank=True)
     featured_image = models.OneToOneField(Work, related_name="project_featured_image", on_delete=models.CASCADE, blank=True, null=True)

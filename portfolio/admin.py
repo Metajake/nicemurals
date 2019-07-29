@@ -9,4 +9,4 @@ class ProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(Work)
 admin.site.register(Project, ProjectAdmin)
-# admin.site.register(Category)
+admin.site.register(Category)
