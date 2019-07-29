@@ -59,6 +59,15 @@ def entry(request, entry_slug):
     context = {**context, **blogBaseProperties}
     return render(request, 'blog/entry.html', context)
 
+def project(request, project_slug):
+    p = Project.objects.get(slug=project_slug)
+    context = {
+        'project': p,
+    }
+    blogBaseProperties = getBlogBaseProperties()
+    context = {**context, **blogBaseProperties}
+    return render(request, 'blog/project.html', context)
+
 def about(request):
     context = {}
     blogBaseProperties = getBlogBaseProperties()

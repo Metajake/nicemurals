@@ -1,0 +1,33 @@
+
+{% extends 'blog/base.html' %}
+{% block extrahead %}
+<title>First Studio | {{project.title}}</title>{% endblock %}
+{% block masthead-headline %}
+<h1 class="title is-2">{{project.title}}</h1>
+<h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}
+{% block main-content %}
+<div class="columns">
+  <div class="column is-three-quarters is-multiline">
+    <div class="column is-full">
+      <div class="columns is-mobile">{% if project.featured_image %}
+        <div class="column is-4">
+          <div class="image"><img src="{{project.featured_image.image.url}}"/></div>
+        </div>{% endif %}
+        <div class="column">
+          <div class="content">{{project.description|safe}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="column is-full">
+      <div class="columns is-mobile is-multiline">
+        <div class="column is-full">
+          <hr class="has-background-grey-light"/>
+        </div>{% for i in project.images.all %}
+        <div class="column is-one-third"><img src="{{i.image.url}}"/></div>{% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="column is-hidden-touch">
+    <p>sidebar</p>
+  </div>
+</div>{% endblock %}

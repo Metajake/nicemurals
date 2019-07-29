@@ -1,0 +1,35 @@
+|{% extends 'blog/base.html' %}
+
+| {% block extrahead %}
+title First Studio | {{project.title}}
+|{% endblock %}
+
+|{% block masthead-headline %}
+h1.title.is-2 {{project.title}}
+h2.subtitle.is-6 &nbsp;
+| {% endblock %}
+
+| {% block main-content %}
+.columns
+  .column.is-three-quarters.is-multiline
+    .column.is-full
+      .columns.is-mobile
+        |{% if project.featured_image %}
+        .column.is-4
+          .image
+            img(src='{{project.featured_image.image.url}}')
+        |{% endif %}
+        .column
+          .content.
+            {{project.description|safe}}
+    .column.is-full
+      .columns.is-mobile.is-multiline
+        .column.is-full
+          hr.has-background-grey-light
+        |{% for i in project.images.all %}
+        .column.is-one-third
+          img(src="{{i.image.url}}")
+        |{% endfor %}
+  .column.is-hidden-touch
+    p sidebar
+| {% endblock %}
