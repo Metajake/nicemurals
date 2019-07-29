@@ -13,7 +13,7 @@ def home(request):
         request.session['lvl'] = 0
 
     blogEntries = Entry.objects.filter(published=True)
-    projects = Project.objects.all()
+    projects = Project.objects.filter(is_enabled=True)
 
     entries = list(chain(projects, blogEntries))
 
