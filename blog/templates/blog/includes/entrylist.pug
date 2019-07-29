@@ -12,12 +12,12 @@
             small.is-size-7 {%if entry.category%}{{entry.category|capfirst}}{%else%}Uncategorized{%endif%}
           .level-right
             small.is-size-7 {{entry.created}}
-        include entrylist_entryfooter.pug
+        include entrylist_entrybody.pug
     |{% elif entry|to_class_name == 'Project' %}
     a(href="/project/{{entry.slug}}")
       .box.entry
         small.is-size-7 {{entry|to_class_name}} - {%if entry.category%}{{entry.category|capfirst}}{%else%}Uncategorized{%endif%}
-        include entrylist_entryfooter.pug
+        include entrylist_entrybody.pug
     | {% endif %}
       
   | {% endfor %}
