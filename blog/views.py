@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.db.models import Q
+from django.db.models import Count
 from itertools import chain
 
 from blog.functions import tweetEntryLink, getEmptyRowCount, getBlogBaseProperties
@@ -17,7 +17,7 @@ def home(request):
 
     entries = list(chain(projects, blogEntries))
 
-    tags = Tag.objects.all()
+    tags = Tag.objects.annotate(num_entries=Count('entry')).filter(num_entries__gte=1)
     rpg = getRpg(request.session)
     config = Config.objects.get(pk=1)
     context = {
@@ -33,8 +33,8 @@ def home(request):
 def taglist(request, blog_tagslug):
     if 'lvl' in request.session:
         request.session['lvl'] += 1
-    entries = Entry.objects.all().filter(tags__tagslug=blog_tagslug)
-    tags = Tag.objects.all()
+    entries = Entry.objects.filter(category__tagslug=blog_tagslug)
+    tags = Tag.objects.annotate(num_entries=Count('entry')).filter(num_entries__gte=1)
     context = {
         'tag' : Tag.objects.get(tagslug=blog_tagslug),
         'entries' : entries,

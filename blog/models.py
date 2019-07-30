@@ -19,7 +19,7 @@ class Entry(models.Model):
     richbody = RichTextField(blank=True)
     description = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)
-    category = models.OneToOneField(Tag, blank=True, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Tag, blank=True, on_delete=models.CASCADE, null=True)
     tweet_version = models.IntegerField(editable=False, default=0)
     featured_image = models.OneToOneField(Work, related_name="entry_featured_image", on_delete= models.CASCADE, blank=True, null=True)
     images = models.ManyToManyField(Work, related_name="entry_images", blank=True)
