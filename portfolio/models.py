@@ -28,7 +28,7 @@ class Project(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     is_enabled = models.BooleanField(default=True)
     description = RichTextField(blank=True)
-    featured_image = models.OneToOneField(Work, related_name="project_featured_image", on_delete=models.CASCADE, blank=True, null=True)
+    featured_image = models.ForeignKey(Work, related_name="project_featured_image", on_delete=models.CASCADE, blank=True, null=True)
     images = models.ManyToManyField(Work, related_name="project_images", blank=True)
 
     def __str__(self):

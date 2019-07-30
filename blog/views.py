@@ -63,6 +63,7 @@ def project(request, project_slug):
     p = Project.objects.get(slug=project_slug)
     context = {
         'project': p,
+        'column_sizes': ['half','two-thirds'],
     }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}

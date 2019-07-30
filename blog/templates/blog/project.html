@@ -5,7 +5,7 @@
 <title>First Studio | {{project.title}}</title>{% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{{project.title}}</h1>
-<h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}
+<h2 class="subtitle is-6">{{project.category|capfirst}}</h2>{% endblock %}
 {% block main-content %}
 <div class="columns">
   <div class="column is-three-quarters is-multiline">
@@ -24,7 +24,7 @@
         <div class="column is-full">
           <hr class="has-background-grey-light"/>
         </div>{% for i in project.images.all %}
-        <div class="column is-half-mobile is-one-third-tablet"><img src="{{i.image.url}}"/></div>{% endfor %}
+        <div class="column is-half-mobile is-{% cycle column_sizes|random '' %}-tablet"><img src="{{i.image.url}}"/></div>{% endfor %}
       </div>
     </div>{%endif%}
     {%if project.entry_set.count %}
