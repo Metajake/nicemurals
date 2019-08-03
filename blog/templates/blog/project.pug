@@ -19,7 +19,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
         |{% if project.featured_image %}
         .column.is-4
           .image
-            img(src='{{project.featured_image.image.url}}')
+            img.has-radius-small(src='{{project.featured_image.image.url}}')
         |{% endif %}
         .column
           .content.
@@ -31,7 +31,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
           hr.has-background-grey-light
         |{% for i in project.images.all %}
         .column.is-half-mobile(class="is-{% cycle column_sizes|random '' %}-tablet")
-          img(src="{{i.image.url}}")
+          img.has-radius-small(src="{{i.image.url}}")
         |{% endfor %}
     |{%endif%}
     |{%if project.entry_set.count %}
@@ -50,7 +50,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
                 .level-right
                   small.is-size-7 {{e.created}}
               |{% if e.featured_image %}
-              .image.is-square.is-clipped(class="{{ e.featured_image.image|orientation }}")
+              .image.is-square.is-clipped.has-radius-small(class="{{ e.featured_image.image|orientation }}")
                 img(src="{{ e.featured_image.image.url }}")
               |{% endif %}
               h3.title.is-5 {{e.title}} 
