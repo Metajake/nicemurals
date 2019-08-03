@@ -46,7 +46,8 @@
       </div>
     </div>{%endif%}
   </div>
-  <div class="column is-hidden-mobile">
-    <p>sidebar</p>
+  <div class="column is-hidden-mobile">{% if project.repository %}
+    <h3 class="is-size-4">Repository</h3><a href="{{project.repository}}">
+      <h1 class="icon subtitle is-inline"><i class="fab fa-github"></i></h1><a class="has-text-primary has-nowrap">{{project.repository}}</a></a>{%endif%}
   </div>
 </div>{% endblock %}

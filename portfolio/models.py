@@ -30,6 +30,8 @@ class Project(models.Model):
     description = RichTextField(blank=True)
     featured_image = models.ForeignKey(Work, related_name="project_featured_image", on_delete=models.CASCADE, blank=True, null=True)
     images = models.ManyToManyField(Work, related_name="project_images", blank=True)
+    repository = models.CharField(max_length=300, blank=True)
+    affiliate_links = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
         return self.title

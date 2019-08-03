@@ -58,5 +58,10 @@ h2.subtitle.is-6 {{project.category|capfirst}}
         |{% endfor %}
     |{%endif%}
   .column.is-hidden-mobile
-    p sidebar
+    |{% if project.repository %}
+    h3.is-size-4 Repository
+    a(href="{{project.repository}}")
+      h1.icon.subtitle.is-inline: i.fab.fa-github
+      a.has-text-primary.has-nowrap {{project.repository}}
+    |{%endif%}
 | {% endblock %}
