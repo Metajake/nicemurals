@@ -67,6 +67,8 @@ $flexibility = 140%
   width:100%
   opacity:1.0
   transition:opacity $gameOverTransition, background-size $runSpeed, background-position $runSpeed
+  flex-direction:column
+  align-items: center
   &.is-size-world
     animation:breath $lungCapacity infinite
     background-size: 400% 400%
@@ -76,6 +78,10 @@ $flexibility = 140%
     background-position:35% 0%
   &.fade-out
     opacity: 0.0
+
+.is-size-brand
+  width:15%
+  animation: glow 10s forwards
 
 @keyframes breath
   0%
@@ -92,3 +98,11 @@ $flexibility = 140%
     background-size:$flexibility 100%
   100%
     background-size:100% 100%
+
+@keyframes glow
+  0%
+    opacity:0.0
+  50%
+    opacity: 1.0
+  100%
+    opacity:0.0

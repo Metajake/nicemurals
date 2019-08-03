@@ -1,10 +1,12 @@
 var body = document.body,
     html = document.documentElement;
 
-var height = Math.max( body.scrollHeight, body.offsetHeight,
+var docHeight = Math.max( body.scrollHeight, body.offsetHeight,
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
 
+var worldBrand = document.querySelector('.world .is-size-brand')
 
 document.addEventListener("DOMContentLoaded", function(){
-  $('.world').height(height)
+  $('.world').height(docHeight)
+  worldBrand.style.marginTop = window.innerHeight/2 - worldBrand.clientHeight/2 + "px"
 })
