@@ -3,8 +3,8 @@
 {% block extrahead %}
 <title>First Studio | {{tag.tagslug}}</title>{% endblock %}
 {% block masthead-headline %}
-<h1 class="title is-2">{{tag.tagslug|capfirst}}</h1>
-<h2 class="subtitle is-6">{{tag.summary}}</h2>{% endblock %}  
+<h1 class="title is-2">{{headline|capfirst}}</h1>
+<h2 class="subtitle is-6">{{headline.summary}}</h2>{% endblock %}  
 {% block main-content %}
 <div class="columns">
   <div class="column is-four-fifths">
@@ -36,9 +36,15 @@
     </div>{% endif %}
   </div>
   <div class="column">
-    <h3>Blog Categories</h3>
-    <ul>{% for tag in tags %}
-      <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
-    </ul>
+    <div class="content">
+      <h3>Blog Categories</h3>
+      <ul>{% for tag in blog_tags %}
+        <li><a class="has-text-primary" href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
+      </ul>
+      <h3>Project Categories</h3>
+      <ul>{%for category in project_categories%}
+        <li><a class="has-text-primary" href="/projects/{{category}}">{{category}}</a></li>{% endfor %}
+      </ul>
+    </div>
   </div>
 </div>{% endblock %}

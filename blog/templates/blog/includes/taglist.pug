@@ -1,6 +1,13 @@
-h3 Blog Categories
-ul
-  | {% for tag in tags %}
-  li
-    a(href='/tags/{{tag}}') {{tag}}
-  | {% endfor %}
+.content
+  h3 Blog Categories
+  ul
+    | {% for tag in blog_tags %}
+    li
+      a.has-text-primary(href='/tags/{{tag}}') {{tag}}
+    | {% endfor %}
+  h3 Project Categories
+  ul
+    | {%for category in project_categories%}
+    li
+      a.has-text-primary(href='/projects/{{category}}') {{category}}
+    | {% endfor %}

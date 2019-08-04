@@ -6,23 +6,21 @@ from itertools import chain
 from blog.functions import tweetEntryLink, getEmptyRowCount, getBlogBaseProperties
 from .models import Entry, Tag, Config
 from rpg.functions import *
-from portfolio.models import Project
+from portfolio.models import Project, Category
 
 def home(request):
     if 'lvl' not in request.session:
         request.session['lvl'] = 0
 
-    blogEntries = Entry.objects.filter(published=True)
     projects = Project.objects.filter(is_enabled=True)
-
-    entries = list(chain(projects, blogEntries))
-
-    tags = Tag.objects.annotate(num_entries=Count('entry')).filter(num_entries__gte=1)
+    blogTags = Tag.objects.annotate(num_entries=Count('entry')).filter(num_entries__gte=1)
+    projectCategories = Category.objects.annotate(num_entries=Count('project')).filter(num_entries__gte=1)
     rpg = getRpg(request.session)
     config = Config.objects.get(pk=1)
     context = {
-        'entries' : entries,
-        'tags' : tags,
+        'entries' : projects,
+        'blog_tags' : blogTags,
+        'project_categories' : projectCategories,
         'game' : rpg,
         'existance' : 'can-exist' if config.rpg_active else '',
     }
@@ -34,11 +32,30 @@ def taglist(request, blog_tagslug):
     if 'lvl' in request.session:
         request.session['lvl'] += 1
     entries = Entry.objects.filter(category__tagslug=blog_tagslug)
-    tags = Tag.objects.annotate(num_entries=Count('entry')).filter(num_entries__gte=1)
+    blogTags = Tag.objects.annotate(num_entries=Count('entry')).filter(num_entries__gte=1)
+    projectCategories = Category.objects.annotate(num_entries=Count('project')).filter(num_entries__gte=1)
     context = {
-        'tag' : Tag.objects.get(tagslug=blog_tagslug),
+        'headline' : Tag.objects.get(tagslug=blog_tagslug),
         'entries' : entries,
-        'tags' : tags,
+        'blog_tags' : blogTags,
+        'project_categories' : projectCategories,
+        'existance' : False,
+    }
+    blogBaseProperties = getBlogBaseProperties()
+    context = {**context, **blogBaseProperties}
+    return render(request, 'blog/tag_page.html', context)
+
+def categorylist(request, category_slug):
+    if 'lvl' in request.session:
+        request.session['lvl'] += 1
+    projects = Project.objects.filter(category__category_slug=category_slug)
+    blogTags = Tag.objects.annotate(num_entries=Count('entry')).filter(num_entries__gte=1)
+    projectCategories = Category.objects.annotate(num_entries=Count('project')).filter(num_entries__gte=1)
+    context = {
+        'headline' : Category.objects.get(category_slug=category_slug),
+        'entries' : projects,
+        'blog_tags' : blogTags,
+        'project_categories' : projectCategories,
         'existance' : False,
     }
     blogBaseProperties = getBlogBaseProperties()
@@ -49,10 +66,12 @@ def entry(request, entry_slug):
     if 'lvl' in request.session:
         request.session['lvl'] += 1
     entry = Entry.objects.get(slug=entry_slug)
-    tags = Tag.objects.all()
+    blogTags = Tag.objects.annotate(num_entries=Count('entry')).filter(num_entries__gte=1)
+    projectCategories = Category.objects.annotate(num_entries=Count('project')).filter(num_entries__gte=1)
     context = {
         'entry' : entry,
-        'tags' : tags,
+        'blog_tags' : blogTags,
+        'project_categories' : projectCategories,
         'existance' : False,
     }
     blogBaseProperties = getBlogBaseProperties()
