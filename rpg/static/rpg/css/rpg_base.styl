@@ -70,10 +70,14 @@ $flexibility = 140%
   flex-direction:column
   align-items: center
   &.is-size-world
-    animation:breath $lungCapacity infinite
+    animation:breathe $lungCapacity infinite
+    @media(max-width:768px)
+      animation: breathe 15s infinite
     background-size: 400% 400%
   &.is-size-location
     animation:flex $tension infinite
+    @media(max-width:768px)
+      animation: flex 10s infinite
     background-size: 100% 100%
     background-position:35% 0%
   &.fade-out
@@ -81,9 +85,11 @@ $flexibility = 140%
 
 .is-size-brand
   width:15%
+  @media(max-width:768px)
+    width:25%
   animation: glow 10s forwards
 
-@keyframes breath
+@keyframes breathe
   0%
     background-position:50% 0%
   50%
