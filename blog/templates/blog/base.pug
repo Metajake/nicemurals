@@ -7,7 +7,7 @@ html
     |{% block extrahead %}
     |{% endblock %}
     
-  body(class="{{existance}}")
+  body.dark-mode(class="{{existance}}")
     |{% if existance %}
     |{% include 'rpg/includes/rpg_base.html' %}
     |{% endif %}

@@ -34,6 +34,11 @@ h2.subtitle.is-6 {{project.category|capfirst}}
           img.has-radius-small(src="{{i.image.url}}")
         |{% endfor %}
     |{%endif%}
+    |{%if project.repository or project.affiliate_links %}
+    .column.is-full.is-hidden-tablet
+      hr.has-background-grey-light
+      include includes/project_stats.pug
+    |{% endif %}
     |{%if project.entry_set.count %}
     .column.is-full
       .columns.is-mobile.is-multiline
@@ -42,26 +47,20 @@ h2.subtitle.is-6 {{project.category|capfirst}}
           h3.title.is-4 Related Posts
         |{% for e in project.entry_set.all %}
         .column.is-half-mobile.is-one-third-tablet
-          a(href="/entry/{{entry.slug}}")
+          a(href="/entry/{{e.slug}}")
             .box.entry
-              .level.is-mobile
+              .level
                 .level-left
                   small.is-size-7 {%if e.category%}{{e.category|capfirst}}{%else%}Uncategorized{%endif%}
                 .level-right
-                  small.is-size-7 {{e.created}}
+                  small.is-size-7 {{e.created.date}}
               |{% if e.featured_image %}
               .image.is-square.is-clipped.has-radius-small(class="{{ e.featured_image.image|orientation }}")
                 img(src="{{ e.featured_image.image.url }}")
               |{% endif %}
               h3.title.is-5 {{e.title}} 
-              //- p.is-marginless {{e.description|safe|truncatewords:5}}
         |{% endfor %}
     |{%endif%}
   .column.is-hidden-mobile
-    |{% if project.repository %}
-    h3.is-size-4 Repository
-    a(href="{{project.repository}}")
-      h1.icon.subtitle.is-inline: i.fab.fa-github
-      a.has-text-primary.has-nowrap {{project.repository}}
-    |{%endif%}
+    include includes/project_stats.pug
 | {% endblock %}

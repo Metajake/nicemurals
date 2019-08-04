@@ -1,0 +1,19 @@
+|{%load blog_extras %}
+
+.content
+  |{% if project.repository %}
+  h3.is-size-4 Repository
+  a(href="{{project.repository}}")
+    h1.icon.subtitle.is-inline: i.fab.fa-github
+    a.has-text-primary.has-nowrap {{project.repository}}
+  |{%endif%}
+
+  |{% if project.affiliate_links %}
+  h3.is-size-4 Affiliate Links
+  ul.affiliate-links
+    |{% for link in project.affiliate_links|split_list:"," %}
+    li
+      h5.icon.subtitle.is-inline: i.fas.fa-arrow-right
+      a.has-text-primary(href="{{link}}" target="_blank") {{link}}
+    |{% endfor %}
+  |{%endif%}
