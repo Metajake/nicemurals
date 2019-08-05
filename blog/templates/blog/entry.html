@@ -32,13 +32,13 @@
   </div>
   <div class="column">
     <div class="content">
-      <h3>Blog Categories</h3>
-      <ul>{% for tag in blog_tags %}
-        <li><a class="has-text-primary" href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
-      </ul>
       <h3>Project Categories</h3>
       <ul>{%for category in project_categories%}
         <li><a class="has-text-primary" href="/projects/{{category}}">{{category}}</a></li>{% endfor %}
+      </ul>
+      <h3>Blog Categories</h3>
+      <ul>{% for tag in blog_tags %}
+        <li><a class="has-text-primary" href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
       </ul>
     </div>
   </div>
