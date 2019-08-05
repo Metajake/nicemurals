@@ -47,7 +47,7 @@ $gameOverTransition = 3s
 $runSpeed = 3s
 $lungCapacity = 20s
 $tension = 12s
-$flexibility = 118%
+$flexibility = 140%
 
 .can-exist > header, .can-exist > section
   opacity:0.0
@@ -67,25 +67,48 @@ $flexibility = 118%
   width:100%
   opacity:1.0
   transition:opacity $gameOverTransition, background-size $runSpeed, background-position $runSpeed
-  &.size-400
-    animation:breath $lungCapacity infinite
+  flex-direction:column
+  align-items: center
+  &.is-size-world
+    animation:breathe $lungCapacity infinite
+    @media(max-width:768px)
+      animation: breathe 15s infinite
     background-size: 400% 400%
-    &.fade-out
-      opacity: 0.0
-  &.size-200
+  &.is-size-location
     animation:flex $tension infinite
+    @media(max-width:768px)
+      animation: flex 10s infinite
     background-size: 100% 100%
     background-position:35% 0%
-    &.fade-out
-      opacity: 0.0
-      background-size: 600% 100%
+  &.fade-out
+    opacity: 0.0
 
-@keyframes breath
-  0%{background-position:49% 0%}
-  50%{background-position:52% 100%}
-  100%{background-position:49% 0%}
+.is-size-brand
+  width:15%
+  @media(max-width:768px)
+    width:25%
+  animation: glow 10s forwards
+
+@keyframes breathe
+  0%
+    background-position:50% 0%
+  50%
+    background-position:50% 100%
+  100%
+    background-position:50% 0%
 
 @keyframes flex
-  0%{background-size:100% 100%}
-  50%{background-size:$flexibility 100%}
-  100%{background-size:100% 100%}
+  0%
+    background-size:100% 100%
+  50%
+    background-size:$flexibility 100%
+  100%
+    background-size:100% 100%
+
+@keyframes glow
+  0%
+    opacity:0.0
+  50%
+    opacity: 1.0
+  100%
+    opacity:0.0

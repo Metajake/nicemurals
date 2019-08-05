@@ -29,7 +29,7 @@
     artice.tile.is-6.is-child.box
       p {{entry.title}}
       |{% if entry.featured_image.image %}
-      img(src="{{entry.featured_image.image.url}}")
+      img.has-radius-small(src="{{entry.featured_image.image.url}}")
       |{% endif %}
     |{% endfor %}
 |{% endif %}

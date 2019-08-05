@@ -3,6 +3,13 @@
 $slideSize = 10px
 $primaryColor = hsl(204, 86%,  80%)
 
+hr
+  @media(max-width:768px)
+    height:1px
+
+.dark-mode
+  background-color: #666
+
 .justify-left
   justify-content:left
 
@@ -20,9 +27,17 @@ $primaryColor = hsl(204, 86%,  80%)
   &.spook
     animation: spooky 1.5s forwards
 
-.inline-icon-spacing
-  .icon
-    margin-right:1rem
+.has-radius-small
+  border-radius:3px
+
+.has-underline
+  text-decoration:underline
+
+.has-nowrap
+  white-space: nowrap
+
+.icon
+  margin-right:1rem
 
 #home-link
   position:relative
@@ -36,6 +51,9 @@ $primaryColor = hsl(204, 86%,  80%)
     padding-top:.75rem
   .level
     margin-bottom:.75rem
+    @media (max-width:768px)
+      .level-left + .level-right
+          margin-top:0
   .image.is-square
     img
       min-width: 100%
@@ -56,3 +74,8 @@ $primaryColor = hsl(204, 86%,  80%)
         right:auto
   .title
     margin:.75rem 0 !important
+
+ul.affiliate-links
+  margin-left:.5rem
+  li
+    list-style-type: none

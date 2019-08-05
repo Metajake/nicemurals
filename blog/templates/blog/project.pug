@@ -15,11 +15,11 @@ h2.subtitle.is-6 {{project.category|capfirst}}
 .columns
   .column.is-three-quarters.is-multiline
     .column.is-full
-      .columns.is-mobile
+      .columns
         |{% if project.featured_image %}
         .column.is-4
           .image
-            img(src='{{project.featured_image.image.url}}')
+            img.has-radius-small(src='{{project.featured_image.image.url}}')
         |{% endif %}
         .column
           .content.
@@ -31,9 +31,14 @@ h2.subtitle.is-6 {{project.category|capfirst}}
           hr.has-background-grey-light
         |{% for i in project.images.all %}
         .column.is-half-mobile(class="is-{% cycle column_sizes|random '' %}-tablet")
-          img(src="{{i.image.url}}")
+          img.has-radius-small(src="{{i.image.url}}")
         |{% endfor %}
     |{%endif%}
+    |{%if project.repository or project.affiliate_links %}
+    .column.is-full.is-hidden-tablet
+      hr.has-background-grey-light
+      include includes/project_stats.pug
+    |{% endif %}
     |{%if project.entry_set.count %}
     .column.is-full
       .columns.is-mobile.is-multiline
@@ -42,21 +47,20 @@ h2.subtitle.is-6 {{project.category|capfirst}}
           h3.title.is-4 Related Posts
         |{% for e in project.entry_set.all %}
         .column.is-half-mobile.is-one-third-tablet
-          a(href="/entry/{{entry.slug}}")
+          a(href="/entry/{{e.slug}}")
             .box.entry
-              .level.is-mobile
+              .level
                 .level-left
                   small.is-size-7 {%if e.category%}{{e.category|capfirst}}{%else%}Uncategorized{%endif%}
                 .level-right
-                  small.is-size-7 {{e.created}}
+                  small.is-size-7 {{e.created.date}}
               |{% if e.featured_image %}
-              .image.is-square.is-clipped(class="{{ e.featured_image.image|orientation }}")
+              .image.is-square.is-clipped.has-radius-small(class="{{ e.featured_image.image|orientation }}")
                 img(src="{{ e.featured_image.image.url }}")
               |{% endif %}
               h3.title.is-5 {{e.title}} 
-              //- p.is-marginless {{e.description|safe|truncatewords:5}}
         |{% endfor %}
     |{%endif%}
   .column.is-hidden-mobile
-    p sidebar
+    include includes/project_stats.pug
 | {% endblock %}

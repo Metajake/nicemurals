@@ -21,7 +21,7 @@
 <h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}
 {% block main-content %}
 <div class="columns">
-  <div class="column is-three-quarters">
+  <div class="column is-four-fifths">
     <div class="columns is-multiline">
       <div class="column is-full">
         <div class="content">{{entry.richbody|safe}}</div>
@@ -31,10 +31,16 @@
     </div>
   </div>
   <div class="column">
-    <h3>Categories</h3>
-    <ul>{% for tag in tags %}
-      <li><a href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
-    </ul>
+    <div class="content">
+      <h3>Blog Categories</h3>
+      <ul>{% for tag in blog_tags %}
+        <li><a class="has-text-primary" href="/tags/{{tag}}">{{tag}}</a></li>{% endfor %}
+      </ul>
+      <h3>Project Categories</h3>
+      <ul>{%for category in project_categories%}
+        <li><a class="has-text-primary" href="/projects/{{category}}">{{category}}</a></li>{% endfor %}
+      </ul>
+    </div>
   </div>
 </div>{% endblock %}
 {% block postscript %}

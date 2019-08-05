@@ -5,15 +5,16 @@ from .models import Entity
 def getRpg(thisSession):
     worlds = {
         'colors' : ['meteor','sunset', 'grade-grey', 'cool-blue', 'ocean', 'clear-sky', 'azure-lane', 'witching-hour'],
-        'size' : 'size-400',
+        'size' : 'is-size-world',
     }
     locations = {
         'colors' : ['old-bubblegum', 'pomegranite', 'hazy-morning'],
-        'size' : 'size-200',
+        'size' : 'is-size-location',
     }
     toReturn = {}
     toReturn['entities'] = Entity.objects.filter(is_active=True)
     toReturn['lvl'] = thisSession['lvl']
-    toReturn['worldBg'] = random.choice( [ random.choice(locations['colors']), random.choice(worlds['colors']) ] )
-    toReturn['worldSize'] = locations['size']
+    environment = random.choice([worlds,locations])
+    toReturn['worldBg'] = random.choice( environment['colors'] )
+    toReturn['worldSize'] = environment['size']
     return toReturn

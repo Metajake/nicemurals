@@ -10,3 +10,8 @@ def to_class_name(value):
 def orientation(image):
     orientation = 'landscape' if image.width > image.height else 'portrait'
     return orientation
+
+@register.filter
+def split_list(value,toSplit):
+    toReturn = value.split(toSplit)
+    return toReturn

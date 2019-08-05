@@ -1,4 +1,4 @@
 {% if entry.featured_image %}
-<div class="image is-square is-clipped {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
+<div class="image is-square is-clipped has-radius-small {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
 <h3 class="title is-4">{{entry.title}} </h3>
 <p class="is-marginless">{{entry.description|safe|truncatewords:5}}</p>

@@ -9,7 +9,7 @@ html
     
   body(class="{{existance}}")
     |{% if existance %}
-    .world(class="{{game.worldBg}} {{game.worldSize}}")
+    |{% include 'rpg/includes/rpg_base.html' %}
     |{% endif %}
     header.hero.is-primary.is-small
       .hero-body
