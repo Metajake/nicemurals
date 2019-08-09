@@ -23,9 +23,9 @@ function mouseMoveInteraction(){
 }
 
 function worldFadeEvent(){
-  // existingAncestors.each(function(){
-  //   $(this).css('pointer-events', 'auto');
-  // })
+  existingAncestors.each(function(){
+    $(this).css('pointer-events', 'auto');
+  })
 }
 
 function initLevelOne(){
