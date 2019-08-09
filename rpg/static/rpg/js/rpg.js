@@ -6,6 +6,7 @@ game = {
 }
 existingAncestors = $('.can-exist > section, .can-exist > header')
 existingParents = $('.can-exist > section > *, .can-exist > header > *')
+let world = document.querySelector('.world');
 
 function takeTurnIfReady(functionToExecute){
   if (enableExpHandler) { functionToExecute() }
@@ -14,11 +15,17 @@ function takeTurnIfReady(functionToExecute){
 function mouseMoveInteraction(){
   initLevelOne()
   initLevelTwo()
-  // 
+  //
   // if (enableExpHandler) {
   //   game['power'] += 1
   //   enableExpHandler = false;
   // }
+}
+
+function worldFadeEvent(){
+  existingAncestors.each(function(){
+    $(this).css('pointer-events', 'auto');
+  })
 }
 
 function initLevelOne(){
@@ -98,5 +105,9 @@ document.addEventListener("DOMContentLoaded", function(){
   $(document).mousemove(function(e){ mouseMoveInteraction() });
   $(document).scroll(function(e){ mouseMoveInteraction() });
   document.addEventListener("touchstart", function(e){ mouseMoveInteraction() })
+
+  world.addEventListener('transitionend', worldFadeEvent)
+  world.addEventListener('webkitTransitionEnd', worldFadeEvent)
+
   $('.game-lvl').html('{{game.lvl}}')
 })
