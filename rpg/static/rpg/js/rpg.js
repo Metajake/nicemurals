@@ -4,8 +4,8 @@ game = {
   'power': 0,
   'on': false,
 }
-existingAncestors = $('.can-exist > section, .can-exist > header')
-existingParents = $('.can-exist > section > *, .can-exist > header > *')
+existingAncestors = $('.can-exist > section, .can-exist > header, .can-exist > footer')
+existingParents = $('.can-exist > section > *, .can-exist > header > *, .can-exist > footer > *')
 let world = document.querySelector('.world');
 
 function takeTurnIfReady(functionToExecute){

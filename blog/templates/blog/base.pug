@@ -27,7 +27,12 @@ html
       .container
         | {% block main-content %}
         | {% endblock %}
-        
+          
+    footer.footer
+      .container
+        |{% block footer-content %}
+        |{% endblock %}
+              
     |{% block prescript %}
     |{% endblock %}
     include includes/base_footer.pug
