@@ -1,12 +1,18 @@
 var body = document.body,
-    html = document.documentElement;
+    html = document.documentElement,
+    docHeight = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
 
-var docHeight = Math.max( body.scrollHeight, body.offsetHeight,
-                       html.clientHeight, html.scrollHeight, html.offsetHeight );
-
-var worldBrand = document.querySelector('.world .is-size-brand')
+var clientValignCenteredItems = document.querySelectorAll('.is-client-vcenter')
 
 $(window).bind("load", function(){
   $('.world').height(docHeight)
-  worldBrand.style.marginTop = window.innerHeight/2 - worldBrand.clientHeight/2 + "px"
+  clientValignCenteredItems.forEach(function(item){
+    item.style.marginTop = window.innerHeight/2 - item.clientHeight/2 + "px"
+  })
 })

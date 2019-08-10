@@ -7,6 +7,7 @@ game = {
 existingAncestors = $('.can-exist > section, .can-exist > header, .can-exist > footer')
 existingParents = $('.can-exist > section > *, .can-exist > header > *, .can-exist > footer > *')
 let world = document.querySelector('.world');
+let elementsToFadeOut = document.querySelectorAll('.has-fade-out');
 
 function takeTurnIfReady(functionToExecute){
   if (enableExpHandler) { functionToExecute() }
@@ -31,7 +32,9 @@ function worldFadeEvent(){
 function initLevelOne(){
   existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
   // existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
-  $('.world').addClass('fade-out')
+  elementsToFadeOut.forEach(function(item){
+    item.classList.add('fade-out')
+  })
 }
 
 function initLevelTwo(){
