@@ -11,7 +11,7 @@ def getRpg(thisSession):
         'colors' : ['old-bubblegum', 'pomegranite', 'hazy-morning'],
         'size' : 'is-size-indoors',
     }
-    brandColors = ['red','black','white']
+    brandColors = ['black','white']
 
     toReturn = {}
     toReturn['entities'] = Entity.objects.filter(is_active=True)

@@ -1,3 +1,4 @@
+var brandColor = 0x5AB2ED;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
   75,
@@ -9,7 +10,7 @@ var renderer = new THREE.WebGLRenderer({alpha:true});
 let cubeSize = 1.5;
 let rotationSpeed = 0.004;
 var geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
-var material = new THREE.MeshBasicMaterial({color:0x5AB2ED});
+var material = new THREE.MeshBasicMaterial({color:brandColor});
 var cube = new THREE.Mesh( geometry, material );
 
 renderer.setSize( window.innerWidth, window.innerHeight);
@@ -23,6 +24,7 @@ function animate(){
 
   cube.rotation.x += rotationSpeed;
   cube.rotation.y += rotationSpeed;
+  // console.log(cube.scale.z)
 
   renderer.render(scene, camera);
 }
