@@ -22,7 +22,7 @@ def home(request):
         'blog_tags' : blogTags,
         'project_categories' : projectCategories,
         'game' : rpg,
-        'existance' : 'can-exist' if config.rpg_active else '',
+        'config' : config,
     }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}
@@ -39,7 +39,6 @@ def taglist(request, blog_tagslug):
         'entries' : entries,
         'blog_tags' : blogTags,
         'project_categories' : projectCategories,
-        'existance' : False,
     }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}
@@ -56,7 +55,6 @@ def categorylist(request, category_slug):
         'entries' : projects,
         'blog_tags' : blogTags,
         'project_categories' : projectCategories,
-        'existance' : False,
     }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}
@@ -72,7 +70,6 @@ def entry(request, entry_slug):
         'entry' : entry,
         'blog_tags' : blogTags,
         'project_categories' : projectCategories,
-        'existance' : False,
     }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}

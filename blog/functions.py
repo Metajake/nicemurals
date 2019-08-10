@@ -18,13 +18,12 @@ blogOptions = {
         ('fas', 'fa-dolly'),
         ('fab', 'fa-accessible-icon'),
     ],
-    'favIcons' : ['cone', 'cube', 'elipse', 'diamond', 'trapezoid', 'trapezoid2'],
+    'favIcons' : ['cone', 'cube', 'elipse', 'diamond', 'trapezoid', 'trapezoid2', 'star', 'star2', 'star3',],
 }
 
 def getBlogBaseProperties():
     config = Config.objects.get(pk=1)
     toReturn = {
-        'config' : config,
         'entry_sort_type' : 'columns' if config.entry_sorting == 'columns' else 'tile',
         'home_icon': random.choice(blogOptions['homeAnchorIcons']),
         'favicon': random.choice(blogOptions['favIcons']),

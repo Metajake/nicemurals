@@ -1,4 +1,4 @@
 |{% load static %}
 
-.world.is-flex.has-items-centered(class="{{game.worldBg}} {{game.worldSize}}")
+.world.is-flex.has-items-centered(class="{% if config.in_location %}{{game.worldBg}} {{game.worldSize}}{%endif%}")
   img.is-size-brand(src="{%static 'blog/images/fs.svg' %}")

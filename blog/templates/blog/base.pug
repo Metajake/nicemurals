@@ -7,9 +7,12 @@ html
     |{% block extrahead %}
     |{% endblock %}
     
-  body(class="{{existance}}")
-    |{% if existance %}
+  body(class="{%if config.rpg_active %}can-exist{%endif%}")
+    |{% if config.rpg_active %}
     |{% include 'rpg/includes/rpg_base.html' %}
+    |{% endif %}
+    |{% if config.zweihander %}
+    |{% include 'rpg/includes/rpg_space.html' %}
     |{% endif %}
     header.hero.is-primary.is-small
       .hero-body
@@ -28,10 +31,10 @@ html
         | {% block main-content %}
         | {% endblock %}
           
-    footer.footer
-      .container
-        |{% block footer-content %}
-        |{% endblock %}
+    //- footer.footer
+    //-   .container
+    //-     |{% block footer-content %}
+    //-     |{% endblock %}
               
     |{% block prescript %}
     |{% endblock %}
