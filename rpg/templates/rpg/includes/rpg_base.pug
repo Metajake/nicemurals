@@ -5,7 +5,7 @@
 |{% endif %}
 
 .brand-container.is-full-screen.is-flex.has-items-centered.has-fade-out
-  img.is-size-brand.is-client-vcenter(src="{%static 'blog/images/fs.svg' %}")
+  img.is-size-brand.is-client-vcenter(src="{%static 'blog/images/fs_'|add:game.brandColor|add:'.svg' %}")
 
 |{% if config.in_space %}
 #space

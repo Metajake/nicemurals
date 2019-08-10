@@ -11,10 +11,13 @@ def getRpg(thisSession):
         'colors' : ['old-bubblegum', 'pomegranite', 'hazy-morning'],
         'size' : 'is-size-indoors',
     }
+    brandColors = ['red','black','white']
+
     toReturn = {}
     toReturn['entities'] = Entity.objects.filter(is_active=True)
     toReturn['lvl'] = thisSession['lvl']
     environment = random.choice([worlds,locations])
     toReturn['worldBg'] = random.choice( environment['colors'] )
     toReturn['worldSize'] = environment['size']
+    toReturn['brandColor'] = random.choice(brandColors)
     return toReturn

@@ -2,5 +2,5 @@
 {% load static %}
 {% if config.in_location %}
 <div class="world is-full-screen has-fade-out {{game.worldBg}} {{game.worldSize}}"></div>{% endif %}
-<div class="brand-container is-full-screen is-flex has-items-centered has-fade-out"><img class="is-size-brand is-client-vcenter" src="{%static 'blog/images/fs.svg' %}"/></div>{% if config.in_space %}
+<div class="brand-container is-full-screen is-flex has-items-centered has-fade-out"><img class="is-size-brand is-client-vcenter" src="{%static 'blog/images/fs_'|add:game.brandColor|add:'.svg' %}"/></div>{% if config.in_space %}
 <div id="space"></div>{% endif %}
