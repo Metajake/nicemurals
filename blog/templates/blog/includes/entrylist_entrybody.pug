@@ -1,5 +1,5 @@
 |{% if entry.featured_image %}
-.image.is-square.is-clipped.has-radius-small(class="{{ entry.featured_image.image|orientation }}")
+.image.is-square.is-clipped.has-radius-small.is-featured-image(class="{{ entry.featured_image.image|orientation }}")
   img(src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}")
 |{% endif %}
 h3.title.is-4 {{entry.title}} 
