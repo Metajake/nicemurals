@@ -1,4 +1,10 @@
 |{% load static %}
 
+|{% if config.in_location %}
 .world.is-flex.has-items-centered(class="{% if config.in_location %}{{game.worldBg}} {{game.worldSize}}{%endif%}")
   img.is-size-brand(src="{%static 'blog/images/fs.svg' %}")
+|{% endif %}
+
+|{% if config.in_space %}
+#space
+|{% endif %}

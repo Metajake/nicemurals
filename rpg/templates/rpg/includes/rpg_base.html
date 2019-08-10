@@ -1,2 +1,6 @@
+
 {% load static %}
-<div class="world is-flex has-items-centered {% if config.in_location %}{{game.worldBg}} {{game.worldSize}}{%endif%}"><img class="is-size-brand" src="{%static 'blog/images/fs.svg' %}"/></div>
+{% if config.in_location %}
+<div class="world is-flex has-items-centered {% if config.in_location %}{{game.worldBg}} {{game.worldSize}}{%endif%}"><img class="is-size-brand" src="{%static 'blog/images/fs.svg' %}"/></div>{% endif %}
+{% if config.in_space %}
+<div id="space"></div>{% endif %}

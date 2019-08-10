@@ -48,7 +48,7 @@ class Config(models.Model):
     entry_sorting = models.CharField(max_length=100, choices=[('tiles','tiles'),('columns','columns')], default="columns")
     rpg_active = models.BooleanField(default=False)
     in_location = models.BooleanField(default=False)
-    zweihander = models.BooleanField(default=False)
+    in_space = models.BooleanField(default=False)
 
     def __str__(self):
         return "Blog Config"
