@@ -5,16 +5,17 @@ title First Studio | {{tag.tagslug}}
 | {% endblock %}
 
 | {% block masthead-headline %}
-h1.title.is-2 {{headline|capfirst}}
+h1.title.is-2 {{headline|capfirst}}{{entries.count|pluralize}}
 h2.subtitle.is-6 {{headline.summary}}
 | {% endblock %}  
   
 | {% block main-content %}
 .columns
   .column.is-four-fifths
-    //- takes {{entries}}
+    //- include file takes {{entries}}
     include includes/entrylist.pug
       
   .column
+    //- include file takes {{entries}}
     include includes/taglist.pug
 | {% endblock %}

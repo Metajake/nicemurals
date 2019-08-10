@@ -15,7 +15,7 @@ class Entry(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     weapon_type = models.CharField(max_length=30, choices=[('summary', 'summary'),('summary_large_image','summary_large_image')], default='summary')
-    published = models.BooleanField(default = True)
+    is_published = models.BooleanField(default = True)
     richbody = RichTextField(blank=True)
     description = models.CharField(max_length=300)
     created = models.DateTimeField(auto_now_add=True)

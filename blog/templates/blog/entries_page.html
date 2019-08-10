@@ -3,7 +3,7 @@
 {% block extrahead %}
 <title>First Studio | {{tag.tagslug}}</title>{% endblock %}
 {% block masthead-headline %}
-<h1 class="title is-2">{{headline|capfirst}}</h1>
+<h1 class="title is-2">{{headline|capfirst}}{{entries.count|pluralize}}</h1>
 <h2 class="subtitle is-6">{{headline.summary}}</h2>{% endblock %}  
 {% block main-content %}
 <div class="columns">
