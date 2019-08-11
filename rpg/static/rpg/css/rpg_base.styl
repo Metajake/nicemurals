@@ -62,11 +62,46 @@ $flexibility = 140%
     height:100%
     width:100%
 
+svg#brand-logo
+  animation: glow 10s forwards
+  fill-rule:evenodd
+  clip-rule:evenodd
+  stroke-linejoin:round
+  stroke-miterlimit:2
+  background: none !important
+  fill:white
+  path
+    // fill:white //default from exported svg file
+    fill-rule:nonzero
+  &.clear-sky
+    fill:#2980B9
+  &.sunset
+    fill: #b92b27
+  &.meteor
+    fill: #0F2027
+  &.grade-grey
+    fill: lighten(#bdc3c7, 25%)
+  &.cool-blue
+    fill: #2193b0
+  &.ocean
+    fill: darken(#373B44, 20%)
+  &.clear-sky
+    fill: darken(#2980B9, 20%)
+  &.azure-lane
+    fill: #7F7FD5
+  &.witching-hour
+    fill: #c31432
+  &.old-bubblegum
+    fill: rgb(89, 57, 212)
+  &.pomegranite
+    fill:  lighten(rgb(239, 7, 129), 25%)
+  &.hazy-morning
+    fill: rgb(16, 52, 222)
+
 .is-size-brand
-  width:15%
+  width:12%
   @media(max-width:768px)
     width:25%
-  animation: glow 10s forwards
 
 @keyframes breathe
   0%
@@ -87,7 +122,9 @@ $flexibility = 140%
 @keyframes glow
   0%
     opacity:0.0
-  50%
+  45%
+    opacity: 1.0
+  55%
     opacity: 1.0
   100%
     opacity:0.0
