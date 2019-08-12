@@ -7,7 +7,7 @@ var camera = new THREE.PerspectiveCamera(
   1000
 );
 var renderer = new THREE.WebGLRenderer({alpha:true});
-cubeSize = mobilecheck() ? 1.5 : 1.8;
+var cubeSize = (mobilecheck() ? 1.5 : 1.8);
 let rotationSpeed = 0.004;
 var geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
 var material = new THREE.MeshBasicMaterial({color:brandColor});
