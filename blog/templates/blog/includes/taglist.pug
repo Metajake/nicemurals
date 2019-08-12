@@ -1,13 +1,13 @@
 .content
-  h3 Project Categories
+  h3 {% translate "Project Categories" language True %}
   ul
     | {%for category in project_categories%}
     li
-      a.has-text-primary(href='/projects/{{category}}') {{category}}
+      a.has-text-primary(href='/projects/{{category}}') {% translate category|safe language True %}
     | {% endfor %}
-  h3 Blog Categories
+  h3 {% translate "Blog Categories" language True %}
   ul
     | {% for tag in blog_tags %}
     li
-      a.has-text-primary(href='/tags/{{tag}}') {{tag}}
+      a.has-text-primary(href='/tags/{{tag}}') {% translate tag|safe language True %}
     | {% endfor %}

@@ -27,6 +27,7 @@ def getBlogBaseProperties():
         'entry_sort_type' : 'columns' if config.entry_sorting == 'columns' else 'tile',
         'home_icon': random.choice(blogOptions['homeAnchorIcons']),
         'favicon': random.choice(blogOptions['favIcons']),
+        'language':random.choice(['ja','en'])
     }
     return toReturn
 

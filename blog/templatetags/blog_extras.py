@@ -1,4 +1,5 @@
 from django import template
+from translate import Translator
 
 register = template.Library()
 
@@ -14,4 +15,10 @@ def orientation(image):
 @register.filter
 def split_list(value,toSplit):
     toReturn = value.split(toSplit)
+    return toReturn
+
+@register.simple_tag
+def translate(value, language, toTitle):
+    translator = Translator(to_lang=language)
+    toReturn = translator.translate(value).title() if toTitle else translator.translate(value)
     return toReturn
