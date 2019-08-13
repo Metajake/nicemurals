@@ -2,7 +2,7 @@ from django.db import models
 
 from ckeditor.fields import RichTextField
 
-from portfolio.models import Work, Project
+from portfolio.models import Work, Project, Portrait
 
 class Tag(models.Model):
     tagslug = models.SlugField(max_length=200, unique=True)
@@ -51,7 +51,7 @@ class Config(models.Model):
     in_space = models.BooleanField(default=False)
     language = models.CharField(max_length=10, choices=[('ja','Japanese'),('en','English'),('es','Espanol'),('fr','French'),('de','German'),('sv','Swedish'),('zh','Chinese')], default='ja')
     author_description = RichTextField(blank=True)
-    profile_picture = models.ForeignKey(Work, related_name="profile_picture", on_delete=models.CASCADE, blank=True, null=True)
+    profile_picture = models.ForeignKey(Portrait, related_name="profile_picture", on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return "Blog Config"

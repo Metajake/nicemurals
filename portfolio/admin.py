@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Work, Project, Category
+from .models import Work, Project, Category, Portrait
 
 class ProjectAdmin(admin.ModelAdmin):
     prepopulated_fields = {
@@ -8,5 +8,6 @@ class ProjectAdmin(admin.ModelAdmin):
     }
 
 admin.site.register(Work)
+admin.site.register(Portrait)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Category)
