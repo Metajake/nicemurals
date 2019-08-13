@@ -4,8 +4,8 @@ game = {
   'power': 0,
   'on': false,
 }
-existingAncestors = $('.can-exist > section, .can-exist > header, .can-exist > footer')
-existingParents = $('.can-exist > section > *, .can-exist > header > *, .can-exist > footer > *')
+existingAncestors = $('.has-location > section, .has-location > header, .has-location > footer')
+existingParents = $('.has-location > section > *, .has-location > header > *, .has-location > footer > *')
 let elementsToFadeOut = document.querySelectorAll('.has-fade-out');
 
 function takeTurnIfReady(functionToExecute){

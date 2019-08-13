@@ -3,9 +3,10 @@ $runSpeed = 3s
 $lungCapacity = 20s
 $tension = 12s
 
-.can-exist > header, .can-exist > section, .can-exist > footer
+.has-location > header, .has-location > section, .has-location > footer
   opacity:0.0
   transition: opacity $gameOverTransition
+  pointer-events:none
   &.fade-in
     opacity: 1.0
     transition: opacity $gameOverTransition
