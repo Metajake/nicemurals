@@ -11,7 +11,7 @@
           .level-left
             small.is-size-7 {%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}
           .level-right
-            small.is-size-7 {% translate entry.created|safe language True %}
+            small.is-size-7 {% translate entry.created|date|safe language True %}
         include entrylist_entrybody.pug
     |{% elif entry|to_class_name == 'Project' %}
     a(href="/project/{{entry.slug}}")

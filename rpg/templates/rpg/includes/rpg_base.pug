@@ -2,10 +2,11 @@
 
 |{% if config.in_location %}
 .world.is-full-screen.has-fade-out(class="{{game.worldBg}} {{game.worldSize}}")
-|{% endif %}
-
+  
 .brand-container.is-full-screen.is-flex.has-items-centered.has-fade-out
   |{%include 'rpg/includes/svg/fs_logo.html' %}
+|{% endif %}
+
 
 |{% if config.in_space %}
 #space

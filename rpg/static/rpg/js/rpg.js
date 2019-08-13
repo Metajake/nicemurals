@@ -6,7 +6,6 @@ game = {
 }
 existingAncestors = $('.can-exist > section, .can-exist > header, .can-exist > footer')
 existingParents = $('.can-exist > section > *, .can-exist > header > *, .can-exist > footer > *')
-let world = document.querySelector('.world');
 let elementsToFadeOut = document.querySelectorAll('.has-fade-out');
 
 function takeTurnIfReady(functionToExecute){
@@ -21,12 +20,6 @@ function mouseMoveInteraction(){
   //   game['power'] += 1
   //   enableExpHandler = false;
   // }
-}
-
-function worldFadeEvent(){
-  existingAncestors.each(function(){
-    $(this).css('pointer-events', 'auto');
-  })
 }
 
 function initLevelOne(){
@@ -108,9 +101,6 @@ document.addEventListener("DOMContentLoaded", function(){
   $(document).mousemove(function(e){ mouseMoveInteraction() });
   $(document).scroll(function(e){ mouseMoveInteraction() });
   document.addEventListener("touchstart", function(e){ mouseMoveInteraction() })
-
-  world.addEventListener('transitionend', worldFadeEvent)
-  world.addEventListener('webkitTransitionEnd', worldFadeEvent)
 
   $('.game-lvl').html('{{game.lvl}}')
 })

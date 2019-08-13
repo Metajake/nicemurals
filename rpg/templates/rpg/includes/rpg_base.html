@@ -1,6 +1,7 @@
 
 {% load static %}
 {% if config.in_location %}
-<div class="world is-full-screen has-fade-out {{game.worldBg}} {{game.worldSize}}"></div>{% endif %}
-<div class="brand-container is-full-screen is-flex has-items-centered has-fade-out">{%include 'rpg/includes/svg/fs_logo.html' %}</div>{% if config.in_space %}
+<div class="world is-full-screen has-fade-out {{game.worldBg}} {{game.worldSize}}"></div>
+<div class="brand-container is-full-screen is-flex has-items-centered has-fade-out">{%include 'rpg/includes/svg/fs_logo.html' %}</div>{% endif %}
+{% if config.in_space %}
 <div id="space"></div>{% endif %}

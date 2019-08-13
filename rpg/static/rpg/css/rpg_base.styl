@@ -6,20 +6,6 @@ $lungCapacity = 20s
 $tension = 12s
 $flexibility = 140%
 
-.can-exist > header, .can-exist > section, .can-exist > footer
-  opacity:0.0
-  transition: opacity $gameOverTransition
-  pointer-events:none
-  &.fade-in
-    opacity: 1.0
-    transition: opacity $gameOverTransition
-  & > *
-    opacity: 0.0
-    transition: opacity $gameOverTransition
-    &.fade-in
-      opacity: 1.0
-      transition: opacity $gameOverTransition
-
 .is-full-screen
   position: absolute
   width:100%
@@ -34,21 +20,6 @@ $flexibility = 140%
   transition:opacity $gameOverTransition
   &.fade-out
     opacity: 0.0
-
-.world
-  transition:opacity $gameOverTransition, background-size $runSpeed, background-position $runSpeed
-  z-index: -3
-  &.is-size-outdoors
-    animation:breathe $lungCapacity infinite
-    @media(max-width:768px)
-      animation: breathe 15s infinite
-    background-size: 400% 400%
-  &.is-size-indoors
-    animation:flex $tension infinite
-    @media(max-width:768px)
-      animation: flex 10s infinite
-    background-size: 100% 100%
-    background-position:35% 0%
 
 .brand-container
   z-index:-1

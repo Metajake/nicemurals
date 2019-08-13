@@ -24,7 +24,7 @@
           <div class="box entry">
             <div class="level is-mobile">
               <div class="level-left"><small class="is-size-7">{%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}</small></div>
-              <div class="level-right"><small class="is-size-7">{% translate entry.created|safe language True %}</small></div>
+              <div class="level-right"><small class="is-size-7">{% translate entry.created|date|safe language True %}</small></div>
             </div>{% if entry.featured_image %}
             <div class="image is-square is-clipped has-radius-small is-featured-image {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
             <h3 class="title is-4">{%translate entry.title|safe language True%} </h3>

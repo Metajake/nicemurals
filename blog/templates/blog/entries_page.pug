@@ -1,12 +1,14 @@
 | {% extends 'blog/base.html' %}
 
+| {% load blog_extras %}
+
 | {% block extrahead %}
-title First Studio | {{tag.tagslug}}
+title {% translate "First Studio" language True %} | {% translate tag.tagslug|safe language True %}
 | {% endblock %}
 
 | {% block masthead-headline %}
 h1.title.is-2 {{headline|capfirst}}{{entries.count|pluralize}}
-h2.subtitle.is-6 {{headline.summary}}
+h2.subtitle.is-6 {{headline.summary|default:"&nbsp;"}}
 | {% endblock %}  
   
 | {% block main-content %}

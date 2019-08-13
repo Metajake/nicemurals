@@ -24,8 +24,10 @@ h2.subtitle.is-6 &nbsp;
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.linkedin.com/in/jacobnorth/"): i.fab.fa-linkedin
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.instagram.com/metajake/"): i.fab.fa-instagram
       .column.is-one-third
-        .image
-          img(src="{{config.profile_picture.image.url}}")
+        .content
+          .image
+            img(src="{{config.profile_picture.image.url}}")
+          p.is-size-6.has-text-grey.is-italic {{config.profile_picture.caption}}
       .column.is-full
   #sidebar.column
 | {% endblock %}

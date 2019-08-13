@@ -1,10 +1,11 @@
 
 {% extends 'blog/base.html' %}
+{% load blog_extras %}
 {% block extrahead %}
-<title>First Studio | {{tag.tagslug}}</title>{% endblock %}
+<title>{% translate "First Studio" language True %} | {% translate tag.tagslug|safe language True %}</title>{% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{{headline|capfirst}}{{entries.count|pluralize}}</h1>
-<h2 class="subtitle is-6">{{headline.summary}}</h2>{% endblock %}  
+<h2 class="subtitle is-6">{{headline.summary|default:"&nbsp;"}}</h2>{% endblock %}  
 {% block main-content %}
 <div class="columns">
   <div class="column is-four-fifths">
@@ -15,7 +16,7 @@
           <div class="box entry">
             <div class="level is-mobile">
               <div class="level-left"><small class="is-size-7">{%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}</small></div>
-              <div class="level-right"><small class="is-size-7">{% translate entry.created|safe language True %}</small></div>
+              <div class="level-right"><small class="is-size-7">{% translate entry.created|date|safe language True %}</small></div>
             </div>{% if entry.featured_image %}
             <div class="image is-square is-clipped has-radius-small is-featured-image {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
             <h3 class="title is-4">{%translate entry.title|safe language True%} </h3>
