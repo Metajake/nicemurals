@@ -1,10 +1,11 @@
 
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load blog_extras %}
 {% block extrahead %}
 <title>First Studio | About</title>{% endblock %}
 {% block masthead-headline %}
-<h1 class="title is-2">About The Creative</h1>
+<h1 class="title is-2">{% translate "About the Creative" language False %}</h1>
 <h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}  
 {% block main-content %}
 <div class="columns">
@@ -12,8 +13,8 @@
     <div class="columns is-multiline">
       <div class="column is-two-thirds">
         <div class="content">
-          <h2>Jayno Baby!..</h2>
-          <p>{{config.author_description|safe}}</p>
+          <h2>{% translate "Jayno Baby!.." language False %}</h2>
+          <p>{% translate config.author_description|safe|striptags language False %}</p>
         </div>
         <div class="inline-icon-container">
           <h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://twitter.com/Jaynoco"><i class="fab fa-twitter"></i></a></h1>
@@ -24,7 +25,7 @@
       <div class="column is-one-third">
         <div class="content">
           <div class="image"><img src="{{config.profile_picture.image.url}}"/></div>
-          <p class="is-size-6 has-text-grey is-italic">{{config.profile_picture.caption}}</p>
+          <p class="is-size-6 has-text-grey is-italic">{%translate config.profile_picture.caption|safe language False %}</p>
         </div>
       </div>
       <div class="column is-full"></div>

@@ -1,13 +1,14 @@
 |{% extends 'blog/base.html' %}
 
 |{% load static %}
+|{% load blog_extras %}
 
 | {% block extrahead %}
 title First Studio | About
 | {% endblock %}
 
 | {% block masthead-headline %}
-h1.title.is-2 About The Creative
+h1.title.is-2 {% translate "About the Creative" language False %}
 h2.subtitle.is-6 &nbsp;
 | {% endblock %}  
   
@@ -17,8 +18,8 @@ h2.subtitle.is-6 &nbsp;
     .columns.is-multiline
       .column.is-two-thirds
         .content
-          h2 Jayno Baby!..
-          p {{config.author_description|safe}}
+          h2 {% translate "Jayno Baby!.." language False %}
+          p {% translate config.author_description|safe|striptags language False %}
         .inline-icon-container
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://twitter.com/Jaynoco"): i.fab.fa-twitter
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.linkedin.com/in/jacobnorth/"): i.fab.fa-linkedin
@@ -27,7 +28,7 @@ h2.subtitle.is-6 &nbsp;
         .content
           .image
             img(src="{{config.profile_picture.image.url}}")
-          p.is-size-6.has-text-grey.is-italic {{config.profile_picture.caption}}
+          p.is-size-6.has-text-grey.is-italic {%translate config.profile_picture.caption|safe language False %}
       .column.is-full
   #sidebar.column
 | {% endblock %}
