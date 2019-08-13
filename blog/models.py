@@ -50,6 +50,8 @@ class Config(models.Model):
     in_location = models.BooleanField(default=False)
     in_space = models.BooleanField(default=False)
     language = models.CharField(max_length=10, choices=[('ja','Japanese'),('en','English'),('es','Espanol'),('fr','French'),('de','German'),('sv','Swedish'),('zh','Chinese')], default='ja')
+    author_description = RichTextField(blank=True)
+    profile_picture = models.ForeignKey(Work, related_name="profile_picture", on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return "Blog Config"

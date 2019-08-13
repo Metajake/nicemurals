@@ -9,14 +9,14 @@
       .box.entry
         .level.is-mobile
           .level-left
-            small.is-size-7 {%if entry.category%}{{entry.category|capfirst}}{%else%}Uncategorized{%endif%}
+            small.is-size-7 {%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}
           .level-right
-            small.is-size-7 {{entry.created}}
+            small.is-size-7 {% translate entry.created|safe language True %}
         include entrylist_entrybody.pug
     |{% elif entry|to_class_name == 'Project' %}
     a(href="/project/{{entry.slug}}")
       .box.entry
-        small.is-size-7 {{entry|to_class_name}} - {%if entry.category%}{{entry.category|capfirst}}{%else%}Uncategorized{%endif%}
+        small.is-size-7 {% translate entry|to_class_name|safe language True %} - {%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}
         include entrylist_entrybody.pug
     | {% endif %}
       

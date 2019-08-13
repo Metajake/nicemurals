@@ -2,5 +2,5 @@
 .image.is-square.is-clipped.has-radius-small.is-featured-image(class="{{ entry.featured_image.image|orientation }}")
   img(src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}")
 |{% endif %}
-h3.title.is-4 {{entry.title}} 
-p.is-marginless {{entry.description|safe|truncatewords:5}}
+h3.title.is-4 {%translate entry.title|safe language True%} 
+p.is-marginless {%translate entry.description|safe|truncatewords:5|striptags language True%}

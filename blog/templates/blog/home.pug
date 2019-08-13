@@ -6,6 +6,16 @@
 title {% translate "First Studio" language True %} | Jacob North
 | {% endblock %}
 
+|{%block body_class%}
+|{%if config.rpg_active %}can-exist{%endif%}
+|{%endblock%}
+
+|{%block body_intro%}
+|{% if config.rpg_active %}
+|{% include 'rpg/includes/rpg_base.html' %}
+|{% endif %}
+|{%endblock%}
+
 | {% block masthead-headline %}
 h1.title.is-2 {% translate "First Studio" language True %}.Co
 h2.subtitle.is-6 {% translate "The Interactive Work of" language True %} Jacob North

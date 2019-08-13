@@ -7,10 +7,9 @@ html
     |{% block extrahead %}
     |{% endblock %}
     
-  body(class="{%if config.rpg_active %}can-exist{%endif%}")
-    |{% if config.rpg_active %}
-    |{% include 'rpg/includes/rpg_base.html' %}
-    |{% endif %}
+  body(class="{%block body_class%}{%endblock%}")
+    |{%block body_intro %}
+    |{%endblock %}
     header.hero.is-primary.is-small
       .hero-body
         .container

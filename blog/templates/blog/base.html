@@ -11,10 +11,9 @@
     <link rel="stylesheet" href="{% static 'rpg/css/rpg_base.css' %}">{% endif %}{% block extrahead %}
     {% endblock %}
   </head>
-  <body class="{%if config.rpg_active %}can-exist{%endif%}">
-    {% if config.rpg_active %}
-    {% include 'rpg/includes/rpg_base.html' %}
-    {% endif %}
+  <body class="{%block body_class%}{%endblock%}">
+    {%block body_intro %}
+    {%endblock %}
     <header class="hero is-primary is-small">
       <div class="hero-body">
         <div class="container">
