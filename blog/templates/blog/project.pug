@@ -17,7 +17,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
     .column.is-full
       .columns
         |{% if project.featured_image %}
-        .column.is-4
+        .column.is-5
           .image
             img.has-radius-small(src='{{project.featured_image.image.url}}')
         |{% endif %}
@@ -30,7 +30,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
         .column.is-full
           hr.has-background-grey-light
         |{% for i in project.images.all|shuffle %}
-        .column.is-half-mobile(class="is-{% cycle column_sizes|random '' %}-tablet")
+        .column.is-full-mobile(class="is-{% cycle column_sizes|random '' %}-tablet")
           img.has-radius-small(src="{{i.image.url}}")
         |{% endfor %}
     |{%endif%}

@@ -11,7 +11,7 @@
   <div class="column is-three-quarters is-multiline">
     <div class="column is-full">
       <div class="columns">{% if project.featured_image %}
-        <div class="column is-4">
+        <div class="column is-5">
           <div class="image"><img class="has-radius-small" src="{{project.featured_image.image.url}}"/></div>
         </div>{% endif %}
         <div class="column">
@@ -24,7 +24,7 @@
         <div class="column is-full">
           <hr class="has-background-grey-light"/>
         </div>{% for i in project.images.all|shuffle %}
-        <div class="column is-half-mobile is-{% cycle column_sizes|random '' %}-tablet"><img class="has-radius-small" src="{{i.image.url}}"/></div>{% endfor %}
+        <div class="column is-full-mobile is-{% cycle column_sizes|random '' %}-tablet"><img class="has-radius-small" src="{{i.image.url}}"/></div>{% endfor %}
       </div>
     </div>{%endif%}
     {%if project.repository or project.affiliate_links %}
