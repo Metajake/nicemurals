@@ -12,7 +12,7 @@ def home(request):
     if 'lvl' not in request.session:
         request.session['lvl'] = 0
 
-    projects = Project.objects.filter(is_published=True).order_by('?')
+    projects = Project.objects.filter(is_published=True)
     blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1)
     projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1)
     rpg = getRpg(request.session)

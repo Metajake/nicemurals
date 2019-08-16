@@ -49,12 +49,7 @@
     <script src="{% static 'js/jqueryUI.js' %}"></script>
     <script src="{% static 'blog/js/blog-base.js' %}"></script>{% if config.rpg_active %}
     <script src="{% static 'rpg/js/rpg_ui.js' %}"></script>
-    <script src="{% static 'rpg/js/rpg.js' %}"></script>{% if config.in_space %}
-    <script src="{% static 'js/three.min.js' %}"></script>
-    <script src="{% static 'rpg/js/rpg_three.js' %}"></script>{% endif %}
-    {% if config.in_location %}
-    <script src="{% static 'rpg/js/location.js'%}"></script>{% endif %}
-    {% endif %}{% block postscript %}
+    <script src="{% static 'rpg/js/rpg.js' %}"></script>{% endif %}{% block postscript %}
     {% endblock %}
   </body>
 </html>

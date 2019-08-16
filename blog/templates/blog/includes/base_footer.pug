@@ -5,11 +5,4 @@ script(src="{% static 'blog/js/blog-base.js' %}")
 |{% if config.rpg_active %}
 script(src="{% static 'rpg/js/rpg_ui.js' %}")
 script(src="{% static 'rpg/js/rpg.js' %}")
-|{% if config.in_space %}
-script(src="{% static 'js/three.min.js' %}")
-script(src="{% static 'rpg/js/rpg_three.js' %}")
-|{% endif %}
-|{% if config.in_location %}
-script(src="{% static 'rpg/js/location.js'%}")
-|{% endif %}
 |{% endif %}

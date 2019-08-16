@@ -1,8 +1,10 @@
 
 {% extends 'blog/base.html' %}
+{% load static %}
 {% load blog_extras %}
 {% block extrahead %}
-<title>First Studio | {{project.title}}</title>{% endblock %}
+<title>First Studio | {{project.title}}</title>
+<link rel="stylesheet" href="{%static 'blog/css/syntaxhighlighting.css'%}"/>{% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{{project.title}}</h1>
 <h2 class="subtitle is-6">{{project.category|capfirst}}</h2>{% endblock %}
@@ -10,14 +12,7 @@
 <div class="columns">
   <div class="column is-three-quarters is-multiline">
     <div class="column is-full">
-      <div class="columns">{% if project.featured_image %}
-        <div class="column is-5">
-          <div class="image"><img class="has-radius-small" src="{{project.featured_image.image.url}}"/></div>
-        </div>{% endif %}
-        <div class="column">
-          <div class="content">{{project.description|safe}}</div>
-        </div>
-      </div>
+      <div class="content">{{project.description|safe}}</div>
     </div>{%if project.images.count %}
     <div class="column project-images is-full">
       <div class="columns is-mobile is-multiline">

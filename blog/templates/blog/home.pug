@@ -1,6 +1,7 @@
 | {% extends 'blog/base.html' %}
 
 | {% load blog_extras %}
+| {% load static %}
 
 | {% block extrahead %}
 title {% translate "First Studio" language True %} | Jacob North
@@ -29,3 +30,18 @@ h2.subtitle.is-6 {% translate "The Interactive Work of" language True %} Jacob N
   .column
     include includes/taglist.pug
 | {% endblock %}
+
+|{% block postscript %}
+|{% if config.rpg_active %}
+
+|{% if config.in_space %}
+script(src="{% static 'js/three.min.js' %}")
+script(src="{% static 'rpg/js/rpg_three.js' %}")
+|{% endif %}
+
+|{% if config.in_location %}
+script(src="{% static 'rpg/js/location.js'%}")
+|{% endif %}
+
+|{% endif %}
+|{% endblock %}

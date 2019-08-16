@@ -1,6 +1,7 @@
 
 {% extends 'blog/base.html' %}
 {% load blog_extras %}
+{% load static %}
 {% block extrahead %}
 <title>{% translate "First Studio" language True %} | Jacob North</title>{% endblock %}
 {%block body_class%}
@@ -57,3 +58,12 @@
     </div>
   </div>
 </div>{% endblock %}
+{% block postscript %}
+{% if config.rpg_active %}
+{% if config.in_space %}
+<script src="{% static 'js/three.min.js' %}"></script>
+<script src="{% static 'rpg/js/rpg_three.js' %}"></script>{% endif %}
+{% if config.in_location %}
+<script src="{% static 'rpg/js/location.js'%}"></script>{% endif %}
+{% endif %}
+{% endblock %}
