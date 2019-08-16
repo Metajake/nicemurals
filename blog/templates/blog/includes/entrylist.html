@@ -1,31 +1,27 @@
+
+{% load blog_extras %}
 {% if config.entry_sorting == 'columns'%}
-<div class="columns is-multiline">{% for entry in entries reversed %}
-  <div class="column is-one-third"><a href="/entry/{{entry.slug}}">
-      <div class="card">{% for work in entry.images.all %}{% if forloop.first %}
-        <div class="card-image">
-          <div class="figure image is-4by3"><img src="{{ work.image.url }}"/></div>
-        </div>{% endif %}{% endfor %}
-        <div class="card-content">
-          <div class="content">
-            <h3 class="title is-4">{{entry.title}} </h3>
-            <h4 class="subtitle is-6">{{entry.richbody | safe | truncatewords:7}}</h4>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <div class="card-footer-item justify-left">
-            <p>{{entry.created}}</p>
-          </div>
-        </footer>
-      </div></a></div>{% endfor %}
+<div class="columns is-multiline">{% for entry in entries %}
+  <div class="column is-one-third-desktop is-half-tablet">{% if entry|to_class_name == 'Entry' %}<a href="/entry/{{entry.slug}}">
+      <div class="box entry">
+        <div class="level is-mobile">
+          <div class="level-left"><small class="is-size-7">{%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}</small></div>
+          <div class="level-right"><small class="is-size-7">{% translate entry.created|date|safe language True %}</small></div>
+        </div>{% if entry.featured_image %}
+        <div class="image is-square is-clipped has-radius-small is-featured-image {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
+        <h3 class="title is-4">{%translate entry.title|safe language True%} </h3>
+        <p class="is-marginless">{%translate entry.description|safe|truncatewords:5|striptags language True%}</p>
+      </div></a>{% elif entry|to_class_name == 'Project' %}<a href="/project/{{entry.slug}}">
+      <div class="box entry"><small class="is-size-7">{% translate entry|to_class_name|safe language True %} - {%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}</small>{% if entry.featured_image %}
+        <div class="image is-square is-clipped has-radius-small is-featured-image {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
+        <h3 class="title is-4">{%translate entry.title|safe language True%} </h3>
+        <p class="is-marginless">{%translate entry.description|safe|truncatewords:5|striptags language True%}</p>
+      </div></a>{% endif %}</div>{% endfor %}
 </div>{% elif config.entry_sorting == 'tiles' %}
-<div class="tile is-ancestor is-vertical">
-  {% for entry in entries %}
-  {% if forloop.first %}<div class="tile">{% endif %}
-  <div class="tile is-parent">
-    <artice class="tile is-child box">
-      <p>{{entry.title}}</p>{% if entry.featured_image.image %}<img src="{{entry.featured_image.image.url}}"/>{% endif %}
-    </artice>
-  </div>{% if forloop.counter|divisibleby:"2" %}</div><div class="tile">{% endif %}
-  {% if forloop.last %}</div>{% endif %}
-  {% endfor %}
+<div class="tile is-ancestor">
+  <div class="tile is-parent is-12 is-vertical">{% for entry in entries %}
+    <artice class="tile is-6 is-child box">
+      <p>{{entry.title}}</p>{% if entry.featured_image.image %}<img class="has-radius-small" src="{{entry.featured_image.image.url}}"/>{% endif %}
+    </artice>{% endfor %}
+  </div>
 </div>{% endif %}
