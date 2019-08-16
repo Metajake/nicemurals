@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.db.models import Count, Q
+import random
 
 from blog.functions import tweetEntryLink, getEmptyRowCount, getBlogBaseProperties
 from .models import Entry, Tag, Config
 from rpg.functions import *
-from portfolio.models import Project, Category
+from portfolio.models import Project, Category, Portrait
 
 def home(request):
     if 'lvl' not in request.session:
@@ -85,7 +86,9 @@ def project(request, project_slug):
     return render(request, 'blog/project.html', context)
 
 def about(request):
-    context = {}
+    context = {
+        'profile_picture': random.choice(Portrait.objects.all())
+    }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}
     return render(request, 'blog/about.html', context)

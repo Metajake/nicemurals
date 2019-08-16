@@ -27,8 +27,8 @@ h2.subtitle.is-6 &nbsp;
       .column.is-one-third
         .content
           .image
-            img.has-radius-small(src="{{config.profile_picture.image.url}}")
-          p.is-size-6.has-text-grey.is-italic {%translate config.profile_picture.caption|safe language False %}
+            img.has-radius-small(src="{{profile_picture.image.url}}")
+          p.is-size-6.has-text-grey.is-italic {%translate profile_picture.caption|safe language False %}
       .column.is-full
   #sidebar.column
 | {% endblock %}
