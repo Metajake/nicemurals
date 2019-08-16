@@ -23,7 +23,7 @@
       <div class="columns is-mobile is-multiline">
         <div class="column is-full">
           <hr class="has-background-grey-light"/>
-        </div>{% for i in project.images.all %}
+        </div>{% for i in project.images.all|shuffle %}
         <div class="column is-half-mobile is-{% cycle column_sizes|random '' %}-tablet"><img class="has-radius-small" src="{{i.image.url}}"/></div>{% endfor %}
       </div>
     </div>{%endif%}

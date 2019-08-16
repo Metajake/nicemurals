@@ -1,5 +1,6 @@
 from django import template
 from translate import Translator
+import random
 
 register = template.Library()
 
@@ -23,3 +24,11 @@ def translate(value, language, toTitle):
     # toReturn = translator.translate(value).title() if toTitle else translator.translate(value)
     toReturn = value.title() if toTitle else value
     return toReturn
+
+@register.filter
+def shuffle(value):
+    itemList = []
+    for item in value:
+        itemList.append(item)
+    shuffledList = random.sample(itemList, len(itemList))
+    return shuffledList

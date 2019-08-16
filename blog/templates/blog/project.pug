@@ -29,7 +29,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
       .columns.is-mobile.is-multiline
         .column.is-full
           hr.has-background-grey-light
-        |{% for i in project.images.all %}
+        |{% for i in project.images.all|shuffle %}
         .column.is-half-mobile(class="is-{% cycle column_sizes|random '' %}-tablet")
           img.has-radius-small(src="{{i.image.url}}")
         |{% endfor %}

@@ -2,7 +2,7 @@
 
 |{% if config.entry_sorting == 'columns'%}
 .columns.is-multiline
-  | {% for entry in entries %}
+  | {% for entry in entries|shuffle %}
   .column.is-one-third-desktop.is-half-tablet
     |{% if entry|to_class_name == 'Entry' %}
     a(href="/entry/{{entry.slug}}")
