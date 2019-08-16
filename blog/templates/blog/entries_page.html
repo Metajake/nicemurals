@@ -11,7 +11,7 @@
   <div class="column is-four-fifths">
     {% load blog_extras %}
     {% if config.entry_sorting == 'columns'%}
-    <div class="columns is-multiline">{% for entry in entries reversed %}
+    <div class="columns is-multiline">{% for entry in entries %}
       <div class="column is-one-third-desktop is-half-tablet">{% if entry|to_class_name == 'Entry' %}<a href="/entry/{{entry.slug}}">
           <div class="box entry">
             <div class="level is-mobile">

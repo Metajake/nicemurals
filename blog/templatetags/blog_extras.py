@@ -20,6 +20,6 @@ def split_list(value,toSplit):
 @register.simple_tag
 def translate(value, language, toTitle):
     translator = Translator(to_lang=language, email='jaynoco@gmail.com')
-    toReturn = translator.translate(value).title() if toTitle else translator.translate(value)
-    # toReturn = value.title() if toTitle else value
+    # toReturn = translator.translate(value).title() if toTitle else translator.translate(value)
+    toReturn = value.title() if toTitle else value
     return toReturn
