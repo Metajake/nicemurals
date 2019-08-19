@@ -87,7 +87,7 @@ def project(request, project_slug):
 
 def about(request):
     context = {
-        'profile_picture': random.choice(Portrait.objects.all())
+        'profile_picture': random.choice(Portrait.objects.filter(is_enabled=True))
     }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}
