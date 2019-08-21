@@ -34,13 +34,16 @@ $flexibility = 140%
     width:100%
 
 svg#brand-logo
-  animation: glow 10s forwards
   fill-rule:evenodd
   clip-rule:evenodd
   stroke-linejoin:round
   stroke-miterlimit:2
   background: none !important
   fill:white
+  &.has-glow
+    opacity:0.0
+  &.glow
+    animation: glow 10s forwards
   path
     // fill:white //default from exported svg file
     fill-rule:nonzero

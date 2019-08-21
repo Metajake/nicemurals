@@ -10,9 +10,19 @@ var body = document.body,
 
 var clientValignCenteredItems = document.querySelectorAll('.is-client-vcenter')
 
+function callback(){
+  document.querySelector('.has-glow').classList.add('glow')
+}
+
 $(window).bind("load", function(){
   $('.world').height(docHeight)
-  clientValignCenteredItems.forEach(function(item){
+
+  var itemsProcessed = 0;
+  clientValignCenteredItems.forEach(function(item, index, array){
     item.style.marginTop = window.innerHeight/2 - item.clientHeight/2 + "px"
+    itemsProcessed ++;
+    if(itemsProcessed === array.length){
+      callback()
+    }
   })
 })
