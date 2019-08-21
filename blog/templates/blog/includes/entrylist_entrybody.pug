@@ -3,4 +3,4 @@
   img(src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}")
 |{% endif %}
 h3.title.is-4 {%translate entry.title|safe language True%} 
-p.is-marginless {%translate entry.description|safe|truncatewords:5|striptags language True%}
+p.is-marginless.has-break-all {%translate entry.description|safe|truncatewords:5|striptags language False%}
