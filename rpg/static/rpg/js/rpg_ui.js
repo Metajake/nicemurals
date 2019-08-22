@@ -10,10 +10,11 @@ var body = document.body,
 
 var clientValignCenteredItems = document.querySelectorAll('.is-client-vcenter')
 
-function callback(){
+function centerItemsCallback(){
   document.querySelector('.has-glow').classList.add('glow')
 }
 
+// "Load" (all content including css, images and javascript has loaded)
 $(window).bind("load", function(){
   $('.world').height(docHeight)
 
@@ -22,7 +23,7 @@ $(window).bind("load", function(){
     item.style.marginTop = window.innerHeight/2 - item.clientHeight/2 + "px"
     itemsProcessed ++;
     if(itemsProcessed === array.length){
-      callback()
+      centerItemsCallback()
     }
   })
 })

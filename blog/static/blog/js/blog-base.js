@@ -20,8 +20,15 @@ $('#home-link').click(function(e){
 
 // Add Animation to Masthead Logout Anchor
 $('.fa-skull').click(function(e){
+  e.preventDefault();
+
   $(this).addClass("spook")
-  this.addEventListener("animationend", function(){$(this).removeClass('spook')})
+  this.addEventListener("animationend", function(){
+    $(this).removeClass('spook');
+    if(this.parentElement.hasAttribute('href')){
+      window.location.href = this.parentElement.getAttribute('href');
+    }
+  });
 })
 
 //Add Syntax Highlighting class to Project or Blog Entry <Pre>'s

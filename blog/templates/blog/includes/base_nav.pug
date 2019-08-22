@@ -3,7 +3,7 @@ h1.icon.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i(class="
 h1.icon.subtitle.is-inline: a(href="/about"): i.fas.fa-address-card
 h1.icon.subtitle.is-inline: a(href="/admin"): i.fas.fa-key
 | {% if user.is_authenticated %}
-h1.icon.subtitle.is-inline: a(href="/admin/logout"): i.fas.fa-skull
+h1.icon.subtitle.is-inline: a(href="/admin/logout"): i.fas.fa-skull.anim-spook
 | {% else %}
 h1.icon.subtitle.is-inline: i.fas.fa-skull.anim-spook
 | {% endif %}
