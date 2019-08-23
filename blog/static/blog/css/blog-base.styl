@@ -22,11 +22,6 @@ hr
   &.activate
     animation: pulseIn 6s forwards
 
-.anim-spook
-  transform: rotate(0deg)
-  &.spook
-    animation: spooky 1.5s forwards
-
 .has-radius-small
   border-radius:3px
 
@@ -44,10 +39,23 @@ hr
 
 #home-link
   position:relative
-  left:-200px
-  animation: arrive 2s forwards
+  transform: rotate(0deg)
+  &.arrive
+    animation: arrive 2s forwards
   &.move
-    animation: move 4s
+    animation: move 2s
+
+#about-link
+  position:relative
+  left:0
+  bottom: 0
+  &.swipe
+    animation: swipe 2s
+
+.anim-spook
+  transform: rotate(0deg)
+  &.spook
+    animation: spooky 2s forwards
 
 .entry
   &.box
