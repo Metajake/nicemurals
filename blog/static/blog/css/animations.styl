@@ -2,12 +2,16 @@
 @keyframes arrive
   0%
     left:-200px
+  70%
+    left:-10px
   100%
     left:0px
 
 @keyframes move
   0%
     left:0px
+  10%
+    left:-5px
   100%
     left:1000px
 
@@ -38,6 +42,20 @@
     transorm: rotate(0deg)
 
 @keyframes swipe
+  0%
+    left: 0px
+    bottom:0px
+  30%
+    bottom:7px
+  50%
+    left:-25px
+    bottom:0px
+  80%
+    left:-5px
+  100%
+    left:200px
+
+@keyframes unlock
   0%
     left: 0px
     bottom:0px

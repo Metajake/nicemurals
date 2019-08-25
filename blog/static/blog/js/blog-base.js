@@ -1,22 +1,18 @@
-// Add Animation to Masthead Homepage Anchor
-$('#home-link').click(function(e){
-  e.preventDefault();
+// Add Animations to Masthead Nav Anchors
+animateElement("#home-link", "move")
+animateElement("#about-link", "swipe")
+animateElement("#login-link", "unlock")
 
-  $(this).addClass("move")
-  this.addEventListener("animationend", function(){
-    window.location.href = $(this).attr('href');
-  });
-})
+function animateElement(toAnimate, animationName){
+  $(toAnimate).click(function(e){
+    e.preventDefault();
 
-// Add Animation to Masthead Homepage Anchor
-$('#about-link').click(function(e){
-  e.preventDefault();
-
-  $(this).addClass("swipe")
-  this.addEventListener("animationend", function(){
-    window.location.href = $(this).attr('href');
-  });
-})
+    $(this).addClass(animationName)
+    this.addEventListener("animationend", function(){
+      window.location.href = $(this).attr('href');
+    });
+  })
+}
 
 // Add Animation to Masthead Logout Anchor
 $('.fa-skull').click(function(e){
