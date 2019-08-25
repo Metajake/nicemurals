@@ -44,6 +44,17 @@ class Journal(models.Model):
     class Meta:
         verbose_name_plural = "Journal"
 
+class History(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=200)
+    story = RichTextField(blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "History"
+
 class Config(models.Model):
     entry_sorting = models.CharField(max_length=100, choices=[('tiles','tiles'),('columns','columns')], default="columns")
     rpg_active = models.BooleanField(default=False)
