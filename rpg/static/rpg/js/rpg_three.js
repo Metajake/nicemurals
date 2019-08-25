@@ -1,4 +1,6 @@
 var brandColor = 0x5AB2ED;
+var cubeSize = 1.7;
+let rotationSpeed = 0.004;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
   75,
@@ -7,8 +9,6 @@ var camera = new THREE.PerspectiveCamera(
   1000
 );
 var renderer = new THREE.WebGLRenderer({alpha:true});
-var cubeSize = 1.7;
-let rotationSpeed = 0.004;
 var geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
 var material = new THREE.MeshBasicMaterial({color:brandColor});
 var cube = new THREE.Mesh( geometry, material );

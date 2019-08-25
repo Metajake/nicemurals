@@ -16,6 +16,7 @@ function centerItemsCallback(){
 
 // "Load" (all content including css, images and javascript has loaded)
 $(window).bind("load", function(){
+  document.querySelector("#space").classList.add('fade-in')
   $('.world').height(docHeight)
 
   var itemsProcessed = 0;
