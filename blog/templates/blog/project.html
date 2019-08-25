@@ -13,6 +13,9 @@
   <div class="column is-three-quarters is-multiline">
     <div class="column is-full">
       <div class="content">{{project.description|safe}}</div>
+      <div class="buttons">{% for tag in project.tags.all %}
+        <button class="button is-static is-small is-rounded has-background-grey-dark has-text-white has-text-weight-bold">{{tag.tag_name}}</button>{% endfor %}
+      </div>
     </div>{%if project.images.count %}
     <div class="column project-images is-full">
       <div class="columns is-mobile is-multiline">

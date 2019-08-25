@@ -12,6 +12,12 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
 
+class Tag(models.Model):
+    tag_name = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return self.tag_name
+
 class Work(models.Model):
     title = models.CharField(max_length=300, blank=True)
     caption = models.CharField(max_length=50, blank=True)
@@ -42,6 +48,7 @@ class Project(models.Model):
     images = models.ManyToManyField(Work, related_name="project_images", blank=True)
     repository = models.CharField(max_length=300, blank=True)
     affiliate_links = models.CharField(max_length=255, blank=True)
+    tags = models.ManyToManyField(Tag, related_name="tags", blank=True)
 
     def __str__(self):
         return self.title

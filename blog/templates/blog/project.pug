@@ -19,6 +19,10 @@ h2.subtitle.is-6 {{project.category|capfirst}}
     .column.is-full
       .content.
         {{project.description|safe}}
+      .buttons
+        |{% for tag in project.tags.all %}
+        button.button.is-static.is-small.is-rounded.has-background-grey-dark.has-text-white.has-text-weight-bold {{tag.tag_name}}
+        |{% endfor %}
     |{%if project.images.count %}
     .column.project-images.is-full
       .columns.is-mobile.is-multiline
