@@ -4,7 +4,7 @@
 {% load blog_extras %}
 {% block extrahead %}
 <title>First Studio | {{project.title}}</title>
-<link rel="stylesheet" href="{%static 'blog/css/syntaxhighlighting.css'%}"/>{% endblock %}
+<link rel="stylesheet" href="{% static 'blog/css/microlight.css' %}"/>{% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{{project.title}}</h1>
 <h2 class="subtitle is-6">{{project.category|capfirst}}</h2>{% endblock %}
@@ -14,7 +14,7 @@
     <div class="column is-full">
       <div class="content">{{project.description|safe}}</div>
       <div class="buttons">{% for tag in project.tags.all %}
-        <button class="button is-static is-small is-rounded has-background-grey-dark has-text-white has-text-weight-bold">{{tag.tag_name}}</button>{% endfor %}
+        <button class="button is-static is-small is-rounded has-background-info has-text-white has-text-weight-bold">{{tag.tag_name}}</button>{% endfor %}
       </div>
     </div>{%if project.images.count %}
     <div class="column project-images is-full">
@@ -73,3 +73,5 @@
     </div>
   </div>
 </div>{% endblock %}
+{% block prescript%}
+<script src="{% static 'blog/js/microlight.js' %}"></script>{% endblock %}

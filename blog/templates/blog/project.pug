@@ -5,7 +5,7 @@
 
 | {% block extrahead %}
 title First Studio | {{project.title}}
-link(rel="stylesheet" href="{%static 'blog/css/syntaxhighlighting.css'%}")
+link(rel="stylesheet" href="{% static 'blog/css/microlight.css' %}")
 |{% endblock %}
 
 |{% block masthead-headline %}
@@ -21,7 +21,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
         {{project.description|safe}}
       .buttons
         |{% for tag in project.tags.all %}
-        button.button.is-static.is-small.is-rounded.has-background-grey-dark.has-text-white.has-text-weight-bold {{tag.tag_name}}
+        button.button.is-static.is-small.is-rounded.has-background-info.has-text-white.has-text-weight-bold {{tag.tag_name}}
         |{% endfor %}
     |{%if project.images.count %}
     .column.project-images.is-full
@@ -63,3 +63,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
   .column.is-hidden-mobile
     include includes/project_stats.pug
 | {% endblock %}
+
+|{% block prescript%}
+script(src="{% static 'blog/js/microlight.js' %}")
+|{% endblock %}

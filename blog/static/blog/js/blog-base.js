@@ -40,25 +40,7 @@ var codeBlocks = document.querySelectorAll('pre')
 
 function setSyntaxHighlightingAttributes(toSet){
   var codeContent = toSet.children[0].innerHTML
-  var syntaxType = getSyntaxType(codeContent);
-  toSet.classList.add('ft-syntax-highlight')
-  toSet.setAttribute('data-syntax', syntaxType)
-  toSet.setAttribute('data-syntax-theme', 'one-dark')
-}
-
-function getSyntaxType(toIndex){
-  var firstWhiteSpaceIndex = toIndex.indexOf('\n');
-  var firstWord = toIndex.substring(0, firstWhiteSpaceIndex);
-  var toReturn;
-  switch(firstWord){
-    case '//javascript':
-      toReturn = 'js'
-      break;
-    case '//python':
-      toReturn = 'js'
-      break;
-  }
-  return toReturn
+  toSet.classList.add('microlight')
 }
 
 // On DOM Content Load

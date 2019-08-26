@@ -16,7 +16,7 @@
 <meta property="twitter:image" content="http:firststudio.co{{ work.image.url }}"/>{% endif %}{% endfor %}
 {% else %}
 <meta property="twitter:image" content="https://i.imgur.com/HaSkdQA.jpg"/>{% endif %}
-<link rel="stylesheet" href="{%static 'blog/css/syntaxhighlighting.css'%}"/>{% endblock %}
+<link rel="stylesheet" href="{% static 'blog/css/microlight.css' %}"/>{% endblock %}
 {% block masthead-headline %}
 <h1 class="title is-2">{% translate entry.title|safe language True %}</h1>
 <h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}
@@ -44,6 +44,8 @@
     </div>
   </div>
 </div>{% endblock %}
+{% block prescript%}
+<script src="{% static 'blog/js/microlight.js' %}"></script>{% endblock %}
 {% block postscript %}
 <script>
   $('#tweet-entry').click(function(e){

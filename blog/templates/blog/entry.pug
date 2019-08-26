@@ -20,7 +20,7 @@ meta(property="twitter:image" content="http:firststudio.co{{ work.image.url }}")
 |{% else %}
 meta(property="twitter:image" content="https://i.imgur.com/HaSkdQA.jpg")
 |{% endif %}
-link(rel="stylesheet" href="{%static 'blog/css/syntaxhighlighting.css'%}")
+link(rel="stylesheet" href="{% static 'blog/css/microlight.css' %}")
 | {% endblock %}
 
 | {% block masthead-headline %}
@@ -47,6 +47,10 @@ h2.subtitle.is-6 &nbsp;
   .column
     include includes/taglist.pug
 | {% endblock %}
+
+|{% block prescript%}
+script(src="{% static 'blog/js/microlight.js' %}")
+|{% endblock %}
 
 | {% block postscript %}
 script.
