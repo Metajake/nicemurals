@@ -43,7 +43,12 @@
         {% block main-content %}
         {% endblock %}
       </div>
-    </section>{% block prescript %}
+    </section>
+    <footer class="footer">
+      <div class="columns">
+        <div class="column has-text-centered"><a href="https://bulma.io"><img src="{% static 'blog/assets/made_with_bulma_white.png' %}" alt="Made with Bulma" width="128" height="24"></a><a href="https://pugjs.org/"><img src="{% static 'blog/assets/pug.svg' %}" alt="Made with PugJS" width="24"></a></div>
+      </div>
+    </footer>{% block prescript %}
     {% endblock %}
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/jqueryUI.js' %}"></script>
