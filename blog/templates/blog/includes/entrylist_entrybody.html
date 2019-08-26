@@ -4,4 +4,4 @@
 <p class="is-marginless has-break-all">{%translate entry.description|safe|truncatewords:5|striptags language False%}</p>
 <div class="buttons">{% for tag in entry.tags.all %}
   <button class="button is-static is-small is-rounded has-background-link has-text-white has-text-weight-bold">{{tag.tag_name}}</button>{% endfor %}
-</div><span>&nbsp;</span>
+</div>

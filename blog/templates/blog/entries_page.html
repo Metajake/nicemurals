@@ -23,7 +23,7 @@
             <p class="is-marginless has-break-all">{%translate entry.description|safe|truncatewords:5|striptags language False%}</p>
             <div class="buttons">{% for tag in entry.tags.all %}
               <button class="button is-static is-small is-rounded has-background-link has-text-white has-text-weight-bold">{{tag.tag_name}}</button>{% endfor %}
-            </div><span>&nbsp;</span>
+            </div>
           </div></a>{% elif entry|to_class_name == 'Project' %}<a href="/project/{{entry.slug}}">
           <div class="box entry"><small class="is-size-7">{% translate entry|to_class_name|safe language True %} - {%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}</small>{% if entry.featured_image %}
             <div class="image is-square is-clipped has-radius-small is-featured-image {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
@@ -31,7 +31,7 @@
             <p class="is-marginless has-break-all">{%translate entry.description|safe|truncatewords:5|striptags language False%}</p>
             <div class="buttons">{% for tag in entry.tags.all %}
               <button class="button is-static is-small is-rounded has-background-link has-text-white has-text-weight-bold">{{tag.tag_name}}</button>{% endfor %}
-            </div><span>&nbsp;</span>
+            </div>
           </div></a>{% endif %}</div>{% endfor %}
     </div>{% elif config.entry_sorting == 'tiles' %}
     <div class="tile is-ancestor">
@@ -40,7 +40,7 @@
           <p>{{entry.title}}</p>{% if entry.featured_image.image %}<img class="has-radius-small" src="{{entry.featured_image.image.url}}"/>{% endif %}
         </artice>{% endfor %}
       </div>
-    </div>{% endif %}<span>&nbsp;</span>
+    </div>{% endif %}
   </div>
   <div class="column">
     <div class="content">
@@ -52,6 +52,6 @@
       <ul>{% for tag in blog_tags %}
         <li><a class="has-text-primary" href="/tags/{{tag}}">{% translate tag|safe language True %}</a></li>{% endfor %}
       </ul>
-    </div><span>&nbsp;</span>
+    </div>
   </div>
 </div>{% endblock %}<span>&nbsp;</span>
