@@ -3,18 +3,6 @@ animateElement("#home-link", "move")
 animateElement("#about-link", "swipe")
 animateElement("#login-link", "unlock")
 
-function animateElement(toAnimate, animationName){
-  $(toAnimate).click(function(e){
-    e.preventDefault();
-
-    $(this).addClass(animationName)
-    this.addEventListener("animationend", function(){
-      window.location.href = $(this).attr('href');
-    });
-  })
-}
-
-// Add Animation to Masthead Logout Anchor
 $('.fa-skull').click(function(e){
   e.preventDefault();
 
@@ -27,11 +15,21 @@ $('.fa-skull').click(function(e){
   });
 })
 
-// Listen for Dispatched Events
-var homeLinkEvent = new Event('homeLinkArrive')
+function animateElement(toAnimate, animationName){
+  $(toAnimate).click(function(e){
+    e.preventDefault();
 
-document.addEventListener('homeLinkArrive', function (e){
-  console.log(e)
+    $(this).addClass(animationName)
+    this.addEventListener("animationend", function(){
+      window.location.href = $(this).attr('href');
+    });
+  })
+}
+
+// Listen for Dispatched Events
+var blogNavHomeLinkArrive = new Event('blogNavHomeLinkArrive')
+
+document.addEventListener('blogNavHomeLinkArrive', function (e){
   document.querySelector('#home-link').classList.add('arrive');
 })
 

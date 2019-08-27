@@ -1,9 +1,9 @@
 hr
-h1.icon.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i(class="{{home_icon.0}} {{home_icon.1}}")
-h1.icon.subtitle.is-inline: a#about-link(href="/about"): i.fas.fa-address-card
-h1.icon.subtitle.is-inline: a#login-link(href="/admin"): i.fas.fa-key
+h1.icon.subtitle.is-inline: a#home-link(href="{% url 'blog-home' %}"): i(class="{{home_icon.0}} {{home_icon.1}}" title="Home")
+h1.icon.subtitle.is-inline: a#about-link(href="/about"): i.fas.fa-address-card(title="About")
+h1.icon.subtitle.is-inline: a#login-link(href="/admin"): i.fas.fa-key(title="Admin")
 | {% if user.is_authenticated %}
-h1.icon.subtitle.is-inline: a(href="/admin/logout"): i.fas.fa-skull.anim-spook
+h1.icon.subtitle.is-inline: a(href="/admin/logout"): i.fas.fa-skull.anim-spook(title="Logout")
 | {% else %}
-h1.icon.subtitle.is-inline: i.fas.fa-skull.anim-spook
+h1.icon.subtitle.is-inline: i.fas.fa-skull.anim-spook(title="Logout")
 | {% endif %}

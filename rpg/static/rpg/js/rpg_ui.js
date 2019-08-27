@@ -8,17 +8,11 @@ var body = document.body,
       html.offsetHeight
     );
 
-var clientValignCenteredItems = document.querySelectorAll('.is-client-vcenter')
-
 function centerItemsCallback(){
   document.querySelector('.has-glow').classList.add('glow')
 }
 
-// "Load" (all content including css, images and javascript has loaded)
-$(window).bind("load", function(){
-  document.querySelector("#space").classList.add('fade-in')
-  $('.world').height(docHeight)
-
+function centerVAlignItems(clientValignCenteredItems){
   var itemsProcessed = 0;
   clientValignCenteredItems.forEach(function(item, index, array){
     item.style.marginTop = window.innerHeight/2 - item.clientHeight/2 + "px"
@@ -27,4 +21,14 @@ $(window).bind("load", function(){
       centerItemsCallback()
     }
   })
+}
+
+// "Load" (all content including css, images and javascript has loaded)
+$(window).bind("load", function(){
+  $('.world').height(docHeight)
+  
+  document.querySelector(".world").classList.add('fade-in')
+  document.querySelector("#space").classList.add('fade-in')
+
+  centerVAlignItems(document.querySelectorAll('.is-client-vcenter'))
 })
