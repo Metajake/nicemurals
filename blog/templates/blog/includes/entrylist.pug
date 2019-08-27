@@ -1,5 +1,6 @@
 |{% load blog_extras %}
 
+
 |{% if config.entry_sorting == 'columns'%}
 .columns.is-multiline
   | {% for entry in entries|shuffle %}

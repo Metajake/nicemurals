@@ -3,7 +3,7 @@
   img(src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}")
 |{% endif %}
 h3.title.is-4 {%translate entry.title|safe language True%} 
-p.is-marginless.has-break-all {%translate entry.description|safe|truncatewords:5|striptags language False%}
+p.has-break-all {%translate entry.description|safe|truncatewords:5|striptags language False%}
 .buttons
   |{% for tag in entry.tags.all %}
   button.button.is-static.is-small.is-rounded.has-background-link.has-text-white.has-text-weight-bold {{tag.tag_name}}

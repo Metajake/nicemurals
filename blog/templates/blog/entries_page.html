@@ -20,7 +20,7 @@
             </div>{% if entry.featured_image %}
             <div class="image is-square is-clipped has-radius-small is-featured-image {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
             <h3 class="title is-4">{%translate entry.title|safe language True%} </h3>
-            <p class="is-marginless has-break-all">{%translate entry.description|safe|truncatewords:5|striptags language False%}</p>
+            <p class="has-break-all">{%translate entry.description|safe|truncatewords:5|striptags language False%}</p>
             <div class="buttons">{% for tag in entry.tags.all %}
               <button class="button is-static is-small is-rounded has-background-link has-text-white has-text-weight-bold">{{tag.tag_name}}</button>{% endfor %}
             </div>
@@ -28,7 +28,7 @@
           <div class="box entry"><small class="is-size-7">{% translate entry|to_class_name|safe language True %} - {%if entry.category%}{% translate entry.category|capfirst|safe language True %}{%else%}{% translate Uncategorized language True %}{%endif%}</small>{% if entry.featured_image %}
             <div class="image is-square is-clipped has-radius-small is-featured-image {{ entry.featured_image.image|orientation }}"><img src="{{ entry.featured_image.image.url }}" alt="{{entry.featured_image.image.caption}}" title="{{entry.featured_image.image.title}}"/></div>{% endif %}
             <h3 class="title is-4">{%translate entry.title|safe language True%} </h3>
-            <p class="is-marginless has-break-all">{%translate entry.description|safe|truncatewords:5|striptags language False%}</p>
+            <p class="has-break-all">{%translate entry.description|safe|truncatewords:5|striptags language False%}</p>
             <div class="buttons">{% for tag in entry.tags.all %}
               <button class="button is-static is-small is-rounded has-background-link has-text-white has-text-weight-bold">{{tag.tag_name}}</button>{% endfor %}
             </div>
