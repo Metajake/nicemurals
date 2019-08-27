@@ -1,4 +1,4 @@
-$gameOverTransition = 3s
+$gameOverTransition = 2s
 $runSpeed = 3s
 $lungCapacity = 20s
 $tension = 12s
@@ -6,22 +6,19 @@ $tension = 12s
 .has-location > header, .has-location > section, .has-location > footer
   opacity:0.0
   transition: opacity $gameOverTransition
-  pointer-events:none
   &.fade-in
     opacity: 1.0
     transition: opacity $gameOverTransition
   & > *
-    opacity: 0.0
-    transition: opacity $gameOverTransition
-    &.fade-in
-      opacity: 1.0
-      transition: opacity $gameOverTransition
+    a
+      pointer-events:none
 
 .world
   transition:opacity $gameOverTransition, background-size $runSpeed, background-position $runSpeed
   z-index: -3
   opacity:0.0
   &.fade-in
+    transition: opacity .5s
     opacity:1.0
   &.is-size-outdoors
     animation:breathe $lungCapacity infinite

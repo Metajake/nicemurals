@@ -4,36 +4,9 @@ game = {
   'power': 0,
   'on': false,
 }
-existingAncestors = $('.has-location > section, .has-location > header, .has-location > footer')
-existingParents = $('.has-location > section > *, .has-location > header > *, .has-location > footer > *')
-let elementsToFadeOut = document.querySelectorAll('.has-fade-out');
 
 function takeTurnIfReady(functionToExecute){
   if (enableExpHandler) { functionToExecute() }
-}
-
-function mouseMoveInteraction(){
-  initLevelOne()
-  initLevelTwo()
-  //
-  // if (enableExpHandler) {
-  //   game['power'] += 1
-  //   enableExpHandler = false;
-  // }
-}
-
-function initLevelOne(){
-  existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
-  // existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
-  elementsToFadeOut.forEach(function(item){
-    item.classList.remove('fade-in')
-    item.classList.add('fade-out')
-  })
-}
-
-function initLevelTwo(){
-  existingParents.each(function(i,e){ $(e).addClass('fade-in') })
-  game['on'] = true;
 }
 
 function toggleGameElementFades(){
@@ -98,10 +71,5 @@ function gainExp(url, entityId, difference, csrfToken){
 
 document.addEventListener("DOMContentLoaded", function(){
   initTimers()
-
-  $(document).mousemove(function(e){ mouseMoveInteraction() });
-  $(document).scroll(function(e){ mouseMoveInteraction() });
-  document.addEventListener("touchstart", function(e){ mouseMoveInteraction() })
-
   $('.game-lvl').html('{{game.lvl}}')
 })

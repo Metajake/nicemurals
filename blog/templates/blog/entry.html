@@ -1,6 +1,7 @@
 
 {% extends 'blog/base.html' %}
 {% load blog_extras %}
+{% load static %}
 {% block extrahead %}
 <title>First Studio | {{entry.title}}</title>
 <meta name="description" content="{{entry.description|safe|slice:':155'}}"/>
