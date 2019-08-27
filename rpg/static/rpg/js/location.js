@@ -1,6 +1,6 @@
 let world = document.querySelector('.world');
 
-function worldFadedEvent(){
+function eventWorldFade(){
   existingAncestors.each(function(){
     $(this).css('pointer-events', 'auto');
   })
@@ -9,6 +9,6 @@ function worldFadedEvent(){
 
 document.addEventListener("DOMContentLoaded", function(){
   document.querySelector("#home-link").style.left = parseInt(-window.innerWidth / 6)+'px';
-  world.addEventListener('transitionend', worldFadedEvent)
-  world.addEventListener('webkitTransitionEnd', worldFadedEvent)
+  world.addEventListener('transitionend', eventWorldFade)
+  world.addEventListener('webkitTransitionEnd', eventWorldFade)
 })

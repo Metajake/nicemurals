@@ -26,6 +26,7 @@ function initLevelOne(){
   existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
   // existingParents.each(function(i,e){ $(e).removeClass('fade-in') })
   elementsToFadeOut.forEach(function(item){
+    item.classList.remove('fade-in')
     item.classList.add('fade-out')
   })
 }
