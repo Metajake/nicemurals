@@ -27,22 +27,33 @@ function centerVAlignItems(clientValignCenteredItems){
 }
 
 function mouseMoveInteraction(){
-  existingAncestors.each(function(i,e){ $(e).addClass('fade-in') })
+  existingAncestors.each(function(i,e){
+    $(e).addClass('fade-in')
+    $(this).find('a').css('pointer-events', 'auto');
+  })
 
   elementsToFadeOut.forEach(function(item){
     item.classList.remove('fade-in')
     item.classList.add('fade-out')
   })
-  
-  existingAncestors.each(function(){
-    $(this).find('a').css('pointer-events', 'auto');
-  })
+
+  document.querySelector("#space").classList.add('is-transluscent')
 }
 
+function eventWorldFade(){
+  document.dispatchEvent(blogNavHomeLinkArrive);
+}
+
+// "DOM Content Loaded" Event
 document.addEventListener("DOMContentLoaded", function(){
+  document.querySelector("#home-link").style.left = parseInt(-window.innerWidth / 6)+'px';
+
   $(document).mousemove(function(e){ mouseMoveInteraction() });
   $(document).scroll(function(e){ mouseMoveInteraction() });
   document.addEventListener("touchstart", function(e){ mouseMoveInteraction() })
+
+  document.querySelector('header').addEventListener('transitionend', eventWorldFade)
+  document.querySelector('header').addEventListener('webkitTransitionEnd', eventWorldFade)
 })
 
 
