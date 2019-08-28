@@ -22,10 +22,7 @@
         <div class="column is-full">
           <hr class="has-background-grey-light"/>
         </div>{% for i in project.images.all|shuffle %}
-        {% if i.is_panoramic %}
-        <div class="column is-full"><img class="has-radius-small" src="{{i.image.url}}"/></div>{% else %}
-        <div class="column is-full-mobile is-{% cycle column_sizes|random '' %}-tablet"><img class="has-radius-small" src="{{i.image.url}}"/></div>{% endif %}
-        {% endfor %}
+        <div class="column is-full-mobile is-{% cycle column_sizes|random '' %}-tablet"><img class="has-radius-small" src="{{i.image.url}}"/></div>{% endfor %}
       </div>
     </div>{%endif%}
     {%if project.repository or project.affiliate_links %}
