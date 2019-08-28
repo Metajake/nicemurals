@@ -29,8 +29,13 @@ h2.subtitle.is-6 {{project.category|capfirst}}
         .column.is-full
           hr.has-background-grey-light
         |{% for i in project.images.all|shuffle %}
+        |{% if i.is_panoramic %}
+        .column.is-full
+          img.has-radius-small(src="{{i.image.url}}")
+        |{% else %}
         .column.is-full-mobile(class="is-{% cycle column_sizes|random '' %}-tablet")
           img.has-radius-small(src="{{i.image.url}}")
+        |{% endif %}
         |{% endfor %}
     |{%endif%}
     |{%if project.repository or project.affiliate_links %}
