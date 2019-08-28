@@ -29,7 +29,6 @@ function centerVAlignItems(clientValignCenteredItems){
 function mouseMoveInteraction(){
   existingAncestors.each(function(i,e){
     $(e).addClass('fade-in')
-    $(this).find('a').css('pointer-events', 'auto');
   })
 
   elementsToFadeOut.forEach(function(item){
@@ -40,8 +39,9 @@ function mouseMoveInteraction(){
   $("#space").addClass('is-transluscent')
 }
 
-function eventWorldFade(){
+function eventUIFadeIn(){
   document.dispatchEvent(blogNavHomeLinkArrive);
+  existingParents.find('a').css('pointer-events', 'auto');
 }
 
 // "DOM Content Loaded" Event
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function(){
   $(document).scroll(function(e){ mouseMoveInteraction() });
   document.addEventListener("touchstart", function(e){ mouseMoveInteraction() })
 
-  document.querySelector('header').addEventListener('transitionend', eventWorldFade)
-  document.querySelector('header').addEventListener('webkitTransitionEnd', eventWorldFade)
+  document.querySelector('header').addEventListener('transitionend', eventUIFadeIn)
+  document.querySelector('header').addEventListener('webkitTransitionEnd', eventUIFadeIn)
 })
 
 
