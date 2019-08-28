@@ -43,6 +43,10 @@ function setSyntaxHighlightingAttributes(toSet){
 
 // On DOM Content Load
 document.addEventListener('DOMContentLoaded', function(){
+  document.querySelector("#home-link").style.left = parseInt(-window.innerWidth / 6)+'px';
+  if (!document.querySelector("#space")){
+    document.dispatchEvent(blogNavHomeLinkArrive);
+  }
   codeBlocks.forEach(function(item){
     setSyntaxHighlightingAttributes(item)
   })

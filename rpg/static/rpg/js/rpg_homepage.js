@@ -37,7 +37,7 @@ function mouseMoveInteraction(){
     item.classList.add('fade-out')
   })
 
-  document.querySelector("#space").classList.add('is-transluscent')
+  $("#space").addClass('is-transluscent')
 }
 
 function eventWorldFade(){
@@ -46,8 +46,6 @@ function eventWorldFade(){
 
 // "DOM Content Loaded" Event
 document.addEventListener("DOMContentLoaded", function(){
-  document.querySelector("#home-link").style.left = parseInt(-window.innerWidth / 6)+'px';
-
   $(document).mousemove(function(e){ mouseMoveInteraction() });
   $(document).scroll(function(e){ mouseMoveInteraction() });
   document.addEventListener("touchstart", function(e){ mouseMoveInteraction() })

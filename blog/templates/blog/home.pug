@@ -39,5 +39,9 @@ script(src="{% static 'js/three.min.js' %}")
 script(src="{% static 'rpg/js/rpg_three.js' %}")
 |{% endif %}
 
+|{% if config.in_location %}
+script(src="{% static 'rpg/js/rpg_homepage.js' %}")
+|{% endif %}
+
 |{% endif %}
 |{% endblock %}
