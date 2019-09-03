@@ -35,7 +35,7 @@
           <h2>Affilations...</h2>
         </div>
         <div class="columns is-mobile is-multiline is-centered is-vcentered">{% for affiliate in affiliates|shuffle %}
-          <div class="column is-half-mobile is-one-third-tablet has-text-centered">{% if affiliate.link %}<a href="{{affiliate.link}}"><img src="{{affiliate.brand.url}}"/></a>{% else %}<img src="{{affiliate.brand.url}}"/>{% endif %}</div>{% endfor %}
+          <div class="column is-half-mobile is-one-third-tablet has-text-centered">{% if affiliate.link %}<a href="{{affiliate.link}}" target="_blank"><img src="{{affiliate.brand.url}}"/></a>{% else %}<img src="{{affiliate.brand.url}}"/>{% endif %}</div>{% endfor %}
         </div>
       </div>
       <div class="column is-one-third is-hidden-mobile">

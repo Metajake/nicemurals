@@ -38,7 +38,7 @@ h2.subtitle.is-6 &nbsp;
           |{% for affiliate in affiliates|shuffle %}
           .column.is-half-mobile.is-one-third-tablet.has-text-centered
             |{% if affiliate.link %}
-            a(href="{{affiliate.link}}"): img(src="{{affiliate.brand.url}}")
+            a(href="{{affiliate.link}}" target="_blank"): img(src="{{affiliate.brand.url}}")
             |{% else %}
             img(src="{{affiliate.brand.url}}")
             |{% endif %}
