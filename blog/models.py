@@ -55,6 +55,14 @@ class History(models.Model):
     class Meta:
         verbose_name_plural = "History"
 
+class Affiliate(models.Model):
+    name = models.CharField(max_length=200)
+    brand = models.ImageField(upload_to='uploads/blog/')
+    enabled = models.BooleanField(default=True)
+    link = models.CharField(max_length=200, blank=True)
+    def __str__(self):
+        return self.name
+
 class Config(models.Model):
     entry_sorting = models.CharField(max_length=100, choices=[('tiles','tiles'),('columns','columns')], default="columns")
     rpg_active = models.BooleanField(default=False)

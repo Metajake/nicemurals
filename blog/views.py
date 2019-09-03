@@ -4,7 +4,7 @@ from django.db.models import Count, Q
 import random
 
 from blog.functions import tweetEntryLink, getEmptyRowCount, getBlogBaseProperties
-from .models import Entry, Tag, Config
+from .models import Entry, Tag, Config, Affiliate
 from rpg.functions import *
 from portfolio.models import Project, Category, Portrait
 
@@ -87,7 +87,8 @@ def project(request, project_slug):
 
 def about(request):
     context = {
-        'profile_picture': random.choice(Portrait.objects.filter(is_enabled=True))
+        'profile_picture': random.choice(Portrait.objects.filter(is_enabled=True)),
+        'affiliates' : Affiliate.objects.filter(enabled=True),
     }
     blogBaseProperties = getBlogBaseProperties()
     context = {**context, **blogBaseProperties}

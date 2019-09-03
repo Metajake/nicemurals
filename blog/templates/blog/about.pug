@@ -25,7 +25,25 @@ h2.subtitle.is-6 &nbsp;
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.linkedin.com/in/jacobnorth/"): i.fab.fa-linkedin
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.instagram.com/metajake/"): i.fab.fa-instagram
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.github.com/metajake/"): i.fab.fa-github
-      .column.is-one-third
+        .columns.is-centered.is-mobile.is-hidden-tablet
+          .column.is-11
+            .content
+              .image.has-margin-top
+                img.has-radius-small(src="{{profile_picture.image.url}}")
+              p.is-size-6.has-text-grey.is-italic {%translate profile_picture.caption|safe language False %}
+        hr.has-background-grey-light
+        .content
+          h2 Affilations...
+        .columns.is-mobile.is-multiline.is-centered.is-vcentered
+          |{% for affiliate in affiliates|shuffle %}
+          .column.is-half-mobile.is-one-third-tablet.has-text-centered
+            |{% if affiliate.link %}
+            a(href="{{affiliate.link}}"): img(src="{{affiliate.brand.url}}")
+            |{% else %}
+            img(src="{{affiliate.brand.url}}")
+            |{% endif %}
+          |{% endfor %}
+      .column.is-one-third.is-hidden-mobile
         .content
           .image
             img.has-radius-small(src="{{profile_picture.image.url}}")

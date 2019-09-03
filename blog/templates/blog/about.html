@@ -22,8 +22,23 @@
           <h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://www.instagram.com/metajake/"><i class="fab fa-instagram"></i></a></h1>
           <h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://www.github.com/metajake/"><i class="fab fa-github"></i></a></h1>
         </div>
+        <div class="columns is-centered is-mobile is-hidden-tablet">
+          <div class="column is-11">
+            <div class="content">
+              <div class="image has-margin-top"><img class="has-radius-small" src="{{profile_picture.image.url}}"/></div>
+              <p class="is-size-6 has-text-grey is-italic">{%translate profile_picture.caption|safe language False %}</p>
+            </div>
+          </div>
+        </div>
+        <hr class="has-background-grey-light"/>
+        <div class="content">
+          <h2>Affilations...</h2>
+        </div>
+        <div class="columns is-mobile is-multiline is-centered is-vcentered">{% for affiliate in affiliates|shuffle %}
+          <div class="column is-half-mobile is-one-third-tablet has-text-centered">{% if affiliate.link %}<a href="{{affiliate.link}}"><img src="{{affiliate.brand.url}}"/></a>{% else %}<img src="{{affiliate.brand.url}}"/>{% endif %}</div>{% endfor %}
+        </div>
       </div>
-      <div class="column is-one-third">
+      <div class="column is-one-third is-hidden-mobile">
         <div class="content">
           <div class="image"><img class="has-radius-small" src="{{profile_picture.image.url}}"/></div>
           <p class="is-size-6 has-text-grey is-italic">{%translate profile_picture.caption|safe language False %}</p>
