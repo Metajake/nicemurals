@@ -34,15 +34,17 @@ h2.subtitle.is-6 &nbsp;
         hr.has-background-grey-light
         .content
           h2 Affilations...
-        .columns.is-mobile.is-multiline.is-centered.is-vcentered
-          |{% for affiliate in affiliates|shuffle %}
-          .column.is-half-mobile.is-one-third-tablet.has-text-centered
-            |{% if affiliate.link %}
-            a(href="{{affiliate.link}}" target="_blank"): img(src="{{affiliate.brand.url}}")
-            |{% else %}
-            img(src="{{affiliate.brand.url}}")
-            |{% endif %}
-          |{% endfor %}
+        .columns.is-mobile.is-centered
+          .column.is-11
+            .columns.is-variable.is-4-mobile.is-6-tablet.is-mobile.is-multiline.is-centered.is-vcentered
+              |{% for affiliate in affiliates|shuffle %}
+              .column.is-half-mobile.is-one-third-tablet.has-text-centered
+                |{% if affiliate.link %}
+                a(href="{{affiliate.link}}" target="_blank"): img(src="{{affiliate.brand.url}}")
+                |{% else %}
+                img(src="{{affiliate.brand.url}}")
+                |{% endif %}
+              |{% endfor %}
       .column.is-one-third.is-hidden-mobile
         .content
           .image
