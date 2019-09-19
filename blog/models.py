@@ -55,6 +55,13 @@ class History(models.Model):
     class Meta:
         verbose_name_plural = "History"
 
+class Dream(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    story = RichTextField(blank=True)
+
+    def __str__(self):
+        return self.created.strftime("%Y-%m-%d %H:%M:%S")
+
 class Affiliate(models.Model):
     name = models.CharField(max_length=200)
     brand = models.ImageField(upload_to='uploads/blog/')
