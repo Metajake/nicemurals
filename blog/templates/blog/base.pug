@@ -30,12 +30,12 @@ html
     footer.footer
       .columns.is-multiline
         .column.has-text-centered.is-full
-          a(href="http://djangoproject.com/")
-          img(src="{% static 'blog/assets/djangojoint107x25_green.gif' %}" alt="Made with Django" width="99" height="23")
-          a(href="https://bulma.io")
+          a(href="http://djangoproject.com/" target="_blank")
+            img(src="{% static 'blog/assets/djangojoint107x25_green.gif' %}" alt="Made with Django" width="99" height="23")
+          a(href="https://bulma.io" target="_blank")
             img(src="{% static 'blog/assets/made_with_bulma_white.png' %}" alt="Made with Bulma" width="128" height="24")
         .column.has-text-centered.is-full.is-paddingless
-          a(href="https://pugjs.org/")
+          a(href="https://pugjs.org/" target="_blank")
             img(src="{% static 'blog/assets/pug.svg' %}" alt="Made with PugJS" width="26")
               
     |{% block prescript %}
