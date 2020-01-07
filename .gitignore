@@ -7,3 +7,4 @@ blog/migrations/
 rpg/migrations/
 /static/
 media/
+.idea
