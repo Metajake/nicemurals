@@ -13,8 +13,8 @@ def home(request):
         request.session['lvl'] = 0
 
     projects = Project.objects.filter(is_published=True)
-    blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1)
-    projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1)
+    blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1).order_by('tagslug')
+    projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1).order_by('category_slug')
     rpg = getRpg(request.session)
     config = Config.objects.get(pk=1)
     context = {
@@ -32,8 +32,8 @@ def taglist(request, blog_tagslug):
     if 'lvl' in request.session:
         request.session['lvl'] += 1
     entries = Entry.objects.filter(category__tagslug=blog_tagslug)
-    blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1)
-    projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1)
+    blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1).order_by('tagslug')
+    projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1).order_by('category_slug')
     context = {
         'headline' : Tag.objects.get(tagslug=blog_tagslug),
         'entries' : entries,
@@ -48,8 +48,8 @@ def categorylist(request, category_slug):
     if 'lvl' in request.session:
         request.session['lvl'] += 1
     projects = Project.objects.filter(category__category_slug=category_slug, is_published=True)
-    blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1)
-    projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1)
+    blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1).order_by('tagslug')
+    projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1).order_by('category_slug')
     context = {
         'headline' : Category.objects.get(category_slug=category_slug),
         'entries' : projects,
@@ -64,8 +64,8 @@ def entry(request, entry_slug):
     if 'lvl' in request.session:
         request.session['lvl'] += 1
     entry = Entry.objects.get(slug=entry_slug)
-    blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1)
-    projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1)
+    blogTags = Tag.objects.annotate(num_entries=Count('entry', filter=Q(entry__is_published=True))).filter(num_entries__gte=1).order_by('tagslug')
+    projectCategories = Category.objects.annotate(num_entries=Count('project', filter=Q(project__is_published=True))).filter(num_entries__gte=1).order_by('category_slug')
     context = {
         'entry' : entry,
         'blog_tags' : blogTags,

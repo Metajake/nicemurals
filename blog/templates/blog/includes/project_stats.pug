@@ -12,7 +12,7 @@
   h3.is-size-4 Affiliate Links
   ul.affiliate-links
     |{% for link in project.affiliate_links|split_list:"," %}
-    li
+    li.is-truncated
       h5.icon.subtitle.is-inline: i.fas.fa-arrow-right
       a.has-text-primary(href="{{link}}" target="_blank") {{link}}
     |{% endfor %}
