@@ -17,8 +17,12 @@ h2.subtitle.is-6 {{project.category|capfirst}}
 .columns
   .column.is-three-quarters.is-multiline
     .column.is-full
-      .content.
-        {{project.description|safe}}
+      .columns
+        .column.is-one-third
+          img(src="{{project_body_image.image.url}}")
+        .column.is-two-thirds
+          .content.
+            {{project.description|safe}}
       .buttons
         |{% for tag in project.tags.all %}
         button.button.is-static.is-small.is-rounded.has-background-info.has-text-white.has-text-weight-bold {{tag.tag_name}}

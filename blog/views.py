@@ -77,8 +77,10 @@ def entry(request, entry_slug):
 
 def project(request, project_slug):
     p = Project.objects.get(slug=project_slug)
+    body_image = random.choice(p.images.all())
     context = {
         'project': p,
+        'project_body_image': body_image,
         'column_sizes': ['half','two-thirds'],
     }
     blogBaseProperties = getBlogBaseProperties()
