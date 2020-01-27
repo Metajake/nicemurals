@@ -3,9 +3,9 @@
 .content
   |{% if project.repository %}
   h3.is-size-4 Repository
-  a(href="{{project.repository}}")
-    h1.icon.subtitle.is-inline: i.fab.fa-github
-    a.has-text-primary.has-nowrap {{project.repository}}
+  a(href="{{project.repository}}" target="_blank").repository.is-flex.has-items-aligned-center
+    h1.icon.subtitle: i.fab.fa-github
+    span.has-text-primary.is-truncated {{project.repository}}
   |{%endif%}
 
   |{% if project.affiliate_links %}

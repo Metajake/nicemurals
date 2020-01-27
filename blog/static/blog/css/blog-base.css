@@ -1,3 +1,4 @@
+/*imports*/
 @-moz-keyframes arrive {
   0% {
     left: -200px;
@@ -526,11 +527,14 @@
     bottom: 4px;
   }
 }
+/*variables*/
+/*global elements*/
 @media (max-width: 768px) {
   hr {
     height: 1px;
   }
 }
+/*helper classes*/
 .dark-mode {
   background-color: #666;
 }
@@ -571,6 +575,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.has-items-aligned-center {
+  align-items: center;
+}
+/*page sections*/
 #home-link {
   position: relative;
   transform: rotate(0deg);
@@ -645,6 +653,9 @@
 }
 #project-content iframe {
   width: 100%;
+}
+a.repository h1.icon {
+  margin-bottom: 0;
 }
 ul.affiliate-links {
   margin-left: 0.5rem;

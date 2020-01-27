@@ -1,12 +1,16 @@
+/*imports*/
 @import 'animations'
 
+/*variables*/
 $slideSize = 10px
 $primaryColor = hsl(204, 86%,  80%)
 
+/*global elements*/
 hr
   @media(max-width:768px)
     height:1px
 
+/*helper classes*/
 .dark-mode
   background-color: #666
 
@@ -45,6 +49,10 @@ hr
   overflow: hidden
   text-overflow: ellipsis
 
+.has-items-aligned-center
+  align-items:center
+
+/*page sections*/
 #home-link
   position:relative
   transform: rotate(0deg)
@@ -108,6 +116,10 @@ hr
 #project-content
   iframe
     width:100%
+
+a.repository
+  h1.icon
+    margin-bottom:0
 
 ul.affiliate-links
   margin-left:.5rem
