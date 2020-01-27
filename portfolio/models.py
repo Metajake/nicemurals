@@ -45,6 +45,7 @@ class Project(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     is_published = models.BooleanField(default=True)
     description = RichTextField(blank=True)
+    youtube_videos = models.CharField(max_length=300, blank=True)
     featured_image = models.ForeignKey(Work, related_name="project_featured_image", on_delete=models.CASCADE, blank=True, null=True)
     images = models.ManyToManyField(Work, related_name="project_images", blank=True)
     repository = models.CharField(max_length=300, blank=True)

@@ -15,7 +15,7 @@ h2.subtitle.is-6 {{project.category|capfirst}}
 
 | {% block main-content %}
 .columns
-  .column.is-three-quarters.is-multiline
+  .column.is-three-quarters.is-multiline#project-content
     .column.is-full
       .columns
         .column.is-one-third
@@ -23,6 +23,9 @@ h2.subtitle.is-6 {{project.category|capfirst}}
         .column.is-two-thirds
           .content.
             {{project.description|safe}}
+          |{%if project.youtube_videos %}
+          include includes/project_videos.pug
+          |{% endif %}
       .buttons
         |{% for tag in project.tags.all %}
         button.button.is-static.is-small.is-rounded.has-background-info.has-text-white.has-text-weight-bold {{tag.tag_name}}

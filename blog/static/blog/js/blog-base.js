@@ -50,4 +50,10 @@ document.addEventListener('DOMContentLoaded', function(){
   codeBlocks.forEach(function(item){
     setSyntaxHighlightingAttributes(item)
   })
+
+  embeddedVideos = document.querySelectorAll('#project-content iframe');
+  embeddedVideos.forEach(function(item){
+    console.log(item.offsetWidth / 1.78)
+    item.style.height = (item.offsetWidth / 1.78) + 'px'
+  })
 })

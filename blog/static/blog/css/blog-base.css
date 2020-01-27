@@ -643,6 +643,9 @@
 .entry .buttons {
   margin-top: 0.5rem;
 }
+#project-content iframe {
+  width: 100%;
+}
 ul.affiliate-links {
   margin-left: 0.5rem;
 }
