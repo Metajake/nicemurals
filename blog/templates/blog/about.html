@@ -1,55 +1,6 @@
-
 {% extends 'blog/base.html' %}
 {% load static %}
 {% load blog_extras %}
-{% block extrahead %}
-<title>First Studio | About</title>{% endblock %}
-{% block masthead-headline %}
-<h1 class="title is-2">{% translate "About the Creative" language False %}</h1>
-<h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}  
-{% block main-content %}
-<div class="columns">
-  <div class="column is-four-fifths">
-    <div class="columns is-multiline">
-      <div class="column is-two-thirds">
-        <div class="content">
-          <h2>{% translate "Jacob North!" language False %}</h2>
-          <p>{% translate config.author_description|safe|striptags language False %}</p>
-        </div>
-        <div class="inline-icon-container">
-          <h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://twitter.com/Jaynoco"><i class="fab fa-twitter"></i></a></h1>
-          <h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://www.linkedin.com/in/jacobnorth/"><i class="fab fa-linkedin"></i></a></h1>
-          <h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://www.instagram.com/metajake/"><i class="fab fa-instagram"></i></a></h1>
-          <h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://www.github.com/metajake/"><i class="fab fa-github"></i></a></h1>
-        </div>
-        <div class="columns is-centered is-mobile is-hidden-tablet">
-          <div class="column is-11">
-            <div class="content">
-              <div class="image has-margin-top"><img class="has-radius-small" src="{{profile_picture.image.url}}"/></div>
-              <p class="is-size-6 has-text-grey is-italic">{%translate profile_picture.caption|safe language False %}</p>
-            </div>
-          </div>
-        </div>
-        <hr class="has-background-grey-light"/>
-        <div class="content">
-          <h2>Affilations...</h2>
-        </div>
-        <div class="columns is-mobile is-centered">
-          <div class="column is-11">
-            <div class="columns is-variable is-4-mobile is-6-tablet is-mobile is-multiline is-centered is-vcentered">{% for affiliate in affiliates|shuffle %}
-              <div class="column is-half-mobile is-one-third-tablet has-text-centered">{% if affiliate.link %}<a href="{{affiliate.link}}" target="_blank"><img src="{{affiliate.brand.url}}"/></a>{% else %}<img src="{{affiliate.brand.url}}"/>{% endif %}</div>{% endfor %}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column is-one-third is-hidden-mobile">
-        <div class="content">
-          <div class="image"><img class="has-radius-small" src="{{profile_picture.image.url}}"/></div>
-          <p class="is-size-6 has-text-grey is-italic">{%translate profile_picture.caption|safe language False %}</p>
-        </div>
-      </div>
-      <div class="column is-full"></div>
-    </div>
-  </div>
-  <div class="column" id="sidebar"></div>
-</div>{% endblock %}
+{% block extrahead %}<title>First Studio | About</title>{% endblock %}
+{% block masthead-headline %}<h1 class="title is-2">{% translate "About the Creative" language False %}</h1><h2 class="subtitle is-6">&nbsp;</h2>{% endblock %}  
+{% block main-content %}<div class="columns"><div class="column is-four-fifths"><div class="columns is-multiline"><div class="column is-two-thirds"><div class="content"><h2>{% translate "Jacob North!" language False %}</h2><p>{% translate config.author_description|safe|striptags language False %}</p><a class="has-text-dark" href="{{config.resume.url}}" target="_blank"><strong><em>Grab that resume! <i class="fas fa-file-pdf"></i></em></strong></a></div><div class="inline-icon-container"><h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://twitter.com/Jaynoco"><i class="fab fa-twitter"></i></a></h1><h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://www.linkedin.com/in/jacobnorth/"><i class="fab fa-linkedin"></i></a></h1><h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://www.instagram.com/metajake/"><i class="fab fa-instagram"></i></a></h1><h1 class="icon subtitle is-inline"><a class="has-text-dark" href="https://www.github.com/metajake/"><i class="fab fa-github"></i></a></h1></div><div class="columns is-centered is-mobile is-hidden-tablet"><div class="column is-11"><div class="content"><div class="image has-margin-top"><img class="has-radius-small" src="{{profile_picture.image.url}}"/></div><p class="is-size-6 has-text-grey is-italic">{%translate profile_picture.caption|safe language False %}</p></div></div></div><hr class="has-background-grey-light"/><div class="content"><h2>Affilations...</h2></div><div class="columns is-mobile is-centered"><div class="column is-11"><div class="columns is-variable is-4-mobile is-6-tablet is-mobile is-multiline is-centered is-vcentered">{% for affiliate in affiliates|shuffle %}<div class="column is-half-mobile is-one-third-tablet has-text-centered">{% if affiliate.link %}<a href="{{affiliate.link}}" target="_blank"><img src="{{affiliate.brand.url}}"/></a>{% else %}<img src="{{affiliate.brand.url}}"/>{% endif %}</div>{% endfor %}</div></div></div></div><div class="column is-one-third is-hidden-mobile"><div class="content"><div class="image"><img class="has-radius-small" src="{{profile_picture.image.url}}"/></div><p class="is-size-6 has-text-grey is-italic">{%translate profile_picture.caption|safe language False %}</p></div></div><div class="column is-full"></div></div></div><div class="column" id="sidebar"></div></div>{% endblock %}

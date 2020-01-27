@@ -20,6 +20,7 @@ h2.subtitle.is-6 &nbsp;
         .content
           h2 {% translate "Jacob North!" language False %}
           p {% translate config.author_description|safe|striptags language False %}
+          a(href="{{config.resume.url}}" target="_blank").has-text-dark: strong: em Grab that resume! <i class="fas fa-file-pdf"></i>
         .inline-icon-container
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://twitter.com/Jaynoco"): i.fab.fa-twitter
           h1.icon.subtitle.is-inline: a.has-text-dark(href="https://www.linkedin.com/in/jacobnorth/"): i.fab.fa-linkedin

@@ -78,6 +78,7 @@ class Config(models.Model):
     language = models.CharField(max_length=10, choices=[('ja','Japanese'),('en','English'),('es','Espanol'),('fr','French'),('de','German'),('sv','Swedish'),('zh','Chinese')], default='ja')
     author_description = RichTextField(blank=True)
     profile_picture = models.ForeignKey(Portrait, related_name="profile_picture", on_delete=models.CASCADE, blank=True, null=True)
+    resume = models.FileField(upload_to='uploads/blog/', null=True)
 
     def __str__(self):
         return "Blog Config"
