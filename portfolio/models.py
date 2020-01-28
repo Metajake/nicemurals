@@ -29,6 +29,9 @@ class Work(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ('title',)
+
 class Portrait(models.Model):
     title = models.CharField(max_length=300, blank=True)
     caption = models.CharField(max_length=50, blank=True)
