@@ -654,6 +654,9 @@
 #project-content iframe {
   width: 100%;
 }
+#project-content .project-images img {
+  width: 100%;
+}
 a.repository h1.icon {
   margin-bottom: 0;
 }
