@@ -1,59 +1,12 @@
-{% load static %}<!DOCTYPE html>
-<html>
-  <head>{% load static %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="{% static 'blog/assets/favicon_'|add:favicon|add:'32.png' %}">
-    <link rel="apple-touch-icon" href="{% static 'blog/assets/favicon_'|add:favicon|add:'128.png'%}">
-    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/blog-base.css' %}">{% if config.rpg_active %}
-    <link rel="stylesheet" href="{% static 'rpg/css/rpg_base.css' %}">{% if config.in_location %}
-    <link rel="stylesheet" href="{% static 'rpg/css/location.css' %}">{% endif %}
-    {% endif %}{% block extrahead %}
-    {% endblock %}
-  </head>
-  <body class="{%block body_class%}{%endblock%}">
-    {%block body_intro %}
-    {%endblock %}
-    <header class="hero is-primary is-small">
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns">
-            <div class="column is-four-fifths inline-icon-spacing">
-              {% block masthead-headline %}
-              {% endblock %}
-              <hr>
-              <h1 class="icon subtitle is-inline"><a id="home-link" href="{% url 'blog-home' %}"><i class="{{home_icon.0}} {{home_icon.1}}" title="Home"></i></a></h1>
-              <h1 class="icon subtitle is-inline"><a id="about-link" href="/about"><i class="fas fa-address-card" title="About"></i></a></h1>
-              <h1 class="icon subtitle is-inline"><a id="login-link" href="/admin"><i class="fas fa-key" title="Admin"></i></a></h1>{% if user.is_authenticated %}
-              <h1 class="icon subtitle is-inline"><a href="/admin/logout"><i class="fas fa-skull anim-spook" title="Logout"></i></a></h1>{% else %}
-              <h1 class="icon subtitle is-inline"><i class="fas fa-skull anim-spook" title="Logout"></i></h1>{% endif %}
-            </div>
-            <div class="column">
-              {% block masthead-sidebar %}
-              {% endblock %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <section class="section">
-      <div class="container">
-        {% block main-content %}
-        {% endblock %}
-      </div>
-    </section>
-    <footer class="footer">
-      <div class="columns is-multiline">
-        <div class="column has-text-centered is-full"><a href="http://djangoproject.com/" target="_blank"><img src="{% static 'blog/assets/djangojoint107x25_green.gif' %}" alt="Made with Django" width="99" height="23"></a><a href="https://bulma.io" target="_blank"><img src="{% static 'blog/assets/made_with_bulma_white.png' %}" alt="Made with Bulma" width="128" height="24"></a></div>
-        <div class="column has-text-centered is-full is-paddingless"><a href="https://pugjs.org/" target="_blank"><img src="{% static 'blog/assets/pug.svg' %}" alt="Made with PugJS" width="26"></a></div>
-      </div>
-    </footer>{% block prescript %}
-    {% endblock %}
-    <script src="{% static 'js/jquery.js' %}"></script>
-    <script src="{% static 'js/jqueryUI.js' %}"></script>
-    <script src="{% static 'blog/js/blog-base.js' %}"></script>{% block postscript %}
-    {% endblock %}
-  </body>
-</html>
+{% load static %}<!DOCTYPE html><html><head>{% load static %}<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-157268458-1"></script><script>window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-157268458-1');</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="shortcut icon" type="image/png" href="{% static 'blog/assets/favicon_'|add:favicon|add:'32.png' %}"><link rel="apple-touch-icon" href="{% static 'blog/assets/favicon_'|add:favicon|add:'128.png'%}"><link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}"><link rel="stylesheet" href="{% static 'css/bulma.css' %}"><link rel="stylesheet" href="{% static 'blog/css/blog-base.css' %}">{% if config.rpg_active %}<link rel="stylesheet" href="{% static 'rpg/css/rpg_base.css' %}">{% if config.in_location %}<link rel="stylesheet" href="{% static 'rpg/css/location.css' %}">{% endif %}
+{% endif %}{% block extrahead %}
+{% endblock %}</head><body class="{%block body_class%}{%endblock%}">{%block body_intro %}
+{%endblock %}<header class="hero is-primary is-small"><div class="hero-body"><div class="container"><div class="columns"><div class="column is-four-fifths inline-icon-spacing">{% block masthead-headline %}
+{% endblock %}<hr><h1 class="icon subtitle is-inline"><a id="home-link" href="{% url 'blog-home' %}"><i class="{{home_icon.0}} {{home_icon.1}}" title="Home"></i></a></h1><h1 class="icon subtitle is-inline"><a id="about-link" href="/about"><i class="fas fa-address-card" title="About"></i></a></h1><h1 class="icon subtitle is-inline"><a id="login-link" href="/admin"><i class="fas fa-key" title="Admin"></i></a></h1>{% if user.is_authenticated %}<h1 class="icon subtitle is-inline"><a href="/admin/logout"><i class="fas fa-skull anim-spook" title="Logout"></i></a></h1>{% else %}<h1 class="icon subtitle is-inline"><i class="fas fa-skull anim-spook" title="Logout"></i></h1>{% endif %}</div><div class="column">{% block masthead-sidebar %}
+{% endblock %}</div></div></div></div></header><section class="section"><div class="container">{% block main-content %}
+{% endblock %}</div></section><footer class="footer"><div class="columns is-multiline"><div class="column has-text-centered is-full"><a href="http://djangoproject.com/" target="_blank"><img src="{% static 'blog/assets/djangojoint107x25_green.gif' %}" alt="Made with Django" width="99" height="23"></a><a href="https://bulma.io" target="_blank"><img src="{% static 'blog/assets/made_with_bulma_white.png' %}" alt="Made with Bulma" width="128" height="24"></a></div><div class="column has-text-centered is-full is-paddingless"><a href="https://pugjs.org/" target="_blank"><img src="{% static 'blog/assets/pug.svg' %}" alt="Made with PugJS" width="26"></a></div></div></footer>{% block prescript %}
+{% endblock %}<script src="{% static 'js/jquery.js' %}"></script><script src="{% static 'js/jqueryUI.js' %}"></script><script src="{% static 'blog/js/blog-base.js' %}"></script>{% block postscript %}
+{% endblock %}</body></html>
