@@ -5,6 +5,6 @@
 h3.title.is-4.is-truncated {%translate entry.title|safe language True%} 
 p.has-break-all.is-truncated {%translate entry.description|safe|striptags language False%}
 .buttons
-  |{% for tag in entry.tags.all %}
+  |{% for tag in entry.tags.all|shuffle|slice:":3" %}
   button.button.is-static.is-small.is-rounded.has-background-link.has-text-white.has-text-weight-bold {{tag.tag_name}}
   |{% endfor %}
