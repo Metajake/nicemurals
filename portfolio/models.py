@@ -19,7 +19,7 @@ class Tag(models.Model):
         return self.tag_name
 
 class Work(models.Model):
-    title = models.CharField(max_length=300, blank=True)
+    title = models.CharField(max_length=300, unique=True)
     caption = models.CharField(max_length=50, blank=True)
     image = models.ImageField(upload_to="uploads/portfolio/")
     rating = models.CharField(max_length=20, choices=(('pg','PG'),('pg13','PG-13'),('r','R')))
@@ -51,6 +51,7 @@ class Project(models.Model):
     youtube_videos = models.CharField(max_length=300, blank=True)
     featured_image = models.ForeignKey(Work, related_name="project_featured_image", on_delete=models.CASCADE, blank=True, null=True)
     images = models.ManyToManyField(Work, related_name="project_images", blank=True)
+    image_layout = models.CharField(max_length = 50, default="random", choices=(('random','Rando'),('split','Split')))
     repository = models.CharField(max_length=300, blank=True)
     affiliate_links = models.CharField(max_length=255, blank=True)
     tags = models.ManyToManyField(Tag, related_name="tags", blank=True)
