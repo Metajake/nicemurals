@@ -18,8 +18,10 @@ h2.subtitle.is-6 {{project.category|capfirst}}
   .column.is-three-quarters.is-multiline#project-content
     .column.is-full
       .columns
+        |{% if project_body_image %}
         .column.is-one-third
-          img(src="{{project_body_image.image.url}}")
+          img(src="{{project_body_image.image.url}}" alt="{{project_body_image.title}}")
+        |{% endif %}
         .column.is-two-thirds
           .content.
             {{project.description|safe}}

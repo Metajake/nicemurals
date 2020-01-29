@@ -77,7 +77,10 @@ def entry(request, entry_slug):
 
 def project(request, project_slug):
     p = Project.objects.get(slug=project_slug)
-    body_image = random.choice(p.images.all())
+    if p.images.count():
+        body_image = random.choice(p.images.all())
+    else:
+        body_image = None
     context = {
         'project': p,
         'project_body_image': body_image,
