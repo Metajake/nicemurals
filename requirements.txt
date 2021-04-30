@@ -32,5 +32,5 @@ toml==0.10.0
 tox==3.14.3
 translate==3.5.0
 tweepy==3.8.0
-urllib3==1.25.7
+urllib3==1.25.8
 virtualenv==16.7.9
